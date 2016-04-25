@@ -18,5 +18,9 @@ def menus_for_location(location):
                                           .find({'location': location}, {'_id': 0, 'location': 0}))})
 
 
+@app.errorhandler(404)
+def not_found(_):
+    return flask.jsonify({'error': 'page not found'}), 404
+
 if __name__ == '__main__':
     app.run('localhost', 8888)
