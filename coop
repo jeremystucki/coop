@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+
+import sys
+
+import datetime
+import requests
+
+
+def print_menu(menu):
+    print('\n\033[1m{} \033[34m{}\033[0m'.format(menu['title'], menu['price']))
+
+    for item in menu['menu']:
+        print(' - ' + item)
+
+if len(sys.argv) == 1:
+    location = input('Location: ')
+else:
+    location = sys.argv[1]
+
+data = requests.get('https://themachine.jeremystucki.com/api/v1/coop/menus/{}'.format(location))
+current_day = int(datetime.datetime.now().date().strftime('%s'))
+
+for menu in data.json()['results']:
+    if menu['timestamp'] == current_day:
+        if len(sys.argv) < 3 or (len(sys.argv) == 3 and sys.argv[2] == menu['title']):
+            print_menu(menu)
+
+print()
