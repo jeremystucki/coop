@@ -49,3 +49,4 @@ get_data_for_restaurant('mapstart-restaurant=2042', 'Aarau')
 
 db.get_collection('menus_temp').insert_many(menus)
 db.get_collection('menus_temp').rename('menus', dropTarget=True)
+db.get_collection('menus').create_index(('location', pymongo.ASCENDING))
