@@ -6,14 +6,16 @@ import requests
 from bs4 import BeautifulSoup
 
 db = pymongo.MongoClient().get_database('coop')
-
 menus = []
 
 
-def get_data_for_restaurant(cookie, name):
+def get_data_for_restaurant(restaurant_id, name):
     url = 'http://www.coop.ch/pb/site/restaurant/node/73195219/Lde/index.html'
-    headers = {'Cookie': cookie,
-               'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'}
+    headers = {
+        'Cookie': 'mapstart-restaurant=' + restaurant_id,
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    }
+
     data = requests.get(url, headers=headers)
     dom = BeautifulSoup(data.text, 'html.parser')
 
@@ -44,8 +46,8 @@ def get_data_for_restaurant(cookie, name):
             })
 
 
-get_data_for_restaurant('mapstart-restaurant=2524', 'Baden')
-get_data_for_restaurant('mapstart-restaurant=2042', 'Aarau')
+get_data_for_restaurant('2524', 'Baden')
+get_data_for_restaurant('2042', 'Aarau')
 
 db.get_collection('menus_temp').insert_many(menus)
 db.get_collection('menus_temp').rename('menus', dropTarget=True)
