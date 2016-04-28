@@ -47,7 +47,7 @@ def get_data_for_restaurant(restaurant_id, name):
             })
 
 
-with open('config.yaml') as config_file:
+with open('config.yml') as config_file:
     config = yaml.load(config_file)
 
 for name, restaurant_id in config['restaurants'].items():
