@@ -57,3 +57,9 @@ for name, restaurant_id in config['restaurants'].items():
 db.get_collection('menus_temp').insert_many(menus)
 db.get_collection('menus_temp').rename('menus', dropTarget=True)
 db.get_collection('menus').create_index('location')
+
+most_recent_timestamp = min([menu['timestamp'] for menu in menus])
+stats = [menu for menu in menus if menu['timestamp'] == most_recent_timestamp]
+
+if db.get_collection('menu_stats').find_one({'timestamp': most_recent_timestamp}) is None:
+    db.get_collection('menu_stats').insert_many(stats)
