@@ -1,8 +1,9 @@
+import datetime
 import re
 
-import datetime
 import pymongo
 import requests
+import yaml
 from bs4 import BeautifulSoup
 
 db = pymongo.MongoClient().get_database('coop')
@@ -46,9 +47,13 @@ def get_data_for_restaurant(restaurant_id, name):
             })
 
 
-get_data_for_restaurant('2524', 'Baden')
-get_data_for_restaurant('2042', 'Aarau')
+with open('config.yaml') as config_file:
+    config = yaml.load(config_file)
+
+for name, restaurant_id in config['restaurants'].items():
+    get_data_for_restaurant(restaurant_id, name)
+
 
 db.get_collection('menus_temp').insert_many(menus)
 db.get_collection('menus_temp').rename('menus', dropTarget=True)
-db.get_collection('menus').create_index(('location', pymongo.ASCENDING))
+db.get_collection('menus').create_index('location')
