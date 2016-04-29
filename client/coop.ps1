@@ -14,8 +14,6 @@ $timestamp = Get-Unix-Midnight
 $client = New-Object System.Net.WebClient
 $url = "https://themachine.jeremystucki.com/api/v1/coop/menus/$($location)/$($timestamp)"
 
-echo $url
-
 $response = $client.DownloadString($url)
 $json = ConvertFrom-Json $response
 
