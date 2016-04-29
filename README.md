@@ -31,7 +31,7 @@
   ]
 }
 ```
-Returns all menus for all restaurants
+Returns all menus for all restaurants.
 
 #### /api/v1/coop/menus/\<location>
 ```GET /api/v1/coop/menus/Aarau```
