@@ -10,6 +10,9 @@
 - Zofingen
 
 ## API
+
+The api is hosted at [themachine.jeremystucki.com](https://themachine.jeremystucki.com).
+
 ### Menus
 #### /api/v1/coop/menus
 ```GET /api/v1/coop/menus```
