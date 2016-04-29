@@ -1,5 +1,4 @@
 import json
-import traceback
 
 import flask
 import pymongo
