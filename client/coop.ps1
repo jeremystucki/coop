@@ -33,3 +33,7 @@ foreach ($menu in $json.results) {
 
     Write-Host ""
 }
+
+
+Write-Host "Press [ENTER] key to close ..."
+Read-Host
