@@ -27,7 +27,7 @@
       "price": 12.95,
       "timestamp": 1461880800.0,
       "title": "Wochenmen\u00fc"
-    }, ...
+    }
   ]
 }
 ```
@@ -48,7 +48,7 @@ Returns all menus for all restaurants
       "price": 12.95,
       "timestamp": 1461880800.0,
       "title": "Wochenmen\u00fc"
-    }, ...
+    }
   ]
 }
 ```
@@ -69,7 +69,7 @@ Returns all menus for a given restaurant.
       "price": 12.95,
       "timestamp": 1461967200.0,
       "title": "Wochenmen\u00fc"
-    }, ...
+    }
   ]
 }
 ```
