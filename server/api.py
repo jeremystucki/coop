@@ -34,7 +34,7 @@ def menus_for_location_and_timestamp(location, timestamp):
     return flask.jsonify(
         {'results': list(db.get_collection('menus')
                          .find({'location': location, 'timestamp': int(timestamp)},
-                               {'_id': 0, 'location': 0}))})
+                               {'_id': 0, 'location': 0, 'timestamp': 0}))})
 
 
 @app.errorhandler(404)
