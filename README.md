@@ -9,6 +9,16 @@
 - Wettingen
 - Zofingen
 
+## Client
+
+### Installation on OSX
+There is a brew tap available for coop:
+
+```bash
+brew tap bash/homebrew-coop
+brew install --HEAD coop
+```
+
 ## API
 
 The api is hosted at [themachine.jeremystucki.com](https://themachine.jeremystucki.com).
