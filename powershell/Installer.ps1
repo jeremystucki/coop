@@ -1,7 +1,8 @@
-﻿$version = '2d19d51a185be784935c1bbf3defb6af6d91d9ec'
+﻿$version = '4903e27c60cb7ea4a71bd8fb245495bf596a3a24'
 $url = "https://github.com/STJEREM/coop/archive/$($version).zip"
 $out = "$env:TEMP\coop-$($version).zip"
-$dest = "$env:TEMP"
+$tmp = "$env:TEMP"
+$installDir = "$Home\Documents\WindowsPowerShell\Modules"
 
 function Expand-ZipFile($file, $destination) {
     $shell = New-Object -com shell.application
@@ -12,9 +13,23 @@ function Expand-ZipFile($file, $destination) {
     }
 }
 
+Write-Host "Downloading package..."
+
 Invoke-WebRequest -Uri $url -OutFile $out
-Expand-ZipFile $out $dest
+Expand-ZipFile $out $tmp
 
-Get-ChildItem -Path "$dest\coop-$version"
+if ((Test-Path $installDir) -eq $false) {
+    New-Item -ItemType Directory -Force -Path $installDir
+}
 
-# Todo: implement moving
+if ((Test-Path "$($installDir)\Coop") -eq $true) {
+    Write-Host "Removing previous installed version..."
+    Remove-Item -Force -Recurse "$($installDir)\Coop"
+}
+
+Write-Host "Installing files..."
+Copy-Item -Recurse "$($tmp)\coop-$($version)\powershell\Coop" $installDir
+
+Write-Host "Cleaning up..."
+Remove-Item -Force $out
+Remove-Item -Force -Recurse "$($tmp)\coop-$($version)"
