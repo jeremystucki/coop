@@ -23,7 +23,7 @@ brew install --HEAD coop
 coop is avaible as a powershell module:
 
 ```powershell
-Invoke-WebRequest -OutFile CoopInstaller.ps1 -Uri https://raw.githubusercontent.com/STJEREM/coop/development/client/powershell/Installer.ps1; .\CoopInstaller.ps1 "0.0.3"
+Invoke-WebRequest -OutFile CoopInstaller.ps1 -Uri https://raw.githubusercontent.com/STJEREM/coop/development/client/powershell/Installer.ps1; .\CoopInstaller.ps1
 ```
 
 ## API

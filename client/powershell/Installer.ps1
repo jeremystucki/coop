@@ -1,6 +1,12 @@
 ﻿param (
-    [string] $version = (Read-Host "Commit - SHA or Tag")
+    [string] $version = ""
 )
+
+if ($version -eq "") {
+    $response = Invoke-WebRequest 'https://api.github.com/repos/stjerem/coop/releases/latest' -UseBasicParsing
+    $json = ConvertFrom-Json $response
+    $version = $json.tag_name
+}
 
 $url = "https://github.com/STJEREM/coop/archive/$($version).zip"
 $out = "$env:TEMP\coop-$($version).zip"
@@ -16,7 +22,7 @@ function Expand-ZipFile($file, $destination) {
     }
 }
 
-Write-Host "Downloading package..."
+Write-Host "Downloading version $($version)..."
 
 Invoke-WebRequest -Uri $url -OutFile $out
 Expand-ZipFile $out $tmp
