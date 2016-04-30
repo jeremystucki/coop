@@ -11,8 +11,9 @@
     }
 
     if ($Version -eq $true) {
-        Write-Host "STJEREM/coop 0.0.1" -NoNewline
-        Exit
+        $module = Get-Module Coop
+        Write-Host "STJEREM/coop $($module.Version)"
+        Return
     }
 
     if ($location -eq "") {
