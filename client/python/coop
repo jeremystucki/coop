@@ -21,7 +21,7 @@ def print_menu(menu):
 
 
 def print_version():
-    print('STJEREM/coop 0.0.3')
+    print('STJEREM/coop 0.0.4')
 
 
 if len(sys.argv) == 2 and sys.argv[1] == '--version':
