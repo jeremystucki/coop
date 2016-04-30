@@ -2,6 +2,7 @@
     [CmdletBinding()]
     param (
         [switch] $Version,
+        [switch] $Upgrade,
         [string] $location = "",
         [string] $menuFilter = ""
     )
@@ -14,6 +15,12 @@
         $module = Get-Module Coop
         Write-Host "STJEREM/coop $($module.Version)"
         Return
+    }
+
+    if ($Upgrade -eq $true) {
+        Invoke-WebRequest -OutFile CoopInstaller.ps1 -Uri https://raw.githubusercontent.com/STJEREM/coop/feature/latest-version/client/powershell/Installer.ps1
+        .\CoopInstaller.ps1
+        Remove-Item .\CoopInstaller.ps1
     }
 
     if ($location -eq "") {
