@@ -31,7 +31,7 @@ if ((Test-Path "$($installDir)\Coop") -eq $true) {
 }
 
 Write-Host "Installing files..."
-Copy-Item -Recurse "$($tmp)\coop-$($version)\powershell\Coop" $installDir
+Copy-Item -Recurse "$($tmp)\coop-$($version)\client\powershell\Coop" $installDir
 
 Write-Host "Cleaning up..."
 Remove-Item -Force $out
