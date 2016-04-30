@@ -22,7 +22,7 @@
         Invoke-WebRequest -OutFile CoopInstaller.ps1 -Uri https://raw.githubusercontent.com/STJEREM/coop/feature/latest-version/client/powershell/Installer.ps1
         .\CoopInstaller.ps1
         Remove-Item .\CoopInstaller.ps1
-        Exit
+        Return
     }
 
     if ($location -eq "") {
