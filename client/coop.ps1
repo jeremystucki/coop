@@ -1,5 +1,6 @@
 ﻿param (
-    [string] $location = $(Read-Host "Location"),
+    [switch] $Version,
+    [string] $location = "",
     [string] $menuFilter = ""
 )
 
@@ -7,7 +8,14 @@ function Get-Unix-Midnight() {
     return [int][double]::Parse($(Get-Date -date (Get-Date -Hour 0 -Minute 00 -Second 00 -Millisecond 0000).ToUniversalTime()-uformat %s))
 }
 
-Clear-Host
+if ($Version -eq $true) {
+    Write-Host "STJEREM/coop 0.0.1" -NoNewline
+    Exit
+}
+
+if ($location -eq "") {
+    $location = $(Read-Host "Location")
+}
 
 $timestamp = Get-Unix-Midnight
 

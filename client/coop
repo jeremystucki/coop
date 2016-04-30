@@ -20,6 +20,14 @@ def print_menu(menu):
         print(' - ' + item)
 
 
+def print_version():
+    print('STJEREM/coop 0.0.1')
+
+
+if sys.argv[1] == '--version':
+    print_version()
+    exit()
+
 if len(sys.argv) == 1:
     location = input('Location: ')
 else:
