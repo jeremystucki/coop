@@ -12,7 +12,7 @@
 ## Client
 
 ### Installation on OSX
-There is a brew tap available for coop:
+There is a brew tap [available](https://github.com/bash/homebrew-coop) for coop:
 
 ```bash
 brew tap bash/homebrew-coop
