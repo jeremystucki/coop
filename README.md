@@ -19,6 +19,13 @@ brew tap bash/homebrew-coop
 brew install --HEAD coop
 ```
 
+### Installation on Windows
+coop is avaible as a powershell module.
+
+```powershell
+Invoke-WebRequest -OutFile CoopInstaller.ps1 -Uri https://raw.githubusercontent.com/STJEREM/coop/feature/powershell-dist/powershell/Installer.ps1; .\CoopInstaller.ps1
+```
+
 ## API
 
 The api is hosted at [themachine.jeremystucki.com](https://themachine.jeremystucki.com).

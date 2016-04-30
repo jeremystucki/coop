@@ -19,7 +19,7 @@ Invoke-WebRequest -Uri $url -OutFile $out
 Expand-ZipFile $out $tmp
 
 if ((Test-Path $installDir) -eq $false) {
-    New-Item -ItemType Directory -Force -Path $installDir
+    New-Item -ItemType Directory -Force -Path $installDir | Out-Null
 }
 
 if ((Test-Path "$($installDir)\Coop") -eq $true) {
