@@ -19,7 +19,7 @@
 
     if ($Upgrade -eq $true) {
         Write-Host "Upgrading to latest version..."
-        Invoke-WebRequest -OutFile CoopInstaller.ps1 -Uri https://raw.githubusercontent.com/STJEREM/coop/feature/latest-version/client/powershell/Installer.ps1
+        Invoke-WebRequest -OutFile CoopInstaller.ps1 -Uri https://raw.githubusercontent.com/STJEREM/coop/development/client/powershell/Installer.ps1
         .\CoopInstaller.ps1
         Remove-Item .\CoopInstaller.ps1
         Return
