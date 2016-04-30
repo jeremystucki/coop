@@ -30,6 +30,10 @@
 
     Write-Host ""
 
+    if ($json.results.count -eq 0) {
+        Write-Host -Foreground Red "No menus found for $($location)"
+    }
+
     foreach ($menu in $json.results) {
         if ($menuFilter -ne "" -and $menu.title -ne $menuFilter) {
             continue;
