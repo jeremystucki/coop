@@ -1,4 +1,4 @@
-﻿$version = '4903e27c60cb7ea4a71bd8fb245495bf596a3a24'
+﻿$version = '0.0.2'
 $url = "https://github.com/STJEREM/coop/archive/$($version).zip"
 $out = "$env:TEMP\coop-$($version).zip"
 $tmp = "$env:TEMP"
