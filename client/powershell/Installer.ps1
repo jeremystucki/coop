@@ -1,4 +1,7 @@
-﻿$version = '0.0.2'
+﻿param (
+    [string] $version = (Read-Host "Commit - SHA or Tag")
+)
+
 $url = "https://github.com/STJEREM/coop/archive/$($version).zip"
 $out = "$env:TEMP\coop-$($version).zip"
 $tmp = "$env:TEMP"
