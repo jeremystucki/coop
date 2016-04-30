@@ -33,3 +33,6 @@ Copy-Item -Recurse "$($tmp)\coop-$($version)\powershell\Coop" $installDir
 Write-Host "Cleaning up..."
 Remove-Item -Force $out
 Remove-Item -Force -Recurse "$($tmp)\coop-$($version)"
+
+Write-Host ""
+Write-Host -Foreground Green "Installation Successful! Type `Coop` to see available menus."
