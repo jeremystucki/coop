@@ -37,6 +37,11 @@
     $response = $client.DownloadString($url)
     $json = ConvertFrom-Json $response
 
+    if ($json.results.count -eq 0) {
+        Write-Host -Foreground Red "No menus found for $($location)"
+        Return
+    }
+
     Write-Host ""
 
     foreach ($menu in $json.results) {
