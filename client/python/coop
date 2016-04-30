@@ -35,8 +35,13 @@ else:
 
 data = requests.get('https://themachine.jeremystucki.com/api/v1/coop/menus/{}'.format(location))
 current_day = unix_time(datetime.datetime.combine(datetime.datetime.now().date(), datetime.time()))
+results = data.json()['results']
 
-for menu in data.json()['results']:
+if len(results) == 0:
+    print('\033[31mno menus found for {}\033[0m'.format(location))
+    exit(1)
+
+for menu in results:
     if menu['timestamp'] == current_day:
         if len(sys.argv) < 3 or (len(sys.argv) == 3 and sys.argv[2] == menu['title']):
             print_menu(menu)
