@@ -35,4 +35,4 @@ Remove-Item -Force $out
 Remove-Item -Force -Recurse "$($tmp)\coop-$($version)"
 
 Write-Host ""
-Write-Host -Foreground Green "Installation Successful! Type `Coop` to see available menus."
+Write-Host -Foreground Green "Installation Successful! Type 'Coop' to see available menus."
