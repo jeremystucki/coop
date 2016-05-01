@@ -28,7 +28,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3F082D271CD67F8E003BF456 /* Coop */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Coop; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F082D271CD67F8E003BF456 /* coop */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = coop; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F082D2A1CD67F8E003BF456 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		3F082D311CD68011003BF456 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = ../APIManager.swift; sourceTree = "<group>"; };
 		3F082D321CD68011003BF456 /* Coop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coop.swift; sourceTree = SOURCE_ROOT; };
@@ -59,7 +59,7 @@
 		3F082D281CD67F8E003BF456 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3F082D271CD67F8E003BF456 /* Coop */,
+				3F082D271CD67F8E003BF456 /* coop */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,9 +80,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3F082D261CD67F8E003BF456 /* Coop */ = {
+		3F082D261CD67F8E003BF456 /* coop */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3F082D2E1CD67F8E003BF456 /* Build configuration list for PBXNativeTarget "Coop" */;
+			buildConfigurationList = 3F082D2E1CD67F8E003BF456 /* Build configuration list for PBXNativeTarget "coop" */;
 			buildPhases = (
 				3F082D231CD67F8E003BF456 /* Sources */,
 				3F082D241CD67F8E003BF456 /* Frameworks */,
@@ -92,9 +92,9 @@
 			);
 			dependencies = (
 			);
-			name = Coop;
+			name = coop;
 			productName = Coop;
-			productReference = 3F082D271CD67F8E003BF456 /* Coop */;
+			productReference = 3F082D271CD67F8E003BF456 /* coop */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -124,7 +124,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3F082D261CD67F8E003BF456 /* Coop */,
+				3F082D261CD67F8E003BF456 /* coop */,
 			);
 		};
 /* End PBXProject section */
@@ -254,7 +254,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3F082D2E1CD67F8E003BF456 /* Build configuration list for PBXNativeTarget "Coop" */ = {
+		3F082D2E1CD67F8E003BF456 /* Build configuration list for PBXNativeTarget "coop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F082D2F1CD67F8E003BF456 /* Debug */,
