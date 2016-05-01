@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  APIManager.swift
 //  Coop
 //
 //  Created by Jeremy Stucki on 01/05/16.
