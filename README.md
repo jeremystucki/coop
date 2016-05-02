@@ -4,6 +4,7 @@
 - Aarau
 - Baden
 - Egerkingen
+- Frick
 - Lenzburg
 - Olten
 - Wettingen
