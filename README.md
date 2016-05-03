@@ -4,8 +4,10 @@
 - Aarau
 - Baden
 - Egerkingen
+- Emmenbrücke
 - Frick
 - Lenzburg
+- Luzern
 - Olten
 - Wettingen
 - Zofingen
