@@ -2,13 +2,19 @@
 
 ## Supported locations
 - Aarau
+- Altdorf
 - Baden
 - Egerkingen
 - Emmenbrücke
 - Frick
+- Herzogenbuchsee
+- Langenthal
 - Lenzburg
 - Luzern
+- Möhlin
 - Olten
+- Sarnen
+- Stans
 - Wettingen
 - Zofingen
 
