@@ -11,13 +11,13 @@ db = pymongo.MongoClient().get_database('coop')
 
 @app.route('/api/v1/coop/menus')
 def all_menus():
-    return flask.jsonify({'results': list(db.get_collection('menus').find({}, {'_id': 0}))})
+    return flask.jsonify({'results': list(db.get_collection('menus').find({}, {'_id': 0, 'location_lower': 0}))})
 
 
 @app.route('/api/v1/coop/menus/<location>')
 def menus_for_location(location):
     return flask.jsonify({'results': list(db.get_collection('menus')
-                                          .find({'location': location}, {'_id': 0, 'location': 0}))})
+                                          .find({'location_lower': location.lower()}, {'_id': 0, 'location': 0, 'location_lower': 0}))})
 
 
 @app.route('/api/v1/coop/menus/<location>/<timestamp>')
@@ -33,8 +33,8 @@ def menus_for_location_and_timestamp(location, timestamp):
 
     return flask.jsonify(
         {'results': list(db.get_collection('menus')
-                         .find({'location': location, 'timestamp': int(timestamp)},
-                               {'_id': 0, 'location': 0, 'timestamp': 0}))})
+                         .find({'location_lower': location.lower(), 'timestamp': int(timestamp)},
+                               {'_id': 0, 'location': 0, 'timestamp': 0, 'location_lower': 0}))})
 
 
 def get_limit(arguments):
