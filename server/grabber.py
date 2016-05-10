@@ -58,6 +58,7 @@ for name, restaurant_id in config['restaurants'].items():
 db.get_collection('menus_temp').insert_many(menus)
 db.get_collection('menus_temp').rename('menus', dropTarget=True)
 db.get_collection('menus').create_index([('location_lower', pymongo.ASCENDING), ('timestamp', pymongo.ASCENDING)])
+db.get_collection('menus').create_index('location')
 
 most_recent_timestamp = min([menu['timestamp'] for menu in menus])
 stats = [menu for menu in menus if menu['timestamp'] == most_recent_timestamp]
