@@ -25,7 +25,14 @@ class MenusViewPresenter: MenusViewInteractorOutput {
     }
     
     func updateMenus(menus: [Menu]) {
-        let sortedMenus = menus.sort({ $0.getTitle().lowercaseString < $1.getTitle().lowercaseString })
+        let sortedMenus = menus.sort({
+            if $0.getTitle().lowercaseString == $1.getTitle().lowercaseString {
+                return $0.getPrice() < $1.getPrice()
+            }
+            
+            return $0.getTitle().lowercaseString < $1.getTitle().lowercaseString
+        })
+        
         let groupedMenus = sortedMenus.categorise({ $0.getDate() })
         
         output.showMenus(groupedMenus)

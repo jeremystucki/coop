@@ -28,6 +28,18 @@ class ViewControllerFactory {
         viewController.setOutput(interactor)
         presenter.setOutput(viewController)
         interactor.setOutput(presenter)
+                
+        return viewController
+    }
+    
+    class func createMenuDetailViewController(menu: Menu) -> MenuDetailViewController {
+        let viewController = MenuDetailViewController(menu: menu)
+        let presenter = MenuDetailViewPresenter()
+        let interactor = MenuDetailViewInteractor()
+        
+        viewController.setOutput(interactor)
+        presenter.setOutput(viewController)
+        interactor.setOutput(presenter)
         
         return viewController
     }

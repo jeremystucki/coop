@@ -16,12 +16,12 @@ class LocationsViewController: UIViewController, LocationsViewPresenterOutput, L
     private var tableViewDataSource: UITableViewDataSource?
     
     func setOutput(output: LocationsViewControllerOutput) {
-        navigationItem.title = "Locations"
+        navigationItem.title = NSLocalizedString("Locations", comment: "")
         self.output = output
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
         tableView = UITableView(frame: view.frame, style: .Plain)
         view.addSubview(tableView)

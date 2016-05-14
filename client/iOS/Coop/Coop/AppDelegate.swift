@@ -10,22 +10,39 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
-
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        let locationsViewController = ViewControllerFactory.createLocationsViewController()
-        let rootViewController = RootViewController(rootViewController: locationsViewController)
+        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+            let locationsViewController = ViewControllerFactory.createLocationsViewController()
+            let rootViewController = UINavigationController(rootViewController: locationsViewController)
+            
+            window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            window?.rootViewController = rootViewController
+            window?.makeKeyAndVisible()
+            
+            return true
+        }
         
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window?.rootViewController = rootViewController
-        window?.makeKeyAndVisible()
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            let locationsViewController = ViewControllerFactory.createLocationsViewController()
+            let navigationViewController = UINavigationController(rootViewController: locationsViewController)
+            let rootViewController = UISplitViewController(nibName: nil, bundle: nil)
+            
+            rootViewController.viewControllers.append(navigationViewController)
+            
+            window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            window?.rootViewController = rootViewController
+            window?.makeKeyAndVisible()
+            
+            return true
+        }
         
-        return true
+        return false
     }
 
     func applicationWillResignActive(application: UIApplication) {
