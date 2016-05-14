@@ -2,10 +2,19 @@
 
 ## Supported locations
 - Aarau
+- Altdorf
 - Baden
 - Egerkingen
+- Emmenbrücke
+- Frick
+- Herzogenbuchsee
+- Langenthal
 - Lenzburg
+- Luzern
+- Möhlin
 - Olten
+- Sarnen
+- Stans
 - Wettingen
 - Zofingen
 
@@ -29,6 +38,27 @@ Invoke-WebRequest -OutFile CoopInstaller.ps1 -Uri https://raw.githubusercontent.
 ## API
 
 The api is hosted at [themachine.jeremystucki.com](https://themachine.jeremystucki.com).
+
+### Locations
+#### /api/v1/coop/locations
+```GET /api/v1/coop/locations```
+```json
+{
+  "results": [
+    "Baden",
+    "Egerkingen",
+    "Zofingen",
+    "Olten",
+    "Wettingen",
+    "Lenzburg",
+    "Aarau",
+    "Frick",
+    "Luzern",
+    "Emmenbrücke"
+  ]
+}
+```
+Returns all supported locations.
 
 ### Menus
 #### /api/v1/coop/menus
