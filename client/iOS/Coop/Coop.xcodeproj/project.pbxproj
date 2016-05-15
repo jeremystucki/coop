@@ -17,6 +17,7 @@
 		3F5D68901CE6747B004E3390 /* LocationsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5D688F1CE6747B004E3390 /* LocationsTableViewDelegate.swift */; };
 		3F5D68921CE674A1004E3390 /* LocationsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5D68911CE674A1004E3390 /* LocationsTableViewDataSource.swift */; };
 		3F5D68941CE674FA004E3390 /* LocationsTableViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5D68931CE674FA004E3390 /* LocationsTableViewOutput.swift */; };
+		3F6ADDBA1CE87644002D10F0 /* CompareDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6ADDB91CE87644002D10F0 /* CompareDate.swift */; };
 		3F84700C1CE4F4F300B6D01E /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F84700B1CE4F4F300B6D01E /* LocationsViewController.swift */; };
 		3F84700E1CE4F63100B6D01E /* LocationsViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F84700D1CE4F63100B6D01E /* LocationsViewPresenter.swift */; };
 		3F8470151CE4F73800B6D01E /* LocationsViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8470141CE4F73800B6D01E /* LocationsViewInteractor.swift */; };
@@ -61,6 +62,7 @@
 		3F5D688F1CE6747B004E3390 /* LocationsTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationsTableViewDelegate.swift; path = Scenes/Locations/LocationsTableViewDelegate.swift; sourceTree = "<group>"; };
 		3F5D68911CE674A1004E3390 /* LocationsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationsTableViewDataSource.swift; path = Scenes/Locations/LocationsTableViewDataSource.swift; sourceTree = "<group>"; };
 		3F5D68931CE674FA004E3390 /* LocationsTableViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationsTableViewOutput.swift; path = Scenes/Locations/Protocols/LocationsTableViewOutput.swift; sourceTree = "<group>"; };
+		3F6ADDB91CE87644002D10F0 /* CompareDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompareDate.swift; sourceTree = "<group>"; };
 		3F84700B1CE4F4F300B6D01E /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationsViewController.swift; path = Scenes/Locations/LocationsViewController.swift; sourceTree = "<group>"; };
 		3F84700D1CE4F63100B6D01E /* LocationsViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationsViewPresenter.swift; path = Scenes/Locations/LocationsViewPresenter.swift; sourceTree = "<group>"; };
 		3F8470141CE4F73800B6D01E /* LocationsViewInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationsViewInteractor.swift; path = Scenes/Locations/LocationsViewInteractor.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				3FA215351CE7BF0700490D0E /* GroupBy.swift */,
+				3F6ADDB91CE87644002D10F0 /* CompareDate.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				3F5787801CE4F2C00065ECEA /* Coop.xcdatamodeld in Sources */,
 				3FA215301CE7BC6100490D0E /* MenuDetailViewControllerOutput.swift in Sources */,
 				3F84701F1CE4F7CF00B6D01E /* LocationsViewInteractorOutput.swift in Sources */,
+				3F6ADDBA1CE87644002D10F0 /* CompareDate.swift in Sources */,
 				3F5D68901CE6747B004E3390 /* LocationsTableViewDelegate.swift in Sources */,
 				3F5787781CE4F2C00065ECEA /* AppDelegate.swift in Sources */,
 				3FD58CDB1CE70E95005EED35 /* MenusViewPresenterOutput.swift in Sources */,

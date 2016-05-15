@@ -33,7 +33,7 @@ class MenusViewPresenter: MenusViewInteractorOutput {
             return $0.getTitle().lowercaseString < $1.getTitle().lowercaseString
         })
         
-        let groupedMenus = sortedMenus.categorise({ $0.getDate() })
+        let groupedMenus = sortedMenus.categorise({ $0.getDate() }).sort({ $0.0 < $1.0 })
         
         output.showMenus(groupedMenus)
     }

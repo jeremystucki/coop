@@ -29,18 +29,28 @@ class MenuDetailViewController: UIViewController, MenuDetailViewPresenterOutput 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.groupTableViewBackgroundColor()
         
         let dishes = UILabel()
         dishes.numberOfLines = menu.getDishes().count
         dishes.text = menu.getDishes().joinWithSeparator("\n")
         
+        var topSpacing = UIApplication.sharedApplication().statusBarFrame.size.height
+        
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            dishes.frame = CGRect(x: 10, y: 10, width: 0, height: 0)
+            let titleLabel = UILabel()
+            titleLabel.font = titleLabel.font.fontWithSize(30)
+            titleLabel.text = menu.getTitle()
+            titleLabel.frame = CGRect(x: 20, y: topSpacing + 20, width: 0, height: 0)
+            titleLabel.sizeToFit()
+            view.addSubview(titleLabel)
+                
+            dishes.frame = CGRect(x: 20, y: titleLabel.frame.maxY + 10, width: 0, height: 0)
         }
         
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            dishes.frame = CGRect(x: 10, y: 10, width: 0, height: 0)
+            topSpacing += navigationController!.navigationBar.bounds.size.height
+            dishes.frame = CGRect(x: 20, y: topSpacing + 20, width: 0, height: 0)
         }
         
         dishes.sizeToFit()

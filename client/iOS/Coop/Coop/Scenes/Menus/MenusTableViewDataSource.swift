@@ -11,9 +11,9 @@ import UIKit
 
 class MenusTableViewDataSource: NSObject, UITableViewDataSource {
     
-    private let menus: [NSDate: [Menu]]
+    private let menus: [(NSDate, [Menu])]
     
-    init(menus: [NSDate: [Menu]]) {
+    init(menus: [(NSDate, [Menu])]) {
         self.menus = menus
     }
     
@@ -25,15 +25,15 @@ class MenusTableViewDataSource: NSObject, UITableViewDataSource {
         let format = NSDateFormatter()
         format.dateFormat = "EEEE"
         
-        return format.stringFromDate(Array(menus.keys)[section])
+        return format.stringFromDate(menus[section].0)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menus[Array(menus.keys)[section]]!.count
+        return menus[section].1.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let menu = menus[Array(menus.keys)[indexPath.section]]![indexPath.row]
+        let menu = menus[indexPath.section].1[indexPath.row]
         
         let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
         cell.textLabel?.text = menu.getTitle()

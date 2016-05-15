@@ -10,5 +10,5 @@ import Foundation
 
 protocol MenusViewPresenterOutput {
     
-    func showMenus(menus: [NSDate: [Menu]])
+    func showMenus(menus: [(NSDate, [Menu])])
 }

@@ -12,7 +12,7 @@ class MenusViewController: UIViewController, MenusViewPresenterOutput, MenusTabl
 
     private var output: MenusViewControllerOutput!
     private let location: Location
-    private var menus: [NSDate: [Menu]]?
+    private var menus: [(NSDate, [Menu])]?
     
     private var tableView: UITableView!
     private var tableViewDelegate: UITableViewDelegate?
@@ -46,7 +46,7 @@ class MenusViewController: UIViewController, MenusViewPresenterOutput, MenusTabl
         }
     }
     
-    func showMenus(menus: [NSDate: [Menu]]) {
+    func showMenus(menus: [(NSDate, [Menu])]) {
         self.menus = menus
         
         tableViewDelegate = MenusTableViewDelegate(menus: menus, output: self)

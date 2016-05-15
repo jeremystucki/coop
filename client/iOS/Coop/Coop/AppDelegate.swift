@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             let navigationViewController = UINavigationController(rootViewController: locationsViewController)
             let rootViewController = UISplitViewController(nibName: nil, bundle: nil)
             
+            rootViewController.delegate = self
             rootViewController.viewControllers.append(navigationViewController)
             
             window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -42,6 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             return true
         }
         
+        return false
+    }
+    
+    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
         return false
     }
 
