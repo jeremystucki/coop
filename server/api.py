@@ -56,7 +56,7 @@ def aggregate_stats(aggregation, request_params, location):
     pipeline = []
 
     if location is not None:
-        pipeline.append({'$match': {'location': location}})
+        pipeline.append({'$match': {'location_lower': location.lower()}})
 
     pipeline += aggregation
 

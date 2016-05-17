@@ -65,3 +65,5 @@ stats = [menu for menu in menus if menu['timestamp'] == most_recent_timestamp]
 
 if db.get_collection('menu_stats').find_one({'timestamp': most_recent_timestamp}) is None:
     db.get_collection('menu_stats').insert_many(stats)
+
+db.get_collection('menu_stats').create_index([('location_lower', pymongo.ASCENDING), ('timestamp', pymongo.ASCENDING)])
