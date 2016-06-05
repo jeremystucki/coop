@@ -37,7 +37,7 @@ class MenusTableViewDataSource: NSObject, UITableViewDataSource {
         
         let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
         cell.textLabel?.text = menu.getTitle()
-        cell.detailTextLabel?.text = String(format: "%.2f", menu.getPrice())
+        cell.detailTextLabel?.text = "CHF " + String(format: "%.2f", menu.getPrice())
         
         return cell
     }
