@@ -12,5 +12,7 @@ protocol LocationsViewInteractorOutput {
     
     func hideLoading()
     
+    func showError()
+    
     func updateLocations(locations: [Location])
 }

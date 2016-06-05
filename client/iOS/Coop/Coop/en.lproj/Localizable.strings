@@ -7,3 +7,8 @@
 */
 
 "Locations" = "Locations";
+"Fetching locations" = "Fetching locations";
+"Could not load locations" = "Could not load locations";
+"Make sure that you are connected to the internet." = "Make sure that you are connected to the internet.";
+"Retry" = "Retry";
+"Ok" = "Ok";

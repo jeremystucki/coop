@@ -29,6 +29,10 @@ class LocationsViewController: UIViewController, LocationsViewPresenterOutput, L
         output.fetchLocations()
     }
     
+    func fetchLocations() {
+        output.fetchLocations()
+    }
+    
     func showLocations(locations: [Location]) {
         tableViewDelegate = LocationsTableViewDelegate(locations: locations, output: self)
         tableViewDataSource = LocationsTableViewDataSource(locations: locations)

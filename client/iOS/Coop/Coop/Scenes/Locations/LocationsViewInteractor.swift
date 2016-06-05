@@ -19,6 +19,10 @@ class LocationsViewInteractor: LocationsViewControllerOutput {
         output.showLoading()
         
         apiManager.fetchLocations { (locations) in
+            if locations.count == 0 {
+                return self.output.showError()
+            }
+            
             self.output.hideLoading()
             self.output.updateLocations(locations)
         }

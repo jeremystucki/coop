@@ -42,8 +42,7 @@ class ApiManager {
         Alamofire.request(.GET, url).responseJSON { (completionHandler) in
             
             if completionHandler.result.isSuccess && completionHandler.response?.statusCode == 200 {
-                self.handleMenusResponse(completionHandler.result.value!, location: location, callback: callback)
-                return
+                return self.handleMenusResponse(completionHandler.result.value!, location: location, callback: callback)
             }
             
             callback([Menu]())

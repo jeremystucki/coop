@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3F38CA5B1CE7B016000A3C73 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F38CA5D1CE7B016000A3C73 /* Localizable.strings */; };
 		3F5787781CE4F2C00065ECEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5787771CE4F2C00065ECEA /* AppDelegate.swift */; };
-		3F5787801CE4F2C00065ECEA /* Coop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F57877E1CE4F2C00065ECEA /* Coop.xcdatamodeld */; };
 		3F5787821CE4F2C00065ECEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F5787811CE4F2C00065ECEA /* Assets.xcassets */; };
 		3F5787851CE4F2C00065ECEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F5787831CE4F2C00065ECEA /* LaunchScreen.storyboard */; };
 		3F5D688B1CE667EF004E3390 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5D688A1CE667EF004E3390 /* ApiManager.swift */; };
@@ -53,7 +52,6 @@
 		3F38CA5F1CE7B02B000A3C73 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3F5787741CE4F2C00065ECEA /* Coop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F5787771CE4F2C00065ECEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3F57877F1CE4F2C00065ECEA /* Coop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Coop.xcdatamodel; sourceTree = "<group>"; };
 		3F5787811CE4F2C00065ECEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F5787841CE4F2C00065ECEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F5787861CE4F2C00065ECEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 				3F5787811CE4F2C00065ECEA /* Assets.xcassets */,
 				3F5787831CE4F2C00065ECEA /* LaunchScreen.storyboard */,
 				3F5787861CE4F2C00065ECEA /* Info.plist */,
-				3F57877E1CE4F2C00065ECEA /* Coop.xcdatamodeld */,
 				3F8470241CE4FB2300B6D01E /* Configuration.swift */,
 				3F8470261CE4FB6900B6D01E /* Configuration.plist */,
 				3F38CA5D1CE7B016000A3C73 /* Localizable.strings */,
@@ -390,7 +387,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F5787801CE4F2C00065ECEA /* Coop.xcdatamodeld in Sources */,
 				3FA215301CE7BC6100490D0E /* MenuDetailViewControllerOutput.swift in Sources */,
 				3F84701F1CE4F7CF00B6D01E /* LocationsViewInteractorOutput.swift in Sources */,
 				3F6ADDBA1CE87644002D10F0 /* CompareDate.swift in Sources */,
@@ -583,19 +579,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		3F57877E1CE4F2C00065ECEA /* Coop.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				3F57877F1CE4F2C00065ECEA /* Coop.xcdatamodel */,
-			);
-			currentVersion = 3F57877F1CE4F2C00065ECEA /* Coop.xcdatamodel */;
-			path = Coop.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 3F57876C1CE4F2C00065ECEA /* Project object */;
 }

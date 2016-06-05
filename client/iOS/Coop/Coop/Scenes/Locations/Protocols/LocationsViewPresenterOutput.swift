@@ -9,4 +9,6 @@
 protocol LocationsViewPresenterOutput {
     
     func showLocations(locations: [Location])
+    
+    func fetchLocations()
 }
