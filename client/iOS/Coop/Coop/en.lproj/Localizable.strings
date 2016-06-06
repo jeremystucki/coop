@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  Coop
+
+  Created by Jeremy Stucki on 14/05/16.
+  Copyright © 2016 Jeremy Stucki. All rights reserved.
+*/
+
+"Locations" = "Locations";
+"Fetching locations" = "Fetching locations";
+"Could not load locations" = "Could not load locations";
+"Make sure that you are connected to the internet." = "Make sure that you are connected to the internet.";
+"Retry" = "Retry";
+"Ok" = "Ok";

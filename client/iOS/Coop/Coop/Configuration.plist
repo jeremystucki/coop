@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Release</key>
+	<dict>
+		<key>API-Endpoint</key>
+		<string>https://themachine.jeremystucki.com/api/v1/coop</string>
+	</dict>
+	<key>Debug</key>
+	<dict>
+		<key>API-Endpoint</key>
+		<string>https://themachine.jeremystucki.com/api/v1/coop</string>
+	</dict>
+</dict>
+</plist>
