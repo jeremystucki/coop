@@ -33,9 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             let navigationViewController = UINavigationController(rootViewController: locationsViewController)
             let rootViewController = UISplitViewController(nibName: nil, bundle: nil)
             
-            rootViewController.delegate = self
             rootViewController.viewControllers.append(navigationViewController)
-            
+            rootViewController.delegate = self
+
             window = UIWindow(frame: UIScreen.mainScreen().bounds)
             window?.rootViewController = rootViewController
             window?.makeKeyAndVisible()

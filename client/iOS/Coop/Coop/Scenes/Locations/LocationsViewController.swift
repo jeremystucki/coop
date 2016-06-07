@@ -11,6 +11,8 @@ import UIKit
 class LocationsViewController: UIViewController, LocationsViewPresenterOutput, LocationsTableViewOutput {
     
     private var output: LocationsViewControllerOutput!
+    private var locations: [Location]?
+
     private var tableView: UITableView!
     private var tableViewDelegate: UITableViewDelegate?
     private var tableViewDataSource: UITableViewDataSource?
@@ -20,20 +22,31 @@ class LocationsViewController: UIViewController, LocationsViewPresenterOutput, L
         self.output = output
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func loadView() {
+        super.loadView()
         
         tableView = UITableView(frame: view.frame, style: .Plain)
         view.addSubview(tableView)
         
-        output.fetchLocations()
+        if locations == nil {
+            output.fetchLocations()
+        }
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        tableView.frame = view.frame
     }
     
+    // gets called by the retry button in the error view
     func fetchLocations() {
         output.fetchLocations()
     }
     
     func showLocations(locations: [Location]) {
+        self.locations = locations
+
         tableViewDelegate = LocationsTableViewDelegate(locations: locations, output: self)
         tableViewDataSource = LocationsTableViewDataSource(locations: locations)
         
