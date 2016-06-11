@@ -19,16 +19,24 @@ class MenusViewController: UIViewController, MenusViewPresenterOutput, MenusTabl
     private var tableViewDataSource: UITableViewDataSource?
 
     func setOutput(output: MenusViewControllerOutput) {
+        navigationItem.title = location.getName()
         self.output = output
     }
-    
+
     init(location: Location) {
         self.location = location
         super.init(nibName: nil, bundle: nil)
-        navigationItem.title = location.getName()
+    }
+
+    override func loadView() {
+        super.loadView()
 
         tableView = UITableView(frame: view.frame, style: .Grouped)
         view.addSubview(tableView)
+
+        if menus == nil {
+            output.fetchMenus(location)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -41,9 +49,6 @@ class MenusViewController: UIViewController, MenusViewPresenterOutput, MenusTabl
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
         
-        if menus == nil {
-            output.fetchMenus(location)            
-        }
     }
     
     func showMenus(menus: [(NSDate, [Menu])]) {
