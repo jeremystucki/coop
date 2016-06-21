@@ -247,6 +247,6 @@ Returns all dishes and how many times they were listed for a given restaurant fo
 
 
 ## Thanks to
-(@bash)[https://github.com/bash]
-(@bauidch)[https://github.com/bauidch]
-(@randalf98)[https://github.com/randalf98]
+[@bash](https://github.com/bash)
+[@bauidch](https://github.com/bauidch)
+[@randalf98](https://github.com/randalf98)
