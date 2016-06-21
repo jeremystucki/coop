@@ -1,4 +1,4 @@
-# Coop
+﻿# Coop
 
 ## Supported locations
 - Aarau
@@ -18,7 +18,13 @@
 - Wettingen
 - Zofingen
 
-## Client
+
+## Clients
+
+### Installation on iOS
+The app is available from the [AppStore](https://appsto.re/ch/EAI0cb.i).
+
+
 
 ### Installation on OSX
 There is a brew tap [available](https://github.com/bash/homebrew-coop) for coop:
@@ -28,12 +34,31 @@ brew tap bash/homebrew-coop
 brew install --HEAD coop
 ```
 
+
 ### Installation on Windows
-coop is avaible as a powershell module:
+
+#### Powershell
+There is also a powershell module:
 
 ```powershell
 Invoke-WebRequest -OutFile CoopInstaller.ps1 -Uri https://raw.githubusercontent.com/STJEREM/coop/development/client/powershell/Installer.ps1; .\CoopInstaller.ps1
 ```
+
+
+### Cross-Platform
+
+#### Java
+There is a java application by @randalf98.
+
+The jar can be downloaded [here](https://github.com/Randalf98/CoopApplication/releases).
+
+
+#### Python
+You can download the python script [here](https://github.com/STJEREM/coop/blob/development/client/python/coop).
+
+
+<br />
+
 
 ## API
 
@@ -216,3 +241,12 @@ Returns all dishes and how many times they were listed for all restaurants for a
 }
 ```
 Returns all dishes and how many times they were listed for a given restaurant for all timestamps.
+
+
+<br />
+
+
+## Thanks to
+[@bash](https://github.com/bash)
+[@bauidch](https://github.com/bauidch)
+[@randalf98](https://github.com/randalf98)
