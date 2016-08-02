@@ -27,14 +27,12 @@ foreach($data['results'] as $menu) {
         $text .= PHP_EOL . '-' . $dish;
     }
 
-    $text .= PHP_EOL;
-
     $menus[] = $text;
 }
 
 $attachments = [];
 
-if (!isset($data['results'][0])) {
+if (empty($data['results'])) {
     $attachments[] = [
         'color' => 'warning',
         'text' => 'We couldn\'t find any menus for \'' . $location . '\''
@@ -42,7 +40,7 @@ if (!isset($data['results'][0])) {
 }
 
 echo json_encode([
-    'text' => implode(PHP_EOL, $menus),
+    'text' => implode(PHP_EOL . PHP_EOL, $menus),
     'parse' => 'full',
     'attachments' => $attachments
 ]);
