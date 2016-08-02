@@ -36,8 +36,8 @@ $attachments = [];
 
 if (!isset($data['results'][0])) {
     $attachments[] = [
-	    'color' => 'warning',
-    	'text' => 'We couldn\'t find any menus for \'' . $location . '\''
+        'color' => 'warning',
+        'text' => 'We couldn\'t find any menus for \'' . $location . '\''
     ];
 }
 
