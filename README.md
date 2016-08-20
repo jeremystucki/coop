@@ -48,7 +48,7 @@ Invoke-WebRequest -OutFile CoopInstaller.ps1 -Uri https://raw.githubusercontent.
 ### Cross-Platform
 
 #### Java
-There is a java application by @randalf98.
+There is a java application by [@randalf98](https://github.com/randalf98).
 
 The jar can be downloaded [here](https://github.com/Randalf98/CoopApplication/releases).
 
