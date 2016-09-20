@@ -1,4 +1,4 @@
-﻿# Coop
+# Coop
 
 ## Supported locations
 - Aarau
@@ -31,7 +31,7 @@ There is a brew tap [available](https://github.com/bash/homebrew-coop) for coop:
 
 ```bash
 brew tap bash/homebrew-coop
-brew install --HEAD coop
+brew install coop-rust
 ```
 
 
@@ -56,6 +56,8 @@ The jar can be downloaded [here](https://github.com/Randalf98/CoopApplication/re
 #### Python
 You can download the python script [here](https://github.com/STJEREM/coop/blob/development/client/python/coop).
 
+### Rust
+A rust client is available at [bash/coop-rust](https://github.com/bash/coop-rust)
 
 <br />
 
