@@ -56,8 +56,8 @@ The jar can be downloaded [here](https://github.com/Randalf98/CoopApplication/re
 #### Python
 You can download the python script [here](https://github.com/STJEREM/coop/blob/development/client/python/coop).
 
-### Rust
-A rust client is available at [bash/coop-rust](https://github.com/bash/coop-rust)
+#### Rust
+A rust client is available at [bash/coop-rust](https://github.com/bash/coop-rust).
 
 <br />
 
