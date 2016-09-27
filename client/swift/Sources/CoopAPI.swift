@@ -23,7 +23,7 @@ class CoopAPI {
 
     func getMenus(forLocation location: String) -> [Menu] {
         do {
-            let content = try client.request(method: .GET, endpoint: "/api/v1/coop/menus/\(location)/\(Date().getTimestampForToday() - 7200)") // Random
+            let content = try client.request(method: .GET, endpoint: "/api/v1/coop/menus/\(location)/\(Date().getTimestampForToday())")
 
             if let results: [Map] = try content?.get("results") {
                 return try parseMenus(results)
