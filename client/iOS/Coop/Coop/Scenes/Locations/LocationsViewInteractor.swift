@@ -8,8 +8,8 @@
 
 class LocationsViewInteractor: LocationsViewControllerOutput {
     
-    fileprivate var output: LocationsViewInteractorOutput!
-    fileprivate let apiManager = ApiManager()
+    private var output: LocationsViewInteractorOutput!
+    private let apiManager = ApiManager()
     
     func setOutput(_ output: LocationsViewInteractorOutput) {
         self.output = output

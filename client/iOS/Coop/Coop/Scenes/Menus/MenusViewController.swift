@@ -10,16 +10,16 @@ import UIKit
 
 class MenusViewController: UIViewController, MenusViewPresenterOutput, MenusTableViewOutput {
 
-    fileprivate var output: MenusViewControllerOutput!
-    fileprivate let location: Location
-    fileprivate var menus: [(Date, [Menu])]?
+    private var output: MenusViewControllerOutput!
+    private let location: Location
+    private var menus: [(Date, [Menu])]?
     
-    fileprivate var tableView: UITableView!
-    fileprivate var tableViewDelegate: UITableViewDelegate?
-    fileprivate var tableViewDataSource: UITableViewDataSource?
+    private var tableView: UITableView!
+    private var tableViewDelegate: UITableViewDelegate?
+    private var tableViewDataSource: UITableViewDataSource?
 
     func setOutput(_ output: MenusViewControllerOutput) {
-        navigationItem.title = location.getName()
+        navigationItem.title = location.name
         self.output = output
     }
 
@@ -35,7 +35,7 @@ class MenusViewController: UIViewController, MenusViewPresenterOutput, MenusTabl
         view.addSubview(tableView)
 
         if menus == nil {
-            output.fetchMenus(location)
+            output.fetchMenus(forLocation: location)
         }
     }
     

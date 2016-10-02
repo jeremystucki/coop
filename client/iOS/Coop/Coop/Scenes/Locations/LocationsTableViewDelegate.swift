@@ -10,8 +10,8 @@ import UIKit
 
 class LocationsTableViewDelegate: NSObject, UITableViewDelegate {
         
-    fileprivate let locations: [Location]
-    fileprivate let output: LocationsTableViewOutput
+    private let locations: [Location]
+    private let output: LocationsTableViewOutput
     
     init(locations: [Location], output: LocationsTableViewOutput) {
         self.locations = locations

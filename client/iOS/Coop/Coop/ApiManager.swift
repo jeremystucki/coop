@@ -37,7 +37,7 @@ class ApiManager {
     
     func fetchMenus(_ location: Location, callback: @escaping ([Menu]) -> Void) {
         
-        let url = "\(baseUrl)/menus/\(location.getName().addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)"
+        let url = "\(baseUrl)/menus/\(location.name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)"
         
         Alamofire.request(url).responseJSON { (completionHandler) in
             

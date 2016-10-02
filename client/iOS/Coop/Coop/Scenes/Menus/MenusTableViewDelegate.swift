@@ -11,8 +11,8 @@ import UIKit
 
 class MenusTableViewDelegate: NSObject, UITableViewDelegate {
     
-    fileprivate let menus: [(Date, [Menu])]
-    fileprivate let output: MenusTableViewOutput
+    private let menus: [(Date, [Menu])]
+    private let output: MenusTableViewOutput
     
     init(menus: [(Date, [Menu])], output: MenusTableViewOutput) {
         self.menus = menus

@@ -8,14 +8,14 @@
 
 class MenusViewInteractor: MenusViewControllerOutput {
 
-    fileprivate var output: MenusViewInteractorOutput!
-    fileprivate let apiManager = ApiManager()
+    private var output: MenusViewInteractorOutput!
+    private let apiManager = ApiManager()
     
     func setOutput(_ output: MenusViewInteractorOutput) {
         self.output = output
     }
     
-    func fetchMenus(_ location: Location) {
+    func fetchMenus(forLocation location: Location) {
         output.showLoading()
         
         apiManager.fetchMenus(location) { (menus) in

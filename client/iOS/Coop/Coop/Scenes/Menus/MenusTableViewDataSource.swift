@@ -11,7 +11,7 @@ import UIKit
 
 class MenusTableViewDataSource: NSObject, UITableViewDataSource {
     
-    fileprivate let menus: [(Date, [Menu])]
+    private let menus: [(Date, [Menu])]
     
     init(menus: [(Date, [Menu])]) {
         self.menus = menus
@@ -36,8 +36,8 @@ class MenusTableViewDataSource: NSObject, UITableViewDataSource {
         let menu = menus[(indexPath as NSIndexPath).section].1[(indexPath as NSIndexPath).row]
         
         let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
-        cell.textLabel?.text = menu.getTitle()
-        cell.detailTextLabel?.text = "CHF " + String(format: "%.2f", menu.getPrice())
+        cell.textLabel?.text = menu.title
+        cell.detailTextLabel?.text = "CHF " + String(format: "%.2f", menu.price)
         
         return cell
     }

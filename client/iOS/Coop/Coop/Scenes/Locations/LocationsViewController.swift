@@ -10,12 +10,12 @@ import UIKit
 
 class LocationsViewController: UIViewController, LocationsViewPresenterOutput, LocationsTableViewOutput {
     
-    fileprivate var output: LocationsViewControllerOutput!
-    fileprivate var locations: [Location]?
+    private var output: LocationsViewControllerOutput!
+    private var locations: [Location]?
 
-    fileprivate var tableView: UITableView!
-    fileprivate var tableViewDelegate: UITableViewDelegate?
-    fileprivate var tableViewDataSource: UITableViewDataSource?
+    private var tableView: UITableView!
+    private var tableViewDelegate: UITableViewDelegate?
+    private var tableViewDataSource: UITableViewDataSource?
     
     func setOutput(_ output: LocationsViewControllerOutput) {
         navigationItem.title = NSLocalizedString("Locations", comment: "")

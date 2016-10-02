@@ -10,9 +10,9 @@ import UIKit
 
 class LocationsViewPresenter: LocationsViewInteractorOutput {
     
-    fileprivate var output: LocationsViewPresenterOutput!
-    fileprivate var loadingView = UIAlertController(title: NSLocalizedString("Fetching locations", comment: ""), message: nil, preferredStyle: .alert)
-    fileprivate var errorView = UIAlertController(title: NSLocalizedString("Could not load locations", comment: ""), message: NSLocalizedString("Make sure that you are connected to the internet.", comment: ""), preferredStyle: .alert)
+    private var output: LocationsViewPresenterOutput!
+    private var loadingView = UIAlertController(title: NSLocalizedString("Fetching locations", comment: ""), message: nil, preferredStyle: .alert)
+    private var errorView = UIAlertController(title: NSLocalizedString("Could not load locations", comment: ""), message: NSLocalizedString("Make sure that you are connected to the internet.", comment: ""), preferredStyle: .alert)
 
     init() {
         errorView.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: .default, handler: { (action) in
@@ -44,6 +44,6 @@ class LocationsViewPresenter: LocationsViewInteractorOutput {
     }
     
     func updateLocations(_ locations: [Location]) {
-        output.showLocations(locations.sorted(by: { $0.getName() < $1.getName() }))
+        output.showLocations(locations.sorted(by: { $0.name < $1.name }))
     }
 }

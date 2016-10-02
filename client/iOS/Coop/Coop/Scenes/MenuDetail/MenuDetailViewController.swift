@@ -10,8 +10,8 @@ import UIKit
 
 class MenuDetailViewController: UIViewController, MenuDetailViewPresenterOutput {
 
-    fileprivate var output: MenuDetailViewControllerOutput!
-    fileprivate let menu: Menu
+    private var output: MenuDetailViewControllerOutput!
+    private let menu: Menu
     
     func setOutput(_ output: MenuDetailViewControllerOutput) {
         self.output = output
@@ -22,7 +22,7 @@ class MenuDetailViewController: UIViewController, MenuDetailViewPresenterOutput 
         super.init(nibName: nil, bundle: nil)
         
         if UIDevice.current.userInterfaceIdiom == .phone {
-            navigationItem.title = menu.getTitle()
+            navigationItem.title = menu.title
         }
     }
     
@@ -32,15 +32,15 @@ class MenuDetailViewController: UIViewController, MenuDetailViewPresenterOutput 
         view.backgroundColor = UIColor.groupTableViewBackground
         
         let dishes = UILabel()
-        dishes.numberOfLines = menu.getDishes().count
-        dishes.text = menu.getDishes().joined(separator: "\n")
+        dishes.numberOfLines = menu.dishes.count
+        dishes.text = menu.dishes.joined(separator: "\n")
         
         var topSpacing = UIApplication.shared.statusBarFrame.size.height
         
         if UIDevice.current.userInterfaceIdiom == .pad {
             let titleLabel = UILabel()
             titleLabel.font = titleLabel.font.withSize(30)
-            titleLabel.text = menu.getTitle()
+            titleLabel.text = menu.title
             titleLabel.frame = CGRect(x: 20, y: topSpacing + 20, width: 0, height: 0)
             titleLabel.sizeToFit()
             view.addSubview(titleLabel)

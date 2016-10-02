@@ -10,7 +10,7 @@ import UIKit
 
 class LocationsTableViewDataSource: NSObject, UITableViewDataSource {
     
-    fileprivate let locations: [Location]
+    private let locations: [Location]
     
     init(locations: [Location]) {
         self.locations = locations
@@ -23,7 +23,7 @@ class LocationsTableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         
-        cell.textLabel?.text = locations[(indexPath as NSIndexPath).row].getName()
+        cell.textLabel?.text = locations[(indexPath as NSIndexPath).row].name
         
         return cell
     }

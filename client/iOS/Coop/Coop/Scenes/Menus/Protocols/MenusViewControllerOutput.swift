@@ -8,5 +8,5 @@
 
 protocol MenusViewControllerOutput {
     
-    func fetchMenus(_ location: Location)
+    func fetchMenus(forLocation location: Location)
 }

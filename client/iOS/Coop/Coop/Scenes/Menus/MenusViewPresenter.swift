@@ -26,14 +26,14 @@ class MenusViewPresenter: MenusViewInteractorOutput {
     
     func updateMenus(_ menus: [Menu]) {
         let sortedMenus = menus.sorted(by: {
-            if $0.getTitle().lowercased() == $1.getTitle().lowercased() {
-                return $0.getPrice() < $1.getPrice()
+            if $0.title.lowercased() == $1.title.lowercased() {
+                return $0.price < $1.price
             }
             
-            return $0.getTitle().lowercased() < $1.getTitle().lowercased()
+            return $0.title.lowercased() < $1.title.lowercased()
         })
         
-        let groupedMenus = sortedMenus.categorise({ $0.getDate() }).sorted(by: { $0.0 < $1.0 })
+        let groupedMenus = sortedMenus.categorise({ $0.date }).sorted(by: { $0.0 < $1.0 })
         
         output.showMenus(groupedMenus)
     }
