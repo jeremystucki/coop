@@ -8,5 +8,5 @@
 
 protocol MenusTableViewOutput {
     
-    func didSelectMenu(menu: Menu)
+    func didSelectMenu(_ menu: Menu)
 }

@@ -10,20 +10,20 @@ import UIKit
 
 class LocationsTableViewDataSource: NSObject, UITableViewDataSource {
     
-    private let locations: [Location]
+    fileprivate let locations: [Location]
     
     init(locations: [Location]) {
         self.locations = locations
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         
-        cell.textLabel?.text = locations[indexPath.row].getName()
+        cell.textLabel?.text = locations[(indexPath as NSIndexPath).row].getName()
         
         return cell
     }

@@ -8,10 +8,10 @@
 
 class MenuDetailViewInteractor: MenuDetailViewControllerOutput {
 
-    private var output: MenuDetailViewInteractorOutput!
-    private let apiManager = ApiManager()
+    fileprivate var output: MenuDetailViewInteractorOutput!
+    fileprivate let apiManager = ApiManager()
     
-    func setOutput(output: MenuDetailViewInteractorOutput) {
+    func setOutput(_ output: MenuDetailViewInteractorOutput) {
         self.output = output
     }
 }

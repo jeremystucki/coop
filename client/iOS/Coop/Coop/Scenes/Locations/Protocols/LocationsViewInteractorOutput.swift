@@ -14,5 +14,5 @@ protocol LocationsViewInteractorOutput {
     
     func showError()
     
-    func updateLocations(locations: [Location])
+    func updateLocations(_ locations: [Location])
 }

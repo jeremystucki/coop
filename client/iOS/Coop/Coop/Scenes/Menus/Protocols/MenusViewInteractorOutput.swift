@@ -12,5 +12,5 @@ protocol MenusViewInteractorOutput {
     
     func hideLoading()
     
-    func updateMenus(menus: [Menu])
+    func updateMenus(_ menus: [Menu])
 }

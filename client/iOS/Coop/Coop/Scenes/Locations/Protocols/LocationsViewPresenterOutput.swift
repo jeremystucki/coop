@@ -8,7 +8,7 @@
 
 protocol LocationsViewPresenterOutput {
     
-    func showLocations(locations: [Location])
+    func showLocations(_ locations: [Location])
     
     func fetchLocations()
 }

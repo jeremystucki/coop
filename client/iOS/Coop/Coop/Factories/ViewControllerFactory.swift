@@ -20,7 +20,7 @@ class ViewControllerFactory {
         return viewController
     }
     
-    class func createMenusViewController(location: Location) -> MenusViewController {
+    class func createMenusViewController(_ location: Location) -> MenusViewController {
         let viewController = MenusViewController(location: location)
         let presenter = MenusViewPresenter()
         let interactor = MenusViewInteractor()
@@ -32,7 +32,7 @@ class ViewControllerFactory {
         return viewController
     }
     
-    class func createMenuDetailViewController(menu: Menu) -> MenuDetailViewController {
+    class func createMenuDetailViewController(_ menu: Menu) -> MenuDetailViewController {
         let viewController = MenuDetailViewController(menu: menu)
         let presenter = MenuDetailViewPresenter()
         let interactor = MenuDetailViewInteractor()

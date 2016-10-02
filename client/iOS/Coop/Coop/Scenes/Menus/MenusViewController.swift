@@ -10,15 +10,15 @@ import UIKit
 
 class MenusViewController: UIViewController, MenusViewPresenterOutput, MenusTableViewOutput {
 
-    private var output: MenusViewControllerOutput!
-    private let location: Location
-    private var menus: [(NSDate, [Menu])]?
+    fileprivate var output: MenusViewControllerOutput!
+    fileprivate let location: Location
+    fileprivate var menus: [(Date, [Menu])]?
     
-    private var tableView: UITableView!
-    private var tableViewDelegate: UITableViewDelegate?
-    private var tableViewDataSource: UITableViewDataSource?
+    fileprivate var tableView: UITableView!
+    fileprivate var tableViewDelegate: UITableViewDelegate?
+    fileprivate var tableViewDataSource: UITableViewDataSource?
 
-    func setOutput(output: MenusViewControllerOutput) {
+    func setOutput(_ output: MenusViewControllerOutput) {
         navigationItem.title = location.getName()
         self.output = output
     }
@@ -31,7 +31,7 @@ class MenusViewController: UIViewController, MenusViewPresenterOutput, MenusTabl
     override func loadView() {
         super.loadView()
 
-        tableView = UITableView(frame: view.frame, style: .Grouped)
+        tableView = UITableView(frame: view.frame, style: .grouped)
         view.addSubview(tableView)
 
         if menus == nil {
@@ -45,13 +45,13 @@ class MenusViewController: UIViewController, MenusViewPresenterOutput, MenusTabl
         tableView.frame = view.frame
         
         var insets = tableView.contentInset
-        insets.top = navigationController!.navigationBar.bounds.size.height + UIApplication.sharedApplication().statusBarFrame.size.height
+        insets.top = navigationController!.navigationBar.bounds.size.height + UIApplication.shared.statusBarFrame.size.height
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
         
     }
     
-    func showMenus(menus: [(NSDate, [Menu])]) {
+    func showMenus(_ menus: [(Date, [Menu])]) {
         self.menus = menus
         
         tableViewDelegate = MenusTableViewDelegate(menus: menus, output: self)
@@ -63,14 +63,14 @@ class MenusViewController: UIViewController, MenusViewPresenterOutput, MenusTabl
         tableView.reloadData()
     }
     
-    func didSelectMenu(menu: Menu) {
+    func didSelectMenu(_ menu: Menu) {
         let viewController = ViewControllerFactory.createMenuDetailViewController(menu)
         
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+        if UIDevice.current.userInterfaceIdiom == .phone {
             navigationController?.pushViewController(viewController, animated: true)
         }
         
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             splitViewController?.showDetailViewController(viewController, sender: self)
         }
     }

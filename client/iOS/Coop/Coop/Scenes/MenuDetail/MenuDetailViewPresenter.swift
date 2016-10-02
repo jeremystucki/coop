@@ -10,9 +10,9 @@ import Foundation
 
 class MenuDetailViewPresenter: MenuDetailViewInteractorOutput {
 
-    private var output: MenuDetailViewPresenterOutput!
+    fileprivate var output: MenuDetailViewPresenterOutput!
     
-    func setOutput(output: MenuDetailViewPresenterOutput) {
+    func setOutput(_ output: MenuDetailViewPresenterOutput) {
         self.output = output
     }
     

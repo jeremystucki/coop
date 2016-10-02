@@ -10,40 +10,40 @@ import UIKit
 
 class LocationsViewPresenter: LocationsViewInteractorOutput {
     
-    private var output: LocationsViewPresenterOutput!
-    private var loadingView = UIAlertController(title: NSLocalizedString("Fetching locations", comment: ""), message: nil, preferredStyle: .Alert)
-    private var errorView = UIAlertController(title: NSLocalizedString("Could not load locations", comment: ""), message: NSLocalizedString("Make sure that you are connected to the internet.", comment: ""), preferredStyle: .Alert)
+    fileprivate var output: LocationsViewPresenterOutput!
+    fileprivate var loadingView = UIAlertController(title: NSLocalizedString("Fetching locations", comment: ""), message: nil, preferredStyle: .alert)
+    fileprivate var errorView = UIAlertController(title: NSLocalizedString("Could not load locations", comment: ""), message: NSLocalizedString("Make sure that you are connected to the internet.", comment: ""), preferredStyle: .alert)
 
     init() {
-        errorView.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: .Default, handler: { (action) in
-            self.errorView.dismissViewControllerAnimated(true, completion: nil)
+        errorView.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: .default, handler: { (action) in
+            self.errorView.dismiss(animated: true, completion: nil)
             self.output.fetchLocations()
         }))
     }
     
-    func setOutput(output: LocationsViewPresenterOutput) {
+    func setOutput(_ output: LocationsViewPresenterOutput) {
         self.output = output
     }
     
     func showLoading() {
-        UIApplication.sharedApplication().delegate!.window!!.rootViewController?.presentViewController(loadingView, animated: true, completion: nil)
+        UIApplication.shared.delegate!.window!!.rootViewController?.present(loadingView, animated: true, completion: nil)
     }
     
     func hideLoading() {
-        loadingView.dismissViewControllerAnimated(true, completion: nil)
+        loadingView.dismiss(animated: true, completion: nil)
     }
     
     func showError() {
-        if !loadingView.isBeingPresented() {
+        if !loadingView.isBeingPresented {
             return hideLoading()
         }
         
-        loadingView.dismissViewControllerAnimated(true) { 
-            UIApplication.sharedApplication().delegate!.window!!.rootViewController?.presentViewController(self.errorView, animated: true, completion: nil)
+        loadingView.dismiss(animated: true) { 
+            UIApplication.shared.delegate!.window!!.rootViewController?.present(self.errorView, animated: true, completion: nil)
         }
     }
     
-    func updateLocations(locations: [Location]) {
-        output.showLocations(locations.sort({ $0.getName() < $1.getName() }))
+    func updateLocations(_ locations: [Location]) {
+        output.showLocations(locations.sorted(by: { $0.getName() < $1.getName() }))
     }
 }

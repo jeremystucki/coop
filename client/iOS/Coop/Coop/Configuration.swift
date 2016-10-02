@@ -10,21 +10,21 @@ import Foundation
 
 class Configuration {
     
-    private static var instance: Configuration?
+    fileprivate static var instance: Configuration?
     
-    private let _apiEndpoint: NSURL
+    fileprivate let _apiEndpoint: URL
     
     init() {
-        let mode = NSBundle.mainBundle().infoDictionary!["Configuration"] as! String
+        let mode = Bundle.main.infoDictionary!["Configuration"] as! String
         
-        let configurationFile = NSBundle.mainBundle().pathForResource("Configuration", ofType: "plist")!
+        let configurationFile = Bundle.main.path(forResource: "Configuration", ofType: "plist")!
         let allConfigurations = NSDictionary(contentsOfFile: configurationFile)!
         let configuration = allConfigurations[mode] as! NSDictionary
         
-        self._apiEndpoint = NSURL(string: configuration["API-Endpoint"] as! String)!
+        self._apiEndpoint = URL(string: configuration["API-Endpoint"] as! String)!
     }
     
-    private static func getInstance() -> Configuration {
+    fileprivate static func getInstance() -> Configuration {
         if self.instance == nil {
             self.instance = Configuration()
         }
@@ -32,7 +32,7 @@ class Configuration {
         return self.instance!
     }
     
-    static var apiEndpoint: NSURL {
+    static var apiEndpoint: URL {
         get { return Configuration.getInstance()._apiEndpoint }
     }
 

@@ -10,14 +10,14 @@ import Alamofire
 
 class ApiManager {
     
-    let baseUrl: NSURL = Configuration.apiEndpoint
+    let baseUrl: URL = Configuration.apiEndpoint
     
-    func fetchLocations(callback: ([Location]) -> Void) {
+    func fetchLocations(_ callback: @escaping ([Location]) -> Void) {
         
-        Alamofire.request(.GET, "\(baseUrl)/locations").responseJSON { (completionHandler) in
+        Alamofire.request("\(baseUrl)/locations").responseJSON { (completionHandler) in
         
             if completionHandler.result.isSuccess && completionHandler.response?.statusCode == 200 {
-                self.handleLocationsResponse(completionHandler.result.value!, callback: callback)
+                self.handleLocationsResponse(completionHandler.result.value! as AnyObject, callback: callback)
                 return
             }
             
@@ -25,7 +25,7 @@ class ApiManager {
         }
     }
     
-    func handleLocationsResponse(data: AnyObject, callback: ([Location] -> Void)) {
+    func handleLocationsResponse(_ data: AnyObject, callback: (([Location]) -> Void)) {
         var locations = [Location]()
         
         for location in (data as! NSDictionary)["results"] as! NSArray {
@@ -35,29 +35,29 @@ class ApiManager {
         callback(locations)
     }
     
-    func fetchMenus(location: Location, callback: ([Menu]) -> Void) {
+    func fetchMenus(_ location: Location, callback: @escaping ([Menu]) -> Void) {
         
-        let url = "\(baseUrl)/menus/\(location.getName().stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!)"
+        let url = "\(baseUrl)/menus/\(location.getName().addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)"
         
-        Alamofire.request(.GET, url).responseJSON { (completionHandler) in
+        Alamofire.request(url).responseJSON { (completionHandler) in
             
             if completionHandler.result.isSuccess && completionHandler.response?.statusCode == 200 {
-                return self.handleMenusResponse(completionHandler.result.value!, location: location, callback: callback)
+                return self.handleMenusResponse(completionHandler.result.value! as AnyObject, location: location, callback: callback)
             }
             
             callback([Menu]())
         }
     }
     
-    func handleMenusResponse(data: AnyObject, location: Location, callback: ([Menu]) -> Void) {
+    func handleMenusResponse(_ data: AnyObject, location: Location, callback: ([Menu]) -> Void) {
         var menus = [Menu]()
         
         for menu in (data as! NSDictionary)["results"] as! NSArray {
             menus.append(Menu(
-                title: menu["title"] as! String,
-                price: menu["price"] as! Double,
-                dishes: menu["menu"] as! [String],
-                date: NSDate(timeIntervalSince1970: menu["timestamp"] as! Double + 7200),
+                title: (menu as! NSDictionary)["title"] as! String,
+                price: (menu as! NSDictionary)["price"] as! Double,
+                dishes: (menu as! NSDictionary)["menu"] as! [String],
+                date: Date(timeIntervalSince1970: (menu as! NSDictionary)["timestamp"] as! Double + 7200),
                 location: location))
         }
         

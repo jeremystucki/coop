@@ -10,14 +10,14 @@ import UIKit
 
 class LocationsViewController: UIViewController, LocationsViewPresenterOutput, LocationsTableViewOutput {
     
-    private var output: LocationsViewControllerOutput!
-    private var locations: [Location]?
+    fileprivate var output: LocationsViewControllerOutput!
+    fileprivate var locations: [Location]?
 
-    private var tableView: UITableView!
-    private var tableViewDelegate: UITableViewDelegate?
-    private var tableViewDataSource: UITableViewDataSource?
+    fileprivate var tableView: UITableView!
+    fileprivate var tableViewDelegate: UITableViewDelegate?
+    fileprivate var tableViewDataSource: UITableViewDataSource?
     
-    func setOutput(output: LocationsViewControllerOutput) {
+    func setOutput(_ output: LocationsViewControllerOutput) {
         navigationItem.title = NSLocalizedString("Locations", comment: "")
         self.output = output
     }
@@ -25,7 +25,7 @@ class LocationsViewController: UIViewController, LocationsViewPresenterOutput, L
     override func loadView() {
         super.loadView()
         
-        tableView = UITableView(frame: view.frame, style: .Plain)
+        tableView = UITableView(frame: view.frame, style: .plain)
         view.addSubview(tableView)
         
         if locations == nil {
@@ -44,7 +44,7 @@ class LocationsViewController: UIViewController, LocationsViewPresenterOutput, L
         output.fetchLocations()
     }
     
-    func showLocations(locations: [Location]) {
+    func showLocations(_ locations: [Location]) {
         self.locations = locations
 
         tableViewDelegate = LocationsTableViewDelegate(locations: locations, output: self)
@@ -56,7 +56,7 @@ class LocationsViewController: UIViewController, LocationsViewPresenterOutput, L
         tableView.reloadData()
     }
     
-    func didSelectLocation(location: Location) {
+    func didSelectLocation(_ location: Location) {
         let viewController = ViewControllerFactory.createMenusViewController(location)
         navigationController?.pushViewController(viewController, animated: true)
     }

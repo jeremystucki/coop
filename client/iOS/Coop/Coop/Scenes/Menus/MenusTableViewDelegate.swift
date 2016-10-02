@@ -11,16 +11,16 @@ import UIKit
 
 class MenusTableViewDelegate: NSObject, UITableViewDelegate {
     
-    private let menus: [(NSDate, [Menu])]
-    private let output: MenusTableViewOutput
+    fileprivate let menus: [(Date, [Menu])]
+    fileprivate let output: MenusTableViewOutput
     
-    init(menus: [(NSDate, [Menu])], output: MenusTableViewOutput) {
+    init(menus: [(Date, [Menu])], output: MenusTableViewOutput) {
         self.menus = menus
         self.output = output
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        output.didSelectMenu(menus[indexPath.section].1[indexPath.row])
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        output.didSelectMenu(menus[(indexPath as NSIndexPath).section].1[(indexPath as NSIndexPath).row])
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

@@ -10,13 +10,13 @@ import Foundation
 
 struct Menu {
     
-    private let title: String
-    private let price: Double
-    private let dishes: [String]
-    private let date: NSDate
-    private let location: Location
+    fileprivate let title: String
+    fileprivate let price: Double
+    fileprivate let dishes: [String]
+    fileprivate let date: Date
+    fileprivate let location: Location
     
-    init(title: String, price: Double, dishes: [String], date: NSDate, location: Location) {
+    init(title: String, price: Double, dishes: [String], date: Date, location: Location) {
         self.title = title
         self.price = price
         self.dishes = dishes
@@ -36,7 +36,7 @@ struct Menu {
         return dishes
     }
     
-    func getDate() -> NSDate {
+    func getDate() -> Date {
         return date
     }
     

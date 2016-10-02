@@ -8,7 +8,7 @@
 
 struct Location {
     
-    private let name: String
+    fileprivate let name: String
     
     init(name: String) {
         self.name = name

@@ -10,9 +10,9 @@ import Foundation
 
 class MenusViewPresenter: MenusViewInteractorOutput {
 
-    private var output: MenusViewPresenterOutput!
+    fileprivate var output: MenusViewPresenterOutput!
     
-    func setOutput(output: MenusViewPresenterOutput) {
+    func setOutput(_ output: MenusViewPresenterOutput) {
         self.output = output
     }
     
@@ -24,16 +24,16 @@ class MenusViewPresenter: MenusViewInteractorOutput {
         
     }
     
-    func updateMenus(menus: [Menu]) {
-        let sortedMenus = menus.sort({
-            if $0.getTitle().lowercaseString == $1.getTitle().lowercaseString {
+    func updateMenus(_ menus: [Menu]) {
+        let sortedMenus = menus.sorted(by: {
+            if $0.getTitle().lowercased() == $1.getTitle().lowercased() {
                 return $0.getPrice() < $1.getPrice()
             }
             
-            return $0.getTitle().lowercaseString < $1.getTitle().lowercaseString
+            return $0.getTitle().lowercased() < $1.getTitle().lowercased()
         })
         
-        let groupedMenus = sortedMenus.categorise({ $0.getDate() }).sort({ $0.0 < $1.0 })
+        let groupedMenus = sortedMenus.categorise({ $0.getDate() }).sorted(by: { $0.0 < $1.0 })
         
         output.showMenus(groupedMenus)
     }

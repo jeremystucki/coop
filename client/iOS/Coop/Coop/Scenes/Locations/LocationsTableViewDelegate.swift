@@ -10,16 +10,16 @@ import UIKit
 
 class LocationsTableViewDelegate: NSObject, UITableViewDelegate {
         
-    private let locations: [Location]
-    private let output: LocationsTableViewOutput
+    fileprivate let locations: [Location]
+    fileprivate let output: LocationsTableViewOutput
     
     init(locations: [Location], output: LocationsTableViewOutput) {
         self.locations = locations
         self.output = output
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        output.didSelectLocation(locations[indexPath.row])
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        output.didSelectLocation(locations[(indexPath as NSIndexPath).row])
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

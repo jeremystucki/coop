@@ -8,5 +8,5 @@
 
 protocol LocationsTableViewOutput {
     
-    func didSelectLocation(location: Location)
+    func didSelectLocation(_ location: Location)
 }

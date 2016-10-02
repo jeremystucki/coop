@@ -10,10 +10,10 @@ import UIKit
 
 class MenuDetailViewController: UIViewController, MenuDetailViewPresenterOutput {
 
-    private var output: MenuDetailViewControllerOutput!
-    private let menu: Menu
+    fileprivate var output: MenuDetailViewControllerOutput!
+    fileprivate let menu: Menu
     
-    func setOutput(output: MenuDetailViewControllerOutput) {
+    func setOutput(_ output: MenuDetailViewControllerOutput) {
         self.output = output
     }
     
@@ -21,7 +21,7 @@ class MenuDetailViewController: UIViewController, MenuDetailViewPresenterOutput 
         self.menu = menu
         super.init(nibName: nil, bundle: nil)
         
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+        if UIDevice.current.userInterfaceIdiom == .phone {
             navigationItem.title = menu.getTitle()
         }
     }
@@ -29,17 +29,17 @@ class MenuDetailViewController: UIViewController, MenuDetailViewPresenterOutput 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        view.backgroundColor = UIColor.groupTableViewBackgroundColor()
+        view.backgroundColor = UIColor.groupTableViewBackground
         
         let dishes = UILabel()
         dishes.numberOfLines = menu.getDishes().count
-        dishes.text = menu.getDishes().joinWithSeparator("\n")
+        dishes.text = menu.getDishes().joined(separator: "\n")
         
-        var topSpacing = UIApplication.sharedApplication().statusBarFrame.size.height
+        var topSpacing = UIApplication.shared.statusBarFrame.size.height
         
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             let titleLabel = UILabel()
-            titleLabel.font = titleLabel.font.fontWithSize(30)
+            titleLabel.font = titleLabel.font.withSize(30)
             titleLabel.text = menu.getTitle()
             titleLabel.frame = CGRect(x: 20, y: topSpacing + 20, width: 0, height: 0)
             titleLabel.sizeToFit()
@@ -48,7 +48,7 @@ class MenuDetailViewController: UIViewController, MenuDetailViewPresenterOutput 
             dishes.frame = CGRect(x: 20, y: titleLabel.frame.maxY + 10, width: 0, height: 0)
         }
         
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+        if UIDevice.current.userInterfaceIdiom == .phone {
             topSpacing += navigationController!.navigationBar.bounds.size.height
             dishes.frame = CGRect(x: 20, y: topSpacing + 20, width: 0, height: 0)
         }
