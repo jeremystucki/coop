@@ -53,7 +53,6 @@ class ViewControllerFactory {
         presenter.setOutput(viewController)
         interactor.setOutput(presenter)
         
-        
         return viewController
     }
     

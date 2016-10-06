@@ -18,14 +18,14 @@ class LocationsViewController: UIViewController, LocationsViewPresenterOutput, L
     private var tableViewDataSource: UITableViewDataSource?
     
     func setOutput(_ output: LocationsViewControllerOutput) {
-        navigationItem.title = NSLocalizedString("Locations", comment: "")
+        title = NSLocalizedString("Locations", comment: "")
         self.output = output
     }
     
     override func loadView() {
         super.loadView()
         
-        let settingsButton = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(showSettings(_:)))
+        let settingsButton = UIBarButtonItem(title: "Settings", style: .done, target: self, action: #selector(showSettings(_:)))
         navigationItem.rightBarButtonItem = settingsButton
         
         tableView = UITableView(frame: view.frame, style: .plain)
@@ -61,7 +61,13 @@ class LocationsViewController: UIViewController, LocationsViewPresenterOutput, L
     
     @objc func showSettings(_ sender : UITapGestureRecognizer? = nil) {
         let viewController = ViewControllerFactory.createSettingsViewController()
-        present(viewController, animated: true, completion: nil)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        let closeButton = UIBarButtonItem(barButtonSystemItem: .done, target: viewController, action: #selector(SettingsViewController.close(_:)))
+        
+        viewController.title = "Settings"
+        viewController.navigationItem.rightBarButtonItem = closeButton
+        
+        present(navigationController, animated: true, completion: nil)
     }
     
     func didSelectLocation(_ location: Location) {

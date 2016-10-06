@@ -21,6 +21,10 @@ class SettingsViewController: UIViewController, SettingsViewPresenterOutput {
         self.output = output
     }
     
+    func close(_ sender : UITapGestureRecognizer) {
+        dismiss(animated: true)
+    }
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
