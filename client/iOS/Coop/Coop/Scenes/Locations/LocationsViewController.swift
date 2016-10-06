@@ -67,7 +67,7 @@ class LocationsViewController: UIViewController, LocationsViewPresenterOutput, L
         viewController.title = "Settings"
         viewController.navigationItem.rightBarButtonItem = closeButton
         
-        present(navigationController, animated: true, completion: nil)
+        present(navigationController, animated: true)
     }
     
     func didSelectLocation(_ location: Location) {

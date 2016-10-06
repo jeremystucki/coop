@@ -33,7 +33,7 @@ class MenusViewPresenter: MenusViewInteractorOutput {
             return $0.title.lowercased() < $1.title.lowercased()
         })
         
-        let groupedMenus = sortedMenus.categorise({ $0.date }).sorted(by: { $0.0 < $1.0 })
+        let groupedMenus = sortedMenus.categorise({ $0.date }).sorted(by: { $0.key < $1.key })
         
         output.showMenus(groupedMenus)
     }

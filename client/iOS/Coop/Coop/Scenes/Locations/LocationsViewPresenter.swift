@@ -16,7 +16,7 @@ class LocationsViewPresenter: LocationsViewInteractorOutput {
 
     init() {
         errorView.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: .default, handler: { (action) in
-            self.errorView.dismiss(animated: true, completion: nil)
+            self.errorView.dismiss(animated: true)
             self.output.fetchLocations()
         }))
     }
@@ -26,7 +26,7 @@ class LocationsViewPresenter: LocationsViewInteractorOutput {
     }
     
     func showLoading() {
-        UIApplication.shared.delegate!.window!!.rootViewController?.present(loadingView, animated: true, completion: nil)
+        UIApplication.shared.delegate!.window!!.rootViewController?.present(loadingView, animated: true)
     }
     
     func hideLoading() {
@@ -39,7 +39,7 @@ class LocationsViewPresenter: LocationsViewInteractorOutput {
         }
         
         loadingView.dismiss(animated: true) { 
-            UIApplication.shared.delegate!.window!!.rootViewController?.present(self.errorView, animated: true, completion: nil)
+            UIApplication.shared.delegate!.window!!.rootViewController?.present(self.errorView, animated: true)
         }
     }
     

@@ -48,7 +48,6 @@ class MenusViewController: UIViewController, MenusViewPresenterOutput, MenusTabl
         insets.top = navigationController!.navigationBar.bounds.size.height + UIApplication.shared.statusBarFrame.size.height
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
-        
     }
     
     func showMenus(_ menus: [(Date, [Menu])]) {

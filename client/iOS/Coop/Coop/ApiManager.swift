@@ -10,7 +10,7 @@ import Alamofire
 
 class ApiManager {
     
-    let baseUrl: URL = Configuration.apiEndpoint
+    let baseUrl = Configuration.apiEndpoint
     
     func fetchLocations(_ callback: @escaping ([Location]) -> Void) {
         

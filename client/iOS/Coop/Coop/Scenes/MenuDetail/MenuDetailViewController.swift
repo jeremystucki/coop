@@ -29,7 +29,7 @@ class MenuDetailViewController: UIViewController, MenuDetailViewPresenterOutput 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        view.backgroundColor = UIColor.groupTableViewBackground
+        view.backgroundColor = .groupTableViewBackground
         
         let dishes = UILabel()
         dishes.numberOfLines = menu.dishes.count
@@ -44,7 +44,7 @@ class MenuDetailViewController: UIViewController, MenuDetailViewPresenterOutput 
             titleLabel.frame = CGRect(x: 20, y: topSpacing + 20, width: 0, height: 0)
             titleLabel.sizeToFit()
             view.addSubview(titleLabel)
-                
+            
             dishes.frame = CGRect(x: 20, y: titleLabel.frame.maxY + 10, width: 0, height: 0)
         }
         
