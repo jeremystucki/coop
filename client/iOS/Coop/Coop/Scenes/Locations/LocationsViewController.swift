@@ -25,6 +25,9 @@ class LocationsViewController: UIViewController, LocationsViewPresenterOutput, L
     override func loadView() {
         super.loadView()
         
+        let settingsButton = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(showSettings(_:)))
+        navigationItem.rightBarButtonItem = settingsButton
+        
         tableView = UITableView(frame: view.frame, style: .plain)
         view.addSubview(tableView)
         
@@ -54,6 +57,11 @@ class LocationsViewController: UIViewController, LocationsViewPresenterOutput, L
         tableView.dataSource = tableViewDataSource
         
         tableView.reloadData()
+    }
+    
+    @objc func showSettings(_ sender : UITapGestureRecognizer? = nil) {
+        let viewController = ViewControllerFactory.createSettingsViewController()
+        present(viewController, animated: true, completion: nil)
     }
     
     func didSelectLocation(_ location: Location) {

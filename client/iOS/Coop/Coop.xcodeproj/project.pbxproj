@@ -25,6 +25,9 @@
 		3F8470231CE4F87100B6D01E /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8470221CE4F87100B6D01E /* ViewControllerFactory.swift */; };
 		3F8470251CE4FB2300B6D01E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8470241CE4FB2300B6D01E /* Configuration.swift */; };
 		3F8470271CE4FB6900B6D01E /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F8470261CE4FB6900B6D01E /* Configuration.plist */; };
+		3F983E491DA4308000BB415C /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F983E481DA4307F00BB415C /* NotificationCenter.framework */; };
+		3F983E4C1DA4308000BB415C /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F983E4B1DA4308000BB415C /* TodayViewController.swift */; };
+		3F983E531DA4308000BB415C /* CoopTodayView.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3F983E471DA4307F00BB415C /* CoopTodayView.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3FA215291CE7BC4C00490D0E /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA215261CE7BC4C00490D0E /* MenuDetailViewController.swift */; };
 		3FA2152A1CE7BC4C00490D0E /* MenuDetailViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA215271CE7BC4C00490D0E /* MenuDetailViewInteractor.swift */; };
 		3FA2152B1CE7BC4C00490D0E /* MenuDetailViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA215281CE7BC4C00490D0E /* MenuDetailViewPresenter.swift */; };
@@ -34,6 +37,13 @@
 		3FA215341CE7BDA800490D0E /* MenusTableViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA215331CE7BDA800490D0E /* MenusTableViewOutput.swift */; };
 		3FA215361CE7BF0700490D0E /* GroupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA215351CE7BF0700490D0E /* GroupBy.swift */; };
 		3FA215381CE7BF1900490D0E /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA215371CE7BF1900490D0E /* Menu.swift */; };
+		3FD003651DA56DEB00E61D94 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD003641DA56DEB00E61D94 /* InitialView.swift */; };
+		3FD0037B1DA5855100E61D94 /* SettingsViewControllerOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD003781DA5855100E61D94 /* SettingsViewControllerOutput.swift */; };
+		3FD0037C1DA5855100E61D94 /* SettingsViewInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD003791DA5855100E61D94 /* SettingsViewInteractorOutput.swift */; };
+		3FD0037D1DA5855100E61D94 /* SettingsViewPresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0037A1DA5855100E61D94 /* SettingsViewPresenterOutput.swift */; };
+		3FD003811DA5855A00E61D94 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0037E1DA5855A00E61D94 /* SettingsViewController.swift */; };
+		3FD003821DA5855A00E61D94 /* SettingsViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0037F1DA5855A00E61D94 /* SettingsViewInteractor.swift */; };
+		3FD003831DA5855A00E61D94 /* SettingsViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD003801DA5855A00E61D94 /* SettingsViewPresenter.swift */; };
 		3FD58CC81CE70D55005EED35 /* MenusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD58CC71CE70D55005EED35 /* MenusViewController.swift */; };
 		3FD58CCA1CE70D69005EED35 /* MenusViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD58CC91CE70D69005EED35 /* MenusViewInteractor.swift */; };
 		3FD58CD11CE70E02005EED35 /* MenusViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD58CD01CE70E02005EED35 /* MenusViewPresenter.swift */; };
@@ -44,6 +54,30 @@
 		3FD58CE81CE75561005EED35 /* MenusTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD58CE71CE75561005EED35 /* MenusTableViewDataSource.swift */; };
 		C1E8AB32E7DB7F8C38497B24 /* Pods_Coop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6654F4A60911C7149DAC1E0B /* Pods_Coop.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3F983E511DA4308000BB415C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F57876C1CE4F2C00065ECEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F983E461DA4307F00BB415C;
+			remoteInfo = CoopTodayView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3F983E571DA4308000BB415C /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3F983E531DA4308000BB415C /* CoopTodayView.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		20A683D0449FE4B4FCC2DE85 /* Pods-Coop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coop.release.xcconfig"; path = "Pods/Target Support Files/Pods-Coop/Pods-Coop.release.xcconfig"; sourceTree = "<group>"; };
@@ -69,6 +103,10 @@
 		3F8470221CE4F87100B6D01E /* ViewControllerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewControllerFactory.swift; path = Factories/ViewControllerFactory.swift; sourceTree = "<group>"; };
 		3F8470241CE4FB2300B6D01E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		3F8470261CE4FB6900B6D01E /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
+		3F983E471DA4307F00BB415C /* CoopTodayView.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CoopTodayView.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F983E481DA4307F00BB415C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		3F983E4B1DA4308000BB415C /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		3F983E501DA4308000BB415C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FA215261CE7BC4C00490D0E /* MenuDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuDetailViewController.swift; path = Scenes/MenuDetail/MenuDetailViewController.swift; sourceTree = "<group>"; };
 		3FA215271CE7BC4C00490D0E /* MenuDetailViewInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuDetailViewInteractor.swift; path = Scenes/MenuDetail/MenuDetailViewInteractor.swift; sourceTree = "<group>"; };
 		3FA215281CE7BC4C00490D0E /* MenuDetailViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuDetailViewPresenter.swift; path = Scenes/MenuDetail/MenuDetailViewPresenter.swift; sourceTree = "<group>"; };
@@ -78,6 +116,13 @@
 		3FA215331CE7BDA800490D0E /* MenusTableViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenusTableViewOutput.swift; path = Scenes/Menus/Protocols/MenusTableViewOutput.swift; sourceTree = "<group>"; };
 		3FA215351CE7BF0700490D0E /* GroupBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupBy.swift; path = Extensions/GroupBy.swift; sourceTree = "<group>"; };
 		3FA215371CE7BF1900490D0E /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Menu.swift; path = Models/Menu.swift; sourceTree = "<group>"; };
+		3FD003641DA56DEB00E61D94 /* InitialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		3FD003781DA5855100E61D94 /* SettingsViewControllerOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewControllerOutput.swift; path = Scenes/Settings/Protocols/SettingsViewControllerOutput.swift; sourceTree = "<group>"; };
+		3FD003791DA5855100E61D94 /* SettingsViewInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewInteractorOutput.swift; path = Scenes/Settings/Protocols/SettingsViewInteractorOutput.swift; sourceTree = "<group>"; };
+		3FD0037A1DA5855100E61D94 /* SettingsViewPresenterOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewPresenterOutput.swift; path = Scenes/Settings/Protocols/SettingsViewPresenterOutput.swift; sourceTree = "<group>"; };
+		3FD0037E1DA5855A00E61D94 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Scenes/Settings/SettingsViewController.swift; sourceTree = "<group>"; };
+		3FD0037F1DA5855A00E61D94 /* SettingsViewInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewInteractor.swift; path = Scenes/Settings/SettingsViewInteractor.swift; sourceTree = "<group>"; };
+		3FD003801DA5855A00E61D94 /* SettingsViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewPresenter.swift; path = Scenes/Settings/SettingsViewPresenter.swift; sourceTree = "<group>"; };
 		3FD58CC71CE70D55005EED35 /* MenusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenusViewController.swift; path = Scenes/Menus/MenusViewController.swift; sourceTree = "<group>"; };
 		3FD58CC91CE70D69005EED35 /* MenusViewInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenusViewInteractor.swift; path = Scenes/Menus/MenusViewInteractor.swift; sourceTree = "<group>"; };
 		3FD58CD01CE70E02005EED35 /* MenusViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenusViewPresenter.swift; path = Scenes/Menus/MenusViewPresenter.swift; sourceTree = "<group>"; };
@@ -99,6 +144,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3F983E441DA4307F00BB415C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F983E491DA4308000BB415C /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -106,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				3F5787761CE4F2C00065ECEA /* Coop */,
+				3F983E4A1DA4308000BB415C /* CoopTodayView */,
 				3F5787751CE4F2C00065ECEA /* Products */,
 				489574382BAEF31EB7A6121D /* Pods */,
 				B9F9689277805E8C02F7A68D /* Frameworks */,
@@ -116,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				3F5787741CE4F2C00065ECEA /* Coop.app */,
+				3F983E471DA4307F00BB415C /* CoopTodayView.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -151,6 +206,7 @@
 		3F8470091CE4F3F700B6D01E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				3FD003661DA581F500E61D94 /* Settings */,
 				3FA215251CE7BBD100490D0E /* MenuDetail */,
 				3FD58CC61CE70CE2005EED35 /* Menus */,
 				3F84700A1CE4F40100B6D01E /* Locations */,
@@ -190,6 +246,16 @@
 			name = Factories;
 			sourceTree = "<group>";
 		};
+		3F983E4A1DA4308000BB415C /* CoopTodayView */ = {
+			isa = PBXGroup;
+			children = (
+				3F983E4B1DA4308000BB415C /* TodayViewController.swift */,
+				3F983E501DA4308000BB415C /* Info.plist */,
+				3FD003641DA56DEB00E61D94 /* InitialView.swift */,
+			);
+			path = CoopTodayView;
+			sourceTree = "<group>";
+		};
 		3FA215251CE7BBD100490D0E /* MenuDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +273,27 @@
 				3FA2152D1CE7BC6100490D0E /* MenuDetailViewControllerOutput.swift */,
 				3FA2152E1CE7BC6100490D0E /* MenuDetailViewInteractorOutput.swift */,
 				3FA2152F1CE7BC6100490D0E /* MenuDetailViewPresenterOutput.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		3FD003661DA581F500E61D94 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				3FD0036F1DA5831100E61D94 /* Protocols */,
+				3FD0037E1DA5855A00E61D94 /* SettingsViewController.swift */,
+				3FD0037F1DA5855A00E61D94 /* SettingsViewInteractor.swift */,
+				3FD003801DA5855A00E61D94 /* SettingsViewPresenter.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		3FD0036F1DA5831100E61D94 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3FD003781DA5855100E61D94 /* SettingsViewControllerOutput.swift */,
+				3FD003791DA5855100E61D94 /* SettingsViewInteractorOutput.swift */,
+				3FD0037A1DA5855100E61D94 /* SettingsViewPresenterOutput.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -256,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				6654F4A60911C7149DAC1E0B /* Pods_Coop.framework */,
+				3F983E481DA4307F00BB415C /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -273,15 +361,34 @@
 				3F5787721CE4F2C00065ECEA /* Resources */,
 				5409BEADD00E47B6F248C485 /* [CP] Embed Pods Frameworks */,
 				5013E6839A40DDBD4668CA59 /* [CP] Copy Pods Resources */,
+				3F983E571DA4308000BB415C /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3F983E521DA4308000BB415C /* PBXTargetDependency */,
 			);
 			name = Coop;
 			productName = Coop;
 			productReference = 3F5787741CE4F2C00065ECEA /* Coop.app */;
 			productType = "com.apple.product-type.application";
+		};
+		3F983E461DA4307F00BB415C /* CoopTodayView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F983E561DA4308000BB415C /* Build configuration list for PBXNativeTarget "CoopTodayView" */;
+			buildPhases = (
+				3F983E431DA4307F00BB415C /* Sources */,
+				3F983E441DA4307F00BB415C /* Frameworks */,
+				3F983E451DA4307F00BB415C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoopTodayView;
+			productName = CoopTodayView;
+			productReference = 3F983E471DA4307F00BB415C /* CoopTodayView.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -289,13 +396,17 @@
 		3F57876C1CE4F2C00065ECEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Jeremy Stucki";
 				TargetAttributes = {
 					3F5787731CE4F2C00065ECEA = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0800;
+					};
+					3F983E461DA4307F00BB415C = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -314,6 +425,7 @@
 			projectRoot = "";
 			targets = (
 				3F5787731CE4F2C00065ECEA /* Coop */,
+				3F983E461DA4307F00BB415C /* CoopTodayView */,
 			);
 		};
 /* End PBXProject section */
@@ -327,6 +439,13 @@
 				3F38CA5B1CE7B016000A3C73 /* Localizable.strings in Resources */,
 				3F5787851CE4F2C00065ECEA /* LaunchScreen.storyboard in Resources */,
 				3F5787821CE4F2C00065ECEA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F983E451DA4307F00BB415C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +517,8 @@
 				3FD58CD71CE70E4E005EED35 /* MenusViewControllerOutput.swift in Sources */,
 				3F5D68941CE674FA004E3390 /* LocationsTableViewOutput.swift in Sources */,
 				3FD58CCA1CE70D69005EED35 /* MenusViewInteractor.swift in Sources */,
+				3FD0037D1DA5855100E61D94 /* SettingsViewPresenterOutput.swift in Sources */,
+				3FD0037C1DA5855100E61D94 /* SettingsViewInteractorOutput.swift in Sources */,
 				3FD58CE81CE75561005EED35 /* MenusTableViewDataSource.swift in Sources */,
 				3F8470151CE4F73800B6D01E /* LocationsViewInteractor.swift in Sources */,
 				3FA215361CE7BF0700490D0E /* GroupBy.swift in Sources */,
@@ -405,12 +526,16 @@
 				3FA215341CE7BDA800490D0E /* MenusTableViewOutput.swift in Sources */,
 				3F5D68921CE674A1004E3390 /* LocationsTableViewDataSource.swift in Sources */,
 				3F5D688B1CE667EF004E3390 /* ApiManager.swift in Sources */,
+				3FD003831DA5855A00E61D94 /* SettingsViewPresenter.swift in Sources */,
 				3FD58CC81CE70D55005EED35 /* MenusViewController.swift in Sources */,
+				3FD003811DA5855A00E61D94 /* SettingsViewController.swift in Sources */,
 				3F8470251CE4FB2300B6D01E /* Configuration.swift in Sources */,
+				3FD0037B1DA5855100E61D94 /* SettingsViewControllerOutput.swift in Sources */,
 				3FA215291CE7BC4C00490D0E /* MenuDetailViewController.swift in Sources */,
 				3FD58CD11CE70E02005EED35 /* MenusViewPresenter.swift in Sources */,
 				3F8470171CE4F76800B6D01E /* LocationsViewPresenterOutput.swift in Sources */,
 				3FA215381CE7BF1900490D0E /* Menu.swift in Sources */,
+				3FD003821DA5855A00E61D94 /* SettingsViewInteractor.swift in Sources */,
 				3FA215321CE7BC6100490D0E /* MenuDetailViewPresenterOutput.swift in Sources */,
 				3F84700E1CE4F63100B6D01E /* LocationsViewPresenter.swift in Sources */,
 				3F5D688E1CE66C86004E3390 /* Location.swift in Sources */,
@@ -419,7 +544,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3F983E431DA4307F00BB415C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F983E4C1DA4308000BB415C /* TodayViewController.swift in Sources */,
+				3FD003651DA56DEB00E61D94 /* InitialView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F983E521DA4308000BB415C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F983E461DA4307F00BB415C /* CoopTodayView */;
+			targetProxy = 3F983E511DA4308000BB415C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3F38CA5D1CE7B016000A3C73 /* Localizable.strings */ = {
@@ -528,6 +670,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A921D3EC39B454CF7654B757 /* Pods-Coop.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
@@ -547,6 +690,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20A683D0449FE4B4FCC2DE85 /* Pods-Coop.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
@@ -559,6 +703,44 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3F983E541DA4308000BB415C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = CoopTodayView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jeremystucki.coop-menuplan.CoopTodayView";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		3F983E551DA4308000BB415C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = CoopTodayView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jeremystucki.coop-menuplan.CoopTodayView";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -579,6 +761,15 @@
 			buildConfigurations = (
 				3F57878A1CE4F2C00065ECEA /* Debug */,
 				3F57878B1CE4F2C00065ECEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F983E561DA4308000BB415C /* Build configuration list for PBXNativeTarget "CoopTodayView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F983E541DA4308000BB415C /* Debug */,
+				3F983E551DA4308000BB415C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

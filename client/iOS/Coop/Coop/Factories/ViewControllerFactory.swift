@@ -43,4 +43,18 @@ class ViewControllerFactory {
         
         return viewController
     }
+    
+    class func createSettingsViewController() -> SettingsViewController {
+        let viewController = SettingsViewController()
+        let presenter = SettingsViewPresenter()
+        let interactor = SettingsViewInteractor()
+        
+        viewController.setOutput(interactor)
+        presenter.setOutput(viewController)
+        interactor.setOutput(presenter)
+        
+        
+        return viewController
+    }
+    
 }

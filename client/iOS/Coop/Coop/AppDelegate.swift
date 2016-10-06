@@ -46,6 +46,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return false
     }
     
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        switch url.host {
+        case "settings"?:
+            // TODO: cleanup
+            (((window!.rootViewController!) as! UINavigationController).topViewController! as! LocationsViewController).showSettings()
+        default:
+            return false
+        }
+        
+        return true
+    }
+    
     func splitViewController(_ svc: UISplitViewController, shouldHide vc: UIViewController, in orientation: UIInterfaceOrientation) -> Bool {
         return false
     }
