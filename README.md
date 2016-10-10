@@ -25,6 +25,9 @@
 The app is available from the [AppStore](https://appsto.re/ch/EAI0cb.i).
 
 
+### Installation on SailfishOS
+The app is now available on your Jolla App Store.
+
 
 ### Installation on OSX
 There is a brew tap [available](https://github.com/bash/homebrew-coop) for coop:
