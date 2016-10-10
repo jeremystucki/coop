@@ -9,31 +9,30 @@
 import Foundation
 
 class Configuration {
-    
-    fileprivate static var instance: Configuration?
-    
-    fileprivate let _apiEndpoint: URL
-    
-    init() {
-        let mode = Bundle.main.infoDictionary!["Configuration"] as! String
-        
-        let configurationFile = Bundle.main.path(forResource: "Configuration", ofType: "plist")!
-        let allConfigurations = NSDictionary(contentsOfFile: configurationFile)!
-        let configuration = allConfigurations[mode] as! NSDictionary
-        
-        self._apiEndpoint = URL(string: configuration["API-Endpoint"] as! String)!
-    }
-    
-    fileprivate static func getInstance() -> Configuration {
-        if self.instance == nil {
-            self.instance = Configuration()
+
+    static var instance = Configuration()
+    private let configurations: NSDictionary
+    private let mode = Bundle.main.infoDictionary!["Configuration"] as! String
+
+    let apiEndpoint: URL
+    var defaultLocation: Location? {
+        willSet(newLocation) {
+            (configurations[mode] as! NSDictionary).setValue(newLocation?.name, forKey: "DefaultLocation")
+            configurations.write(toFile: "Configuration.plist", atomically: true)
         }
-        
-        return self.instance!
     }
-    
-    static var apiEndpoint: URL {
-        get { return Configuration.getInstance()._apiEndpoint }
+
+    init() {
+        let configurationFile = Bundle.main.path(forResource: "Configuration", ofType: "plist")!
+        self.configurations = NSDictionary(contentsOfFile: configurationFile)!
+
+        let configuration = configurations[mode] as! NSDictionary
+
+        apiEndpoint = URL(string: configuration["API-Endpoint"] as! String)!
+
+        if let locationName = configuration["DefaultLocation"] as? String {
+            defaultLocation = Location(name: locationName)
+        }
     }
 
 }

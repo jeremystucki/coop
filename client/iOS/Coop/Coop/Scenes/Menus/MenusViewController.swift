@@ -13,7 +13,7 @@ class MenusViewController: UIViewController, MenusViewPresenterOutput, MenusTabl
     private var output: MenusViewControllerOutput!
     private let location: Location
     private var menus: [(Date, [Menu])]?
-    
+
     private var tableView: UITableView!
     private var tableViewDelegate: UITableViewDelegate?
     private var tableViewDataSource: UITableViewDataSource?
@@ -38,43 +38,44 @@ class MenusViewController: UIViewController, MenusViewPresenterOutput, MenusTabl
             output.fetchMenus(forLocation: location)
         }
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+
         tableView.frame = view.frame
-        
+
         var insets = tableView.contentInset
         insets.top = navigationController!.navigationBar.bounds.size.height + UIApplication.shared.statusBarFrame.size.height
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
     }
-    
+
     func showMenus(_ menus: [(Date, [Menu])]) {
         self.menus = menus
-        
+
         tableViewDelegate = MenusTableViewDelegate(menus: menus, output: self)
         tableViewDataSource = MenusTableViewDataSource(menus: menus)
-        
+
         tableView.delegate = tableViewDelegate
         tableView.dataSource = tableViewDataSource
-        
+
         tableView.reloadData()
     }
-    
+
     func didSelectMenu(_ menu: Menu) {
         let viewController = ViewControllerFactory.createMenuDetailViewController(menu)
-        
+
         if UIDevice.current.userInterfaceIdiom == .phone {
             navigationController?.pushViewController(viewController, animated: true)
         }
-        
+
         if UIDevice.current.userInterfaceIdiom == .pad {
             splitViewController?.showDetailViewController(viewController, sender: self)
         }
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
 }

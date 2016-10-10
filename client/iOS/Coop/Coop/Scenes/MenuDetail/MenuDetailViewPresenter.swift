@@ -11,9 +11,9 @@ import Foundation
 class MenuDetailViewPresenter: MenuDetailViewInteractorOutput {
 
     private var output: MenuDetailViewPresenterOutput!
-    
+
     func setOutput(_ output: MenuDetailViewPresenterOutput) {
         self.output = output
     }
-    
+
 }

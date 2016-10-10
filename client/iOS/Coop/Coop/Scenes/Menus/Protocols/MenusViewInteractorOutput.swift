@@ -7,10 +7,11 @@
 //
 
 protocol MenusViewInteractorOutput {
-    
+
     func showLoading()
-    
+
     func hideLoading()
-    
+
     func updateMenus(_ menus: [Menu])
+
 }

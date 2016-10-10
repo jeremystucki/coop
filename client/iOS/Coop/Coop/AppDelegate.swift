@@ -13,48 +13,61 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
         if UIDevice.current.userInterfaceIdiom == .phone {
             let locationsViewController = ViewControllerFactory.createLocationsViewController()
             let rootViewController = UINavigationController(rootViewController: locationsViewController)
-            
+
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.rootViewController = rootViewController
             window?.makeKeyAndVisible()
-            
+
+            let settingsButton = UIBarButtonItem(title: "Settings", style: .done, target: self, action: #selector(showSettings(_:)))
+            ((window!.rootViewController!) as! UINavigationController).topViewController!.navigationItem.rightBarButtonItem = settingsButton
+
             return true
         }
-        
+
         if UIDevice.current.userInterfaceIdiom == .pad {
             let locationsViewController = ViewControllerFactory.createLocationsViewController()
             let navigationViewController = UINavigationController(rootViewController: locationsViewController)
             let rootViewController = UISplitViewController(nibName: nil, bundle: nil)
-            
+
             rootViewController.viewControllers.append(navigationViewController)
             rootViewController.delegate = self
 
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.rootViewController = rootViewController
             window?.makeKeyAndVisible()
-            
+
             return true
         }
-        
+
         return false
     }
-    
+
+    @objc func showSettings(_ sender : UITapGestureRecognizer? = nil) {
+        let viewController = ViewControllerFactory.createSettingsViewController()
+        let navigationController = UINavigationController(rootViewController: viewController)
+        let closeButton = UIBarButtonItem(barButtonSystemItem: .done, target: viewController, action: #selector(SettingsViewController.close(_:)))
+
+        viewController.title = "Settings"
+        viewController.navigationItem.rightBarButtonItem = closeButton
+
+        window!.rootViewController!.present(navigationController, animated: true)
+    }
+
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         switch url.host {
         case "settings"?:
-            // TODO: cleanup
-            (((window!.rootViewController!) as! UINavigationController).topViewController! as! LocationsViewController).showSettings()
+            showSettings()
         default:
             return false
         }
-        
+
         return true
     }
 

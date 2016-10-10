@@ -9,11 +9,11 @@
 import Foundation
 
 struct Menu {
-    
+
     let title: String
     let price: Double
     let dishes: [String]
     let date: Date
     let location: Location
-    
+
 }

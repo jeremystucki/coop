@@ -7,6 +7,7 @@
 //
 
 protocol LocationsViewControllerOutput {
-    
+
     func fetchLocations()
+
 }

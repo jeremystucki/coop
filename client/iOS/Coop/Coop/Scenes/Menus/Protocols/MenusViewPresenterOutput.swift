@@ -9,6 +9,7 @@
 import Foundation
 
 protocol MenusViewPresenterOutput {
-    
+
     func showMenus(_ menus: [(Date, [Menu])])
+
 }

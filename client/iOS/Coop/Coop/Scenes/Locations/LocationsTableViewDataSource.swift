@@ -9,22 +9,23 @@
 import UIKit
 
 class LocationsTableViewDataSource: NSObject, UITableViewDataSource {
-    
+
     private let locations: [Location]
-    
+
     init(locations: [Location]) {
         self.locations = locations
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        
+
         cell.textLabel?.text = locations[(indexPath as NSIndexPath).row].name
-        
+
         return cell
     }
+
 }

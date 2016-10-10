@@ -10,8 +10,9 @@ class SettingsViewInteractor: SettingsViewControllerOutput {
 
     private var output: SettingsViewInteractorOutput!
     private let apiManager = ApiManager()
-    
+
     func setOutput(_ output: SettingsViewInteractorOutput) {
         self.output = output
     }
+
 }

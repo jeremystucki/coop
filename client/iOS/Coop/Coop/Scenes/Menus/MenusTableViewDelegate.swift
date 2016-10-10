@@ -10,17 +10,18 @@ import Foundation
 import UIKit
 
 class MenusTableViewDelegate: NSObject, UITableViewDelegate {
-    
+
     private let menus: [(Date, [Menu])]
     private let output: MenusTableViewOutput
-    
+
     init(menus: [(Date, [Menu])], output: MenusTableViewOutput) {
         self.menus = menus
         self.output = output
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         output.didSelectMenu(menus[(indexPath as NSIndexPath).section].1[(indexPath as NSIndexPath).row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
+
 }

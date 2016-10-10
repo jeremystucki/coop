@@ -7,24 +7,25 @@
 //
 
 class LocationsViewInteractor: LocationsViewControllerOutput {
-    
+
     private var output: LocationsViewInteractorOutput!
     private let apiManager = ApiManager()
-    
+
     func setOutput(_ output: LocationsViewInteractorOutput) {
         self.output = output
     }
-    
+
     func fetchLocations() {
         output.showLoading()
-        
+
         apiManager.fetchLocations { (locations) in
             if locations.count == 0 {
                 return self.output.showError()
             }
-            
+
             self.output.hideLoading()
             self.output.updateLocations(locations)
         }
     }
+
 }

@@ -11,9 +11,9 @@ import Foundation
 class SettingsViewPresenter: SettingsViewInteractorOutput {
 
     private var output: SettingsViewPresenterOutput!
-    
+
     func setOutput(_ output: SettingsViewPresenterOutput) {
         self.output = output
     }
-    
+
 }

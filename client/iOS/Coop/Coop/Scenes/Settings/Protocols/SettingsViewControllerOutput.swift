@@ -7,6 +7,6 @@
 //
 
 protocol SettingsViewControllerOutput {
-    
+
 
 }
