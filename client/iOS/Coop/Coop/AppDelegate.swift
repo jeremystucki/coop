@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
 
         if UIDevice.current.userInterfaceIdiom == .phone {
             let locationsViewController = ViewControllerFactory.createLocationsViewController()
@@ -24,11 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.rootViewController = rootViewController
             window?.makeKeyAndVisible()
-
-            let settingsButton = UIBarButtonItem(title: "Settings", style: .done, target: self, action: #selector(showSettings(_:)))
-            ((window!.rootViewController!) as! UINavigationController).topViewController!.navigationItem.rightBarButtonItem = settingsButton
-
-            return true
         }
 
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -42,11 +36,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.rootViewController = rootViewController
             window?.makeKeyAndVisible()
-
-            return true
         }
 
-        return false
+        let settingsButton = UIBarButtonItem(title: "Settings", style: .done, target: self, action: #selector(showSettings(_:)))
+        ((window!.rootViewController!) as! UINavigationController).topViewController!.navigationItem.rightBarButtonItem = settingsButton
+
+        return true
     }
 
     @objc func showSettings(_ sender : UITapGestureRecognizer? = nil) {
@@ -163,4 +158,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
 
 }
-
