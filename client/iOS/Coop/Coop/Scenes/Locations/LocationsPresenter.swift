@@ -11,32 +11,42 @@ import UIKit
 
 class LocationsPresenter {
 
-    var viewController: LocationsViewController! {
-        didSet { viewController.presenter = self }
+    var viewController: LocationsViewControllerInput! {
+        didSet { (viewController as! LocationsViewController).presenter = self }
     }
 
-    var interactor: LocationsInteractor! {
-        didSet { interactor.presenter = self }
+    var interactor: LocationsInteractorInput! {
+        didSet { (interactor as! LocationsInteractor).presenter = self }
     }
 
     var router: LocationsRouter! {
         didSet { router.presenter = self }
     }
 
+    fileprivate func showLocations() {
+        interactor.fetchLocations()
+    }
+
+}
+
+
+extension LocationsPresenter: LocationsViewControllerOutput {
+
     func viewInitialized() {
         showLocations()
     }
 
-    private func showLocations() {
-        interactor.fetchLocations()
-    }
+}
+
+
+extension LocationsPresenter: LocationsInteractorOutput {
 
     func locationsFetched(_ locations: [Location]) {
         if locations.count == 0 {
-            return viewController.showNoLocationsFoundError()
+            return viewController.displayNoLocationsError()
         }
 
-        viewController.locations = locations.sorted()
+        viewController.displayLocations(locations)
     }
-    
+
 }

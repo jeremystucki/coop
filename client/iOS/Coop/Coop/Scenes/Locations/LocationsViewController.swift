@@ -9,23 +9,30 @@
 import UIKit
 
 
+protocol LocationsViewControllerInput {
+    func displayLocations(_ locations: [Location])
+    func displayNoLocationsError()
+}
+
+
+protocol LocationsViewControllerOutput {
+    func viewInitialized()
+}
+
+
 class LocationsViewController: UITableViewController {
 
-    var presenter: LocationsPresenter!
-    var locations = [Location]() {
+    var presenter: LocationsViewControllerOutput!
+
+    fileprivate let errorView = UIAlertController(title: "Could not load locations", message: nil, preferredStyle: .alert)
+    fileprivate var locations = [Location]() {
         didSet { tableView.reloadData() }
     }
-
-    private let errorView = UIAlertController(title: "Could not load locations", message: nil, preferredStyle: .alert)
 
     init() {
         super.init(style: .plain)
 
         title = "Locations"
-    }
-
-    func showNoLocationsFoundError() {
-        present(errorView, animated: true)
     }
 
     override func viewDidLoad() {
@@ -47,6 +54,19 @@ class LocationsViewController: UITableViewController {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+}
+
+
+extension LocationsViewController: LocationsViewControllerInput {
+
+    func displayNoLocationsError() {
+        present(errorView, animated: true)
+    }
+
+    func displayLocations(_ locations: [Location]) {
+        self.locations = locations.sorted()
     }
 
 }

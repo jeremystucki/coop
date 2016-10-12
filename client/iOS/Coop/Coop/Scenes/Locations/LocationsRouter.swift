@@ -9,14 +9,16 @@
 import UIKit
 
 
+protocol LocationsRouterInput {
+    associatedtype AvailableView
+    func display(view: AvailableView)
+}
+
+
 class LocationsRouter: Router {
 
-    enum AvailableView {
-        case Settings
-        case Menus
-    }
-
     let viewController: UIViewController
+    var presenter: LocationsPresenter!
 
     init() {
         let presenter = LocationsPresenter()
@@ -27,7 +29,15 @@ class LocationsRouter: Router {
         presenter.router = self
     }
 
-    var presenter: LocationsPresenter!
+}
+
+
+extension LocationsRouter: LocationsRouterInput {
+
+    enum AvailableView {
+        case Settings
+        case Menus
+    }
 
     func display(view: AvailableView) {
 

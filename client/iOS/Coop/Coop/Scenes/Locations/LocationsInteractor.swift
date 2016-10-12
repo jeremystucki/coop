@@ -9,7 +9,17 @@
 import Alamofire
 
 
-class LocationsInteractor {
+protocol LocationsInteractorInput {
+    func fetchLocations()
+}
+
+
+protocol LocationsInteractorOutput {
+    func locationsFetched(_ locations: [Location])
+}
+
+
+class LocationsInteractor: LocationsInteractorInput {
 
     var presenter: LocationsPresenter!
     private let url = Configuration.baseUrl.appendingPathComponent("locations")
