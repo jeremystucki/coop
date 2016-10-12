@@ -23,28 +23,43 @@ protocol LocationsViewControllerOutput {
 class LocationsViewController: UITableViewController {
 
     var presenter: LocationsViewControllerOutput!
+    let searchController: UISearchController
 
     fileprivate let errorView = UIAlertController(title: "Could not load locations", message: nil, preferredStyle: .alert)
     fileprivate var locations = [Location]()
+    fileprivate var filteredLocations: [Location] {
+        if let searchText = searchController.searchBar.text?.lowercased() {
+            return locations.filter({ $0.name.lowercased().hasPrefix(searchText) })
+        }
+
+        return locations
+    }
 
     init() {
+        searchController = UISearchController(searchResultsController: nil)
+
         super.init(style: .plain)
 
         title = "Locations"
     }
 
     override func viewDidLoad() {
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+
+        tableView.tableHeaderView = searchController.searchBar
+
         presenter.viewInitialized()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locations.count
+        return filteredLocations.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
 
-        cell.textLabel!.text = locations[(indexPath as NSIndexPath).row].name
+        cell.textLabel!.text = filteredLocations[(indexPath as NSIndexPath).row].name
         cell.accessoryType = .disclosureIndicator
 
         return cell
@@ -52,6 +67,15 @@ class LocationsViewController: UITableViewController {
 
     convenience required init?(coder aDecoder: NSCoder) {
         self.init()
+    }
+
+}
+
+
+extension LocationsViewController: UISearchResultsUpdating {
+
+    func updateSearchResults(for searchController: UISearchController) {
+        tableView.reloadData()
     }
 
 }
