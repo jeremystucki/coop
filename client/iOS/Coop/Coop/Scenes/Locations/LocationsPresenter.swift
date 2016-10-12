@@ -40,7 +40,7 @@ extension LocationsPresenter: LocationsInteractorOutput {
             return viewController.displayNoLocationsError()
         }
 
-        viewController.displayLocations(locations)
+        viewController.displayLocations(locations.sorted())
     }
 
 }

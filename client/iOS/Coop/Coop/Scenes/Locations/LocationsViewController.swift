@@ -25,9 +25,7 @@ class LocationsViewController: UITableViewController {
     var presenter: LocationsViewControllerOutput!
 
     fileprivate let errorView = UIAlertController(title: "Could not load locations", message: nil, preferredStyle: .alert)
-    fileprivate var locations = [Location]() {
-        didSet { tableView.reloadData() }
-    }
+    fileprivate var locations = [Location]()
 
     init() {
         super.init(style: .plain)
@@ -66,7 +64,8 @@ extension LocationsViewController: LocationsViewControllerInput {
     }
 
     func displayLocations(_ locations: [Location]) {
-        self.locations = locations.sorted()
+        self.locations = locations
+        tableView.reloadData()
     }
 
 }
