@@ -52,8 +52,8 @@ class LocationsViewController: UITableViewController {
         return cell
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    convenience required init?(coder aDecoder: NSCoder) {
+        self.init()
     }
 
 }

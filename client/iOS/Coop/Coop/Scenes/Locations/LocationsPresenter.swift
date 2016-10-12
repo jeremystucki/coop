@@ -11,17 +11,11 @@ import UIKit
 
 class LocationsPresenter {
 
-    var viewController: LocationsViewControllerInput! {
-        didSet { (viewController as! LocationsViewController).presenter = self }
-    }
+    var viewController: LocationsViewControllerInput!
+    
+    var interactor: LocationsInteractorInput!
 
-    var interactor: LocationsInteractorInput! {
-        didSet { (interactor as! LocationsInteractor).presenter = self }
-    }
-
-    var router: LocationsRouter! {
-        didSet { router.presenter = self }
-    }
+    var router: LocationsRouter!
 
     fileprivate func showLocations() {
         interactor.fetchLocations()

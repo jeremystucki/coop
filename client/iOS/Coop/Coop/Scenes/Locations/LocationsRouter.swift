@@ -18,14 +18,20 @@ protocol LocationsRouterInput {
 class LocationsRouter: Router {
 
     let viewController: UIViewController
-    var presenter: LocationsPresenter!
 
     init() {
         let presenter = LocationsPresenter()
-        viewController = LocationsViewController()
+        let viewController = LocationsViewController()
+        let interactor = LocationsInteractor()
 
-        presenter.viewController = viewController as! LocationsViewController
-        presenter.interactor = LocationsInteractor()
+        interactor.presenter = presenter
+        viewController.presenter = presenter
+
+        presenter.viewController = viewController
+        presenter.interactor = interactor
+
+        self.viewController = viewController
+
         presenter.router = self
     }
 

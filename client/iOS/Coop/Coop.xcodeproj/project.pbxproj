@@ -111,8 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				3F00040D1DAE89C90072D529 /* LocationsRouter.swift */,
-				3F0004121DAE919A0072D529 /* LocationsPresenter.swift */,
 				3F0004141DAE94880072D529 /* LocationsViewController.swift */,
+				3F0004121DAE919A0072D529 /* LocationsPresenter.swift */,
 				3F00041B1DAE97EE0072D529 /* LocationsInteractor.swift */,
 			);
 			name = Locations;
