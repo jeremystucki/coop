@@ -2,7 +2,7 @@
 //  Menu.swift
 //  Coop
 //
-//  Created by Jeremy Stucki on 14/05/16.
+//  Created by Jeremy Stucki on 11.10.16.
 //  Copyright © 2016 Jeremy Stucki. All rights reserved.
 //
 
@@ -15,5 +15,5 @@ struct Menu {
     let dishes: [String]
     let date: Date
     let location: Location
-
+    
 }

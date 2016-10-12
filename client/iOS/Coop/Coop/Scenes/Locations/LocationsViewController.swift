@@ -1,64 +1,52 @@
 //
-//  LocationsViewController.swift
+//  ViewController.swift
 //  Coop
 //
-//  Created by Jeremy Stucki on 12/05/16.
+//  Created by Jeremy Stucki on 12.10.16.
 //  Copyright © 2016 Jeremy Stucki. All rights reserved.
 //
 
 import UIKit
 
-class LocationsViewController: UIViewController, LocationsViewPresenterOutput, LocationsTableViewOutput {
 
-    private var output: LocationsViewControllerOutput!
-    private var locations: [Location]?
+class LocationsViewController: UITableViewController {
 
-    private var tableView: UITableView!
-    private var tableViewDelegate: UITableViewDelegate?
-    private var tableViewDataSource: UITableViewDataSource?
-
-    func setOutput(_ output: LocationsViewControllerOutput) {
-        title = NSLocalizedString("Locations", comment: "")
-        self.output = output
+    var presenter: LocationsPresenter!
+    var locations = [Location]() {
+        didSet { tableView.reloadData() }
     }
 
-    override func loadView() {
-        super.loadView()
+    private let errorView = UIAlertController(title: "Could not load locations", message: nil, preferredStyle: .alert)
 
-        tableView = UITableView(frame: view.frame, style: .plain)
-        view.addSubview(tableView)
+    init() {
+        super.init(style: .plain)
 
-        if locations == nil {
-            output.fetchLocations()
-        }
+        title = "Locations"
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        tableView.frame = view.frame
+    func showNoLocationsFoundError() {
+        present(errorView, animated: true)
     }
 
-    // gets called by the retry button in the error view
-    func fetchLocations() {
-        output.fetchLocations()
+    override func viewDidLoad() {
+        presenter.viewInitialized()
     }
 
-    func showLocations(_ locations: [Location]) {
-        self.locations = locations
-
-        tableViewDelegate = LocationsTableViewDelegate(locations: locations, output: self)
-        tableViewDataSource = LocationsTableViewDataSource(locations: locations)
-
-        tableView.delegate = tableViewDelegate
-        tableView.dataSource = tableViewDataSource
-
-        tableView.reloadData()
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return locations.count
     }
 
-    func didSelectLocation(_ location: Location) {
-        let viewController = ViewControllerFactory.createMenusViewController(location)
-        navigationController?.pushViewController(viewController, animated: true)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+
+        cell.textLabel!.text = locations[(indexPath as NSIndexPath).row].name
+        cell.accessoryType = .disclosureIndicator
+
+        return cell
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 }
