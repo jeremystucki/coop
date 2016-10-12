@@ -23,16 +23,16 @@ protocol LocationsViewControllerOutput {
 class LocationsViewController: UITableViewController {
 
     var presenter: LocationsViewControllerOutput!
-    let searchController: UISearchController
+    private let searchController: UISearchController
 
     fileprivate let errorView = UIAlertController(title: "Could not load locations", message: nil, preferredStyle: .alert)
     fileprivate var locations = [Location]()
     fileprivate var filteredLocations: [Location] {
-        if let searchText = searchController.searchBar.text?.lowercased() {
-            return locations.filter({ $0.name.lowercased().hasPrefix(searchText) })
+        guard let searchText = searchController.searchBar.text?.lowercased() else {
+            return locations
         }
 
-        return locations
+        return locations.filter({ $0.name.lowercased().hasPrefix(searchText) })
     }
 
     init() {
@@ -65,7 +65,7 @@ class LocationsViewController: UITableViewController {
         return cell
     }
 
-    convenience required init?(coder aDecoder: NSCoder) {
+    convenience required init(coder aDecoder: NSCoder) {
         self.init()
     }
 

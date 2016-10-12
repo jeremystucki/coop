@@ -9,13 +9,7 @@
 import UIKit
 
 
-protocol LocationsRouterInput {
-    associatedtype AvailableView
-    func display(view: AvailableView)
-}
-
-
-class LocationsRouter: Router {
+class LocationsRouter {
 
     let viewController: UIViewController
 
@@ -38,7 +32,7 @@ class LocationsRouter: Router {
 }
 
 
-extension LocationsRouter: LocationsRouterInput {
+extension LocationsRouter: Router {
 
     enum AvailableView {
         case Settings
