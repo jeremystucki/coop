@@ -17,17 +17,17 @@ class LocationsPresenter {
 
     var router: LocationsRouter!
 
-    fileprivate func showLocations() {
-        interactor.fetchLocations()
-    }
-
 }
 
 
 extension LocationsPresenter: LocationsViewControllerOutput {
 
     func viewInitialized() {
-        showLocations()
+        interactor.fetchLocations()
+    }
+
+    func showMenus(forLocation location: Location) {
+        router.showMenus(forLocation: location)
     }
 
 }

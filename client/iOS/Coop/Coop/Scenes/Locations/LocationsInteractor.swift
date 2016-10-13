@@ -1,5 +1,5 @@
 //
-//  Interactor.swift
+//  LocationsInteractor.swift
 //  Coop
 //
 //  Created by Jeremy Stucki on 12.10.16.
@@ -21,7 +21,7 @@ protocol LocationsInteractorOutput {
 
 class LocationsInteractor: LocationsInteractorInput {
 
-    var presenter: LocationsPresenter!
+    var presenter: LocationsInteractorOutput!
     private let url = Configuration.baseUrl.appendingPathComponent("locations")
 
     func fetchLocations() {

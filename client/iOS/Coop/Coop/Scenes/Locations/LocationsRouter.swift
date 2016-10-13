@@ -1,5 +1,5 @@
 //
-//  Router.swift
+//  LocationsRouter.swift
 //  Coop
 //
 //  Created by Jeremy Stucki on 12.10.16.
@@ -15,8 +15,10 @@ class LocationsRouter {
 
     init() {
         let presenter = LocationsPresenter()
-        let viewController = LocationsViewController()
+        let viewController = LocationsViewController(style: .plain)
         let interactor = LocationsInteractor()
+
+        viewController.title = "Locations"
 
         interactor.presenter = presenter
         viewController.presenter = presenter
@@ -29,18 +31,8 @@ class LocationsRouter {
         presenter.router = self
     }
 
-}
-
-
-extension LocationsRouter: Router {
-
-    enum AvailableView {
-        case Settings
-        case Menus
-    }
-
-    func display(view: AvailableView) {
-
+    func showMenus(forLocation location: Location) {
+        viewController.navigationController?.pushViewController(MenusRouter(forLocation: location).viewController, animated: true)
     }
 
 }

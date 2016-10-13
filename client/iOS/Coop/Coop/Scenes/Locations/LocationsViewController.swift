@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LocationsViewController.swift
 //  Coop
 //
 //  Created by Jeremy Stucki on 12.10.16.
@@ -17,13 +17,14 @@ protocol LocationsViewControllerInput {
 
 protocol LocationsViewControllerOutput {
     func viewInitialized()
+    func showMenus(forLocation location: Location)
 }
 
 
 class LocationsViewController: UITableViewController {
 
     var presenter: LocationsViewControllerOutput!
-    private let searchController: UISearchController
+    private let searchController = UISearchController(searchResultsController: nil)
 
     fileprivate let errorView = UIAlertController(title: "Could not load locations", message: nil, preferredStyle: .alert)
     fileprivate var locations = [Location]()
@@ -35,15 +36,9 @@ class LocationsViewController: UITableViewController {
         return locations.filter({ $0.name.lowercased().hasPrefix(searchText) })
     }
 
-    init() {
-        searchController = UISearchController(searchResultsController: nil)
-
-        super.init(style: .plain)
-
-        title = "Locations"
-    }
-
     override func viewDidLoad() {
+        definesPresentationContext = true
+        
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
 
@@ -63,6 +58,11 @@ class LocationsViewController: UITableViewController {
         cell.accessoryType = .disclosureIndicator
 
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.showMenus(forLocation: filteredLocations[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     convenience required init(coder aDecoder: NSCoder) {
