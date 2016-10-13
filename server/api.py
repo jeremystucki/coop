@@ -17,7 +17,7 @@ def all_menus():
 @app.route('/api/v1/coop/menus/<location>')
 def menus_for_location(location):
     return flask.jsonify({'results': list(db.get_collection('menus')
-                                          .find({'location_lower': location.lower()}, {'_id': 0, 'location': 0, 'location_lower': 0}))})
+                                          .find({'location_lower': location.lower()}, {'_id': 0, 'location': 0, 'location_lower': 0, 'location_id': 0}))})
 
 
 @app.route('/api/v1/coop/menus/<location>/<timestamp>')
