@@ -34,7 +34,7 @@ def menus_for_location_and_timestamp(location, timestamp):
     return flask.jsonify(
         {'results': list(db.get_collection('menus')
                          .find({'location_lower': location.lower(), 'timestamp': int(timestamp)},
-                               {'_id': 0, 'location': 0, 'timestamp': 0, 'location_lower': 0}))})
+                               {'_id': 0, 'location': 0, 'timestamp': 0, 'location_lower': 0, 'location_id': 0}))})
 
 
 def get_limit(arguments):
@@ -49,7 +49,7 @@ def get_limit(arguments):
 
 @app.route('/api/v1/coop/stats')
 def stats():
-    return flask.jsonify({'results': list(db.get_collection('menu_stats').find({}, {'_id': 0}))})
+    return flask.jsonify({'results': list(db.get_collection('menu_stats').find({}, {'_id': 0, 'location_lower': 0, 'location_id': 0}))})
 
 
 def aggregate_stats(aggregation, request_params, location):
