@@ -82,6 +82,11 @@ def aggregate_stats(aggregation, request_params, location):
 
 @app.route('/api/v1/coop/locations')
 def locations():
+    return flask.jsonify({'results': list(db.get_collection('menus').distinct('location'))})
+
+
+@app.route('/api/v1/coop/stats/locations')
+def stats_locations():
     return flask.jsonify({'results': list(db.get_collection('menu_stats').distinct('location'))})
 
 
