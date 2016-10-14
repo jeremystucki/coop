@@ -17,13 +17,27 @@ class LocationsPresenter {
 
     var router: LocationsRouter!
 
+    fileprivate func showFavoriteLocations() {
+        var favoriteLocations = [Location]()
+        for locationName in Configuration.favoriteLocations {
+            favoriteLocations.append(Location(name: locationName))
+        }
+
+        viewController.displayFavoriteLocations(favoriteLocations)
+    }
+
 }
 
 
 extension LocationsPresenter: LocationsViewControllerOutput {
 
     func viewInitialized() {
+        showFavoriteLocations()
         interactor.fetchLocations()
+    }
+
+    func viewWillBecomeVisible() {
+        showFavoriteLocations()
     }
 
     func showMenus(forLocation location: Location) {
