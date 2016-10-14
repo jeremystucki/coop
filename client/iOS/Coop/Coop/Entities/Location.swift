@@ -10,6 +10,18 @@ struct Location {
 
     let name: String
 
+    // TODO: refactor
+    var isFavorite: Bool {
+        get { return Configuration.favoriteLocations.contains(name) }
+        set(newValue) {
+            if newValue {
+                Configuration.favoriteLocations.insert(name)
+            } else {
+                Configuration.favoriteLocations.remove(name)
+            }
+        }
+    }
+
 }
 
 

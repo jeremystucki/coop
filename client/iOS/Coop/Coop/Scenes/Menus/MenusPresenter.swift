@@ -17,13 +17,27 @@ class MenusPresenter {
 
     var router: MenusRouter!
 
+    fileprivate func displayStar() {
+        if interactor.location.isFavorite {
+            viewController.showFullStar()
+        } else {
+            viewController.showEmptyStar()
+        }
+    }
+
 }
 
 
 extension MenusPresenter: MenusViewControllerOutput {
 
     func viewInitialized() {
+        displayStar()
         interactor.fetchMenus()
+    }
+
+    func starClicked() {
+        interactor.location.isFavorite = !interactor.location.isFavorite
+        displayStar()
     }
 
 }
@@ -32,6 +46,10 @@ extension MenusPresenter: MenusViewControllerOutput {
 extension MenusPresenter: MenusInteractorOutput {
 
     func menusFetched(_ menus: [Menu]) {
+        if menus.isEmpty {
+            return viewController.displayNoMenusError()
+        }
+
         let sortedMenus = menus.sorted(by: {
             if $0.title.lowercased() == $1.title.lowercased() {
                 return $0.price < $1.price

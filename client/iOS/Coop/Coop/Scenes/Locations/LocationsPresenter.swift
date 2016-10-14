@@ -36,7 +36,7 @@ extension LocationsPresenter: LocationsViewControllerOutput {
 extension LocationsPresenter: LocationsInteractorOutput {
 
     func locationsFetched(_ locations: [Location]) {
-        if locations.count == 0 {
+        if locations.isEmpty {
             return viewController.displayNoLocationsError()
         }
 

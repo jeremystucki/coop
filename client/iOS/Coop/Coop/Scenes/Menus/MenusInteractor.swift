@@ -10,6 +10,7 @@ import Alamofire
 
 
 protocol MenusInteractorInput {
+    var location: Location { get set }
     func fetchMenus()
 }
 
@@ -22,8 +23,8 @@ protocol MenusInteractorOutput {
 class MenusInteractor: MenusInteractorInput {
 
     var presenter: MenusInteractorOutput!
+    var location: Location
     private let url = Configuration.baseUrl.appendingPathComponent("menus")
-    private let location: Location
 
     init(forLocation location: Location) {
         self.location = location

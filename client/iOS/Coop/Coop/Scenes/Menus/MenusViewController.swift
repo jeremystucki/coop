@@ -11,12 +11,15 @@ import UIKit
 
 
 protocol MenusViewControllerInput {
+    func showEmptyStar()
+    func showFullStar()
     func displayMenus(_ menus: [(Date, [Menu])])
     func displayNoMenusError()
 }
 
 
-protocol MenusViewControllerOutput {
+@objc protocol MenusViewControllerOutput {
+    func starClicked()
     func viewInitialized()
 }
 
@@ -57,14 +60,23 @@ class MenusViewController: UITableViewController {
         return cell
     }
 
-    convenience required init(coder aDecoder: NSCoder) {
-        self.init()
+    fileprivate func showBarButtonImage(_ image: UIImage) {
+        let button = UIBarButtonItem(image: image, style: .done, target: presenter, action: #selector(MenusViewControllerOutput.starClicked))
+        navigationItem.setRightBarButton(button, animated: true)
     }
 
 }
 
 
 extension MenusViewController: MenusViewControllerInput {
+
+    func showEmptyStar() {
+        showBarButtonImage(UIImage(named: "empty star")!.withRenderingMode(.alwaysOriginal))
+    }
+
+    func showFullStar() {
+        showBarButtonImage(UIImage(named: "full star")!.withRenderingMode(.alwaysOriginal))
+    }
 
     func displayMenus(_ menus: [(Date, [Menu])]) {
         self.menus = menus
@@ -74,5 +86,6 @@ extension MenusViewController: MenusViewControllerInput {
     func displayNoMenusError() {
         present(errorView, animated: true)
     }
+
 
 }

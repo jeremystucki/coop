@@ -16,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        if UserDefaults.standard.stringArray(forKey: "favoriteLocations") == nil {
+            UserDefaults.standard.set([String](), forKey: "favoriteLocations")
+        }
+
         window?.rootViewController = UINavigationController(rootViewController: LocationsRouter().viewController)
         window?.makeKeyAndVisible()
 
