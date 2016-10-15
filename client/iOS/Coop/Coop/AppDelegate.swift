@@ -13,6 +13,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
+    let locationsRouter = LocationsRouter()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -20,16 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             UserDefaults.standard.set([String](), forKey: "favoriteLocations")
         }
 
-        let locationsRouter = LocationsRouter()
-
         window?.rootViewController = UINavigationController(rootViewController: locationsRouter.viewController)
         window?.makeKeyAndVisible()
 
-        if let shortcut = launchOptions?[.shortcutItem] as? UIApplicationShortcutItem {
-            locationsRouter.showMenus(forLocation: Location(name: shortcut.localizedTitle))
-        }
-
         return true
+    }
+
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        locationsRouter.showMenus(forLocation: Location(name: shortcutItem.localizedTitle))
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

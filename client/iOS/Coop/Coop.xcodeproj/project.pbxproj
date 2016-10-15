@@ -20,27 +20,13 @@
 		3F8470251CE4FB2300B6D01E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8470241CE4FB2300B6D01E /* Configuration.swift */; };
 		3F8470271CE4FB6900B6D01E /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F8470261CE4FB6900B6D01E /* Configuration.plist */; };
 		3F9340BF1DB139AE00D21CF5 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F9340BE1DB139AE00D21CF5 /* images.xcassets */; };
-		3F983E491DA4308000BB415C /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F983E481DA4307F00BB415C /* NotificationCenter.framework */; };
-		3F983E4C1DA4308000BB415C /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F983E4B1DA4308000BB415C /* TodayViewController.swift */; };
-		3F983E531DA4308000BB415C /* CoopTodayView.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3F983E471DA4307F00BB415C /* CoopTodayView.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3FA833BB1DAFFA6B00F9231B /* MenusRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA833BA1DAFFA6B00F9231B /* MenusRouter.swift */; };
 		3FA833BD1DAFFCDB00F9231B /* MenusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA833BC1DAFFCDB00F9231B /* MenusViewController.swift */; };
 		3FA833BF1DAFFF6B00F9231B /* MenusPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA833BE1DAFFF6B00F9231B /* MenusPresenter.swift */; };
 		3FA833C11DAFFFC800F9231B /* MenusInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA833C01DAFFFC800F9231B /* MenusInteractor.swift */; };
 		3FA833C41DB0036300F9231B /* GroupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA833C31DB0036300F9231B /* GroupBy.swift */; };
-		3FD003651DA56DEB00E61D94 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD003641DA56DEB00E61D94 /* InitialView.swift */; };
 		C1E8AB32E7DB7F8C38497B24 /* Pods_Coop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6654F4A60911C7149DAC1E0B /* Pods_Coop.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		3F983E511DA4308000BB415C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3F57876C1CE4F2C00065ECEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3F983E461DA4307F00BB415C;
-			remoteInfo = CoopTodayView;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		3F983E571DA4308000BB415C /* Embed App Extensions */ = {
@@ -49,7 +35,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				3F983E531DA4308000BB415C /* CoopTodayView.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,7 +60,6 @@
 		3F8470241CE4FB2300B6D01E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		3F8470261CE4FB6900B6D01E /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 		3F9340BE1DB139AE00D21CF5 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
-		3F983E471DA4307F00BB415C /* CoopTodayView.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CoopTodayView.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F983E481DA4307F00BB415C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		3F983E4B1DA4308000BB415C /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		3F983E501DA4308000BB415C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,14 +79,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1E8AB32E7DB7F8C38497B24 /* Pods_Coop.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3F983E441DA4307F00BB415C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3F983E491DA4308000BB415C /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				3F5787741CE4F2C00065ECEA /* Coop.app */,
-				3F983E471DA4307F00BB415C /* CoopTodayView.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -241,29 +216,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				3F983E521DA4308000BB415C /* PBXTargetDependency */,
 			);
 			name = Coop;
 			productName = Coop;
 			productReference = 3F5787741CE4F2C00065ECEA /* Coop.app */;
 			productType = "com.apple.product-type.application";
-		};
-		3F983E461DA4307F00BB415C /* CoopTodayView */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3F983E561DA4308000BB415C /* Build configuration list for PBXNativeTarget "CoopTodayView" */;
-			buildPhases = (
-				3F983E431DA4307F00BB415C /* Sources */,
-				3F983E441DA4307F00BB415C /* Frameworks */,
-				3F983E451DA4307F00BB415C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CoopTodayView;
-			productName = CoopTodayView;
-			productReference = 3F983E471DA4307F00BB415C /* CoopTodayView.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -279,11 +236,6 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = HAH73UHZG3;
 						LastSwiftMigration = 0800;
-					};
-					3F983E461DA4307F00BB415C = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = HAH73UHZG3;
-						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -302,7 +254,6 @@
 			projectRoot = "";
 			targets = (
 				3F5787731CE4F2C00065ECEA /* Coop */,
-				3F983E461DA4307F00BB415C /* CoopTodayView */,
 			);
 		};
 /* End PBXProject section */
@@ -317,13 +268,6 @@
 				3F38CA5B1CE7B016000A3C73 /* Localizable.strings in Resources */,
 				3F5787851CE4F2C00065ECEA /* LaunchScreen.storyboard in Resources */,
 				3F5787821CE4F2C00065ECEA /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3F983E451DA4307F00BB415C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,24 +342,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3F983E431DA4307F00BB415C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3F983E4C1DA4308000BB415C /* TodayViewController.swift in Sources */,
-				3FD003651DA56DEB00E61D94 /* InitialView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3F983E521DA4308000BB415C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3F983E461DA4307F00BB415C /* CoopTodayView */;
-			targetProxy = 3F983E511DA4308000BB415C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3F38CA5D1CE7B016000A3C73 /* Localizable.strings */ = {
@@ -567,44 +494,6 @@
 			};
 			name = Release;
 		};
-		3F983E541DA4308000BB415C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = HAH73UHZG3;
-				INFOPLIST_FILE = CoopTodayView/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jeremystucki.coop-menuplan.CoopTodayView";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		3F983E551DA4308000BB415C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = HAH73UHZG3;
-				INFOPLIST_FILE = CoopTodayView/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jeremystucki.coop-menuplan.CoopTodayView";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -622,15 +511,6 @@
 			buildConfigurations = (
 				3F57878A1CE4F2C00065ECEA /* Debug */,
 				3F57878B1CE4F2C00065ECEA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3F983E561DA4308000BB415C /* Build configuration list for PBXNativeTarget "CoopTodayView" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3F983E541DA4308000BB415C /* Debug */,
-				3F983E551DA4308000BB415C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
