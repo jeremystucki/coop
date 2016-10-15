@@ -11,11 +11,13 @@ import Alamofire
 
 protocol LocationsInteractorInput {
     func fetchLocations()
+    func fetchFavoriteLocations()
 }
 
 
 protocol LocationsInteractorOutput {
     func locationsFetched(_ locations: [Location])
+    func favoriteLocationsFetched(_ favoriteLocations: [Location])
 }
 
 
@@ -40,6 +42,15 @@ class LocationsInteractor: LocationsInteractorInput {
 
             self.presenter.locationsFetched(locations)
         }
+    }
+
+    func fetchFavoriteLocations() {
+        var favoriteLocations = [Location]()
+        for locationName in Configuration.favoriteLocations {
+            favoriteLocations.append(Location(name: locationName))
+        }
+
+        presenter.favoriteLocationsFetched(favoriteLocations)
     }
 
 }

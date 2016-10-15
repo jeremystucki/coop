@@ -87,5 +87,4 @@ extension MenusViewController: MenusViewControllerInput {
         present(errorView, animated: true)
     }
 
-
 }

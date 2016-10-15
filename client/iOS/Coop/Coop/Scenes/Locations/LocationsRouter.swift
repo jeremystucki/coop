@@ -14,9 +14,9 @@ class LocationsRouter {
     let viewController: UIViewController
 
     init() {
-        let presenter = LocationsPresenter()
         let viewController = LocationsViewController(style: .plain)
         let interactor = LocationsInteractor()
+        let presenter = LocationsPresenter()
 
         viewController.title = "Locations"
 
@@ -32,7 +32,7 @@ class LocationsRouter {
     }
 
     func showMenus(forLocation location: Location) {
-        viewController.navigationController?.pushViewController(MenusRouter(forLocation: location).viewController, animated: true)
+        viewController.navigationController!.pushViewController(MenusRouter(forLocation: location).viewController, animated: true)
     }
 
 }

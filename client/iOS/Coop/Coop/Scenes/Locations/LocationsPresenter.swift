@@ -17,27 +17,18 @@ class LocationsPresenter {
 
     var router: LocationsRouter!
 
-    fileprivate func showFavoriteLocations() {
-        var favoriteLocations = [Location]()
-        for locationName in Configuration.favoriteLocations {
-            favoriteLocations.append(Location(name: locationName))
-        }
-
-        viewController.displayFavoriteLocations(favoriteLocations)
-    }
-
 }
 
 
 extension LocationsPresenter: LocationsViewControllerOutput {
 
     func viewInitialized() {
-        showFavoriteLocations()
+        interactor.fetchFavoriteLocations()
         interactor.fetchLocations()
     }
 
     func viewWillBecomeVisible() {
-        showFavoriteLocations()
+        interactor.fetchFavoriteLocations()
     }
 
     func showMenus(forLocation location: Location) {
@@ -55,6 +46,10 @@ extension LocationsPresenter: LocationsInteractorOutput {
         }
 
         viewController.displayLocations(locations.sorted())
+    }
+
+    func favoriteLocationsFetched(_ favoriteLocations: [Location]) {
+        viewController.displayFavoriteLocations(favoriteLocations.sorted())
     }
 
 }
