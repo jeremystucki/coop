@@ -1,58 +1,7 @@
 # Coop
 
 ## Supported locations
-- Aarau
-- Affoltern am Albis
-- Allschwil
-- Altdorf
-- Arbon
-- Baden
-- Baar Gotthard
-- Baar Delfin
-- Basel Am Marktplatz
-- Basel Pfauen
-- Basel Volta Zentrum
-- Basel Gundeli
-- Bassecourt
-- Bern Ryfflihof
-- Bern Breitenrain
-- Bern Wankdorf Center
-- Egerkingen
-- Emmenbrücke
-- Frick
-- Genève Fusterie
-- Genève Servette
-- Genève Eaux-Vives
-- Genève Montbrillant
-- Grenchen
-- Herzogenbuchsee
-- Kaiseraugst
-- Kreuzlingen
-- Kriens Pilatusmarkt
-- Langenthal
-- Lenzburg
-- Liestal
-- Luzern
-- Luzern Löwencenter
-- Muri AG
-- Möhlin
-- Oberwil
-- Oberwil Mühlematt
-- Olten
-- Ostermundigen
-- Pratteln
-- Porrentruy
-- Reinach
-- Rheinfelden
-- Rorschach
-- Romanshorn
-- Sarnen
-- Stans
-- Wettingen
-- Würenlingen
-- Zofingen
-- Zug Neustadt
-- Zug
+- All
 
 
 ## Clients
