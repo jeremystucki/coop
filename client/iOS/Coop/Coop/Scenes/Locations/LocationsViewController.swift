@@ -34,21 +34,17 @@ class LocationsViewController: UITableViewController {
         return !filteredFavoriteLocations.isEmpty
     }
 
+    private var searchText: String {
+        return searchController.searchBar.text!.lowercased()
+    }
+
     fileprivate var locations = [Location]()
     fileprivate var filteredLocations: [Location] {
-        guard let searchText = searchController.searchBar.text?.lowercased() else {
-            return locations
-        }
-
         return locations.filter({ $0.name.lowercased().hasPrefix(searchText) })
     }
 
     fileprivate var favoriteLocations = [Location]()
     fileprivate var filteredFavoriteLocations: [Location] {
-        guard let searchText = searchController.searchBar.text?.lowercased() else {
-            return favoriteLocations
-        }
-
         return favoriteLocations.filter({ $0.name.lowercased().hasPrefix(searchText) })
     }
 
@@ -58,7 +54,7 @@ class LocationsViewController: UITableViewController {
 
     override func viewDidLoad() {
         definesPresentationContext = true
-        
+
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
 
@@ -98,7 +94,6 @@ class LocationsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.accessoryType = .disclosureIndicator
-
 
         if indexPath.section == 0 && hasFavorites {
             cell.textLabel!.text = filteredFavoriteLocations[(indexPath as NSIndexPath).row].name

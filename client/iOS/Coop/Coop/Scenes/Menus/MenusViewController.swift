@@ -18,8 +18,9 @@ protocol MenusViewControllerInput {
 }
 
 
-@objc protocol MenusViewControllerOutput {
+protocol MenusViewControllerOutput {
     func starClicked()
+    func showMenuDetails(forMenu menu: Menu)
     func viewInitialized()
 }
 
@@ -56,12 +57,21 @@ class MenusViewController: UITableViewController {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         cell.textLabel?.text = menu.title
         cell.detailTextLabel?.text = "CHF " + String(format: "%.2f", menu.price)
+        cell.accessoryType = .disclosureIndicator
 
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.showMenuDetails(forMenu: menus[indexPath.section].1[indexPath.row])
+    }
+
+    func starClicked() {
+        presenter.starClicked()
+    }
+
     fileprivate func showBarButtonImage(_ image: UIImage) {
-        let button = UIBarButtonItem(image: image, style: .done, target: presenter, action: #selector(MenusViewControllerOutput.starClicked))
+        let button = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(MenusViewController.starClicked))
         navigationItem.setRightBarButton(button, animated: true)
     }
 

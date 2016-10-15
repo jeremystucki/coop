@@ -35,6 +35,10 @@ extension MenusPresenter: MenusViewControllerOutput {
         interactor.fetchMenus()
     }
 
+    func showMenuDetails(forMenu menu: Menu) {
+
+    }
+
     func starClicked() {
         interactor.location.isFavorite = !interactor.location.isFavorite
         displayStar()

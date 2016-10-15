@@ -31,4 +31,8 @@ class MenusRouter {
         presenter.router = self
     }
 
+    func showMenuDetails(forMenu menu: Menu) {
+
+    }
+
 }
