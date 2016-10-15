@@ -20,10 +20,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             UserDefaults.standard.set([String](), forKey: "favoriteLocations")
         }
 
-        window?.rootViewController = UINavigationController(rootViewController: LocationsRouter().viewController)
+        let locationsRouter = LocationsRouter()
+
+        window?.rootViewController = UINavigationController(rootViewController: locationsRouter.viewController)
         window?.makeKeyAndVisible()
 
+        if let shortcut = launchOptions?[.shortcutItem] as? UIApplicationShortcutItem {
+            locationsRouter.showMenus(forLocation: Location(name: shortcut.localizedTitle))
+        }
+
         return true
+    }
+
+    func applicationWillResignActive(_ application: UIApplication) {
+        var shortcutItems = [UIApplicationShortcutItem]()
+        for location in Configuration.favoriteLocations {
+            shortcutItems.append(UIApplicationShortcutItem(type: "favoriteLocation", localizedTitle: location))
+        }
+
+        UIApplication.shared.shortcutItems = shortcutItems
     }
 
     @objc func showSettings() {
