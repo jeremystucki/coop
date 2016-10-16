@@ -39,12 +39,12 @@ class LocationsViewController: UITableViewController {
     }
 
     fileprivate var locations = [Location]()
-    fileprivate var filteredLocations: [Location] {
+    private var filteredLocations: [Location] {
         return locations.filter({ $0.name.lowercased().hasPrefix(searchText) })
     }
 
     fileprivate var favoriteLocations = [Location]()
-    fileprivate var filteredFavoriteLocations: [Location] {
+    private var filteredFavoriteLocations: [Location] {
         return favoriteLocations.filter({ $0.name.lowercased().hasPrefix(searchText) })
     }
 
@@ -64,11 +64,7 @@ class LocationsViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if hasFavorites {
-            return 2
-        }
-
-        return 1
+        return hasFavorites ? 2 : 1
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -76,41 +72,27 @@ class LocationsViewController: UITableViewController {
             return "Favorites"
         }
 
-        if hasFavorites {
-            return "All"
-        }
-
-        return nil
+        return hasFavorites ? "All" : nil
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 && hasFavorites {
-            return filteredFavoriteLocations.count
-        }
-
-        return filteredLocations.count
+        return (section == 0 && hasFavorites ? filteredFavoriteLocations : filteredLocations).count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let locations = indexPath.section == 0 && hasFavorites ? filteredFavoriteLocations : filteredLocations
+
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.accessoryType = .disclosureIndicator
-
-        if indexPath.section == 0 && hasFavorites {
-            cell.textLabel!.text = filteredFavoriteLocations[(indexPath as NSIndexPath).row].name
-        } else {
-            cell.textLabel!.text = filteredLocations[(indexPath as NSIndexPath).row].name
-        }
+        cell.textLabel!.text = locations[indexPath.row].name
 
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if hasFavorites && indexPath.section == 0 {
-            presenter.showMenus(forLocation: filteredFavoriteLocations[indexPath.row])
-        } else {
-            presenter.showMenus(forLocation: filteredLocations[indexPath.row])
-        }
+        let locations = indexPath.section == 0 && hasFavorites ? filteredFavoriteLocations : filteredLocations
 
+        presenter.showMenus(forLocation: locations[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
