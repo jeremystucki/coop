@@ -48,6 +48,14 @@ class LocationsViewController: UITableViewController {
         return favoriteLocations.filter({ $0.name.lowercased().hasPrefix(searchText) })
     }
 
+    init() {
+        super.init(style: .plain)
+    }
+
+    convenience required init?(coder aDecoder: NSCoder) {
+        self.init()
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         presenter.viewWillBecomeVisible()
     }
@@ -94,10 +102,6 @@ class LocationsViewController: UITableViewController {
 
         presenter.showMenus(forLocation: locations[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-
-    convenience required init(coder aDecoder: NSCoder) {
-        self.init()
     }
 
 }

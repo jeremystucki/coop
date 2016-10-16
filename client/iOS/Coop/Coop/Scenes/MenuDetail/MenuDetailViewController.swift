@@ -23,8 +23,8 @@ class MenuDetailViewController: UIViewController {
         super.viewDidLayoutSubviews()
 
         var topSpacing = UIApplication.shared.statusBarFrame.size.height
-
         topSpacing += navigationController!.navigationBar.bounds.size.height
+
         dishesLabel.frame = CGRect(x: 20, y: topSpacing + 20, width: 0, height: 0)
         dishesLabel.text = menu.dishes.joined(separator: "\n")
         dishesLabel.numberOfLines = menu.dishes.count

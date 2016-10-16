@@ -14,7 +14,7 @@ class MenusRouter {
     let viewController: UIViewController
 
     init(forLocation location: Location) {
-        let viewController = MenusViewController(style: .grouped)
+        let viewController = MenusViewController()
         let interactor = MenusInteractor(forLocation: location)
         let presenter = MenusPresenter()
 

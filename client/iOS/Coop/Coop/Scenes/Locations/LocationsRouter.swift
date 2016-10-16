@@ -14,7 +14,7 @@ class LocationsRouter {
     let viewController: UIViewController
 
     init() {
-        let viewController = LocationsViewController(style: .plain)
+        let viewController = LocationsViewController()
         let interactor = LocationsInteractor()
         let presenter = LocationsPresenter()
 

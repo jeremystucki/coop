@@ -32,6 +32,14 @@ class MenusViewController: UITableViewController {
     fileprivate let errorView = UIAlertController(title: "Could not load menus", message: nil, preferredStyle: .alert)
     fileprivate var menus = [(Date, [Menu])]()
 
+    init() {
+        super.init(style: .grouped)
+    }
+
+    convenience required init?(coder aDecoder: NSCoder) {
+        self.init()
+    }
+
     override func viewDidLoad() {
         presenter.viewInitialized()
     }

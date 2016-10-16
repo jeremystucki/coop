@@ -20,7 +20,7 @@ struct Configuration {
     static let baseUrl = URL(string: currentConfiguration["API-Endpoint"] as! String)!
 
     static var favoriteLocations: Set<String> {
-        get { return Set(UserDefaults.standard.stringArray(forKey: "favoriteLocations")!) }
+        get { return Set(UserDefaults.standard.stringArray(forKey: "favoriteLocations") ?? []) }
         set(newValue) { UserDefaults.standard.set(Array(newValue), forKey: "favoriteLocations") }
     }
 
