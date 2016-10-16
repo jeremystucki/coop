@@ -36,7 +36,7 @@ extension MenusPresenter: MenusViewControllerOutput {
     }
 
     func showMenuDetails(forMenu menu: Menu) {
-
+        router.showMenuDetails(forMenu: menu)
     }
 
     func starClicked() {

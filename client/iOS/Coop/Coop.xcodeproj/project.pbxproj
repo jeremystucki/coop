@@ -19,12 +19,14 @@
 		3F5787851CE4F2C00065ECEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F5787831CE4F2C00065ECEA /* LaunchScreen.storyboard */; };
 		3F8470251CE4FB2300B6D01E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8470241CE4FB2300B6D01E /* Configuration.swift */; };
 		3F8470271CE4FB6900B6D01E /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F8470261CE4FB6900B6D01E /* Configuration.plist */; };
-		3F9340BF1DB139AE00D21CF5 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F9340BE1DB139AE00D21CF5 /* images.xcassets */; };
+		3F9340BF1DB139AE00D21CF5 /* stars.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F9340BE1DB139AE00D21CF5 /* stars.xcassets */; };
 		3FA833BB1DAFFA6B00F9231B /* MenusRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA833BA1DAFFA6B00F9231B /* MenusRouter.swift */; };
 		3FA833BD1DAFFCDB00F9231B /* MenusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA833BC1DAFFCDB00F9231B /* MenusViewController.swift */; };
 		3FA833BF1DAFFF6B00F9231B /* MenusPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA833BE1DAFFF6B00F9231B /* MenusPresenter.swift */; };
 		3FA833C11DAFFFC800F9231B /* MenusInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA833C01DAFFFC800F9231B /* MenusInteractor.swift */; };
 		3FA833C41DB0036300F9231B /* GroupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA833C31DB0036300F9231B /* GroupBy.swift */; };
+		3FB04DAF1DB3D2ED00348CBA /* MenuDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB04DAE1DB3D2ED00348CBA /* MenuDetailRouter.swift */; };
+		3FB04DB11DB3D33600348CBA /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB04DB01DB3D33600348CBA /* MenuDetailViewController.swift */; };
 		C1E8AB32E7DB7F8C38497B24 /* Pods_Coop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6654F4A60911C7149DAC1E0B /* Pods_Coop.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +61,7 @@
 		3F5787861CE4F2C00065ECEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F8470241CE4FB2300B6D01E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		3F8470261CE4FB6900B6D01E /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
-		3F9340BE1DB139AE00D21CF5 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
+		3F9340BE1DB139AE00D21CF5 /* stars.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = stars.xcassets; sourceTree = "<group>"; };
 		3F983E481DA4307F00BB415C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		3F983E4B1DA4308000BB415C /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		3F983E501DA4308000BB415C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,6 +70,8 @@
 		3FA833BE1DAFFF6B00F9231B /* MenusPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenusPresenter.swift; path = Scenes/Menus/MenusPresenter.swift; sourceTree = "<group>"; };
 		3FA833C01DAFFFC800F9231B /* MenusInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenusInteractor.swift; path = Scenes/Menus/MenusInteractor.swift; sourceTree = "<group>"; };
 		3FA833C31DB0036300F9231B /* GroupBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupBy.swift; path = Extensions/GroupBy.swift; sourceTree = "<group>"; };
+		3FB04DAE1DB3D2ED00348CBA /* MenuDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuDetailRouter.swift; path = Scenes/MenuDetail/MenuDetailRouter.swift; sourceTree = "<group>"; };
+		3FB04DB01DB3D33600348CBA /* MenuDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuDetailViewController.swift; path = Scenes/MenuDetail/MenuDetailViewController.swift; sourceTree = "<group>"; };
 		3FD003641DA56DEB00E61D94 /* InitialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		6654F4A60911C7149DAC1E0B /* Pods_Coop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A921D3EC39B454CF7654B757 /* Pods-Coop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Coop/Pods-Coop.debug.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 		3F00040B1DAE865A0072D529 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				3FB04DAD1DB3CF7700348CBA /* MenuDetail */,
 				3FA833B91DAFFA3E00F9231B /* Menus */,
 				3F00040C1DAE89A20072D529 /* Locations */,
 			);
@@ -136,7 +141,7 @@
 		3F5787761CE4F2C00065ECEA /* Coop */ = {
 			isa = PBXGroup;
 			children = (
-				3F9340BE1DB139AE00D21CF5 /* images.xcassets */,
+				3F9340BE1DB139AE00D21CF5 /* stars.xcassets */,
 				3FA833C21DB0034000F9231B /* Extensions */,
 				3F0004161DAE97480072D529 /* Entities */,
 				3F00040B1DAE865A0072D529 /* Scenes */,
@@ -178,6 +183,15 @@
 				3FA833C31DB0036300F9231B /* GroupBy.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		3FB04DAD1DB3CF7700348CBA /* MenuDetail */ = {
+			isa = PBXGroup;
+			children = (
+				3FB04DAE1DB3D2ED00348CBA /* MenuDetailRouter.swift */,
+				3FB04DB01DB3D33600348CBA /* MenuDetailViewController.swift */,
+			);
+			name = MenuDetail;
 			sourceTree = "<group>";
 		};
 		489574382BAEF31EB7A6121D /* Pods */ = {
@@ -264,7 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F8470271CE4FB6900B6D01E /* Configuration.plist in Resources */,
-				3F9340BF1DB139AE00D21CF5 /* images.xcassets in Resources */,
+				3F9340BF1DB139AE00D21CF5 /* stars.xcassets in Resources */,
 				3F38CA5B1CE7B016000A3C73 /* Localizable.strings in Resources */,
 				3F5787851CE4F2C00065ECEA /* LaunchScreen.storyboard in Resources */,
 				3F5787821CE4F2C00065ECEA /* Assets.xcassets in Resources */,
@@ -330,7 +344,9 @@
 				3F00041A1DAE97600072D529 /* Menu.swift in Sources */,
 				3F00041C1DAE97EE0072D529 /* LocationsInteractor.swift in Sources */,
 				3FA833C41DB0036300F9231B /* GroupBy.swift in Sources */,
+				3FB04DAF1DB3D2ED00348CBA /* MenuDetailRouter.swift in Sources */,
 				3F5787781CE4F2C00065ECEA /* AppDelegate.swift in Sources */,
+				3FB04DB11DB3D33600348CBA /* MenuDetailViewController.swift in Sources */,
 				3FA833BF1DAFFF6B00F9231B /* MenusPresenter.swift in Sources */,
 				3F00040E1DAE89C90072D529 /* LocationsRouter.swift in Sources */,
 				3FA833BD1DAFFCDB00F9231B /* MenusViewController.swift in Sources */,

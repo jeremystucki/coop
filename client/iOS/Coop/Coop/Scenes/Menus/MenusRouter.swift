@@ -32,7 +32,7 @@ class MenusRouter {
     }
 
     func showMenuDetails(forMenu menu: Menu) {
-
+        viewController.navigationController!.pushViewController(MenuDetailRouter(forMenu: menu).viewController, animated: true)
     }
 
 }
