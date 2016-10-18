@@ -39,6 +39,7 @@ class MenusViewController: UITableViewController {
     }
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         presenter.viewInitialized()
     }
 

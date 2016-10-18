@@ -30,11 +30,6 @@ class MenusPresenter {
 
 extension MenusPresenter: MenusViewControllerOutput {
 
-    func viewInitialized() {
-        displayStar()
-        interactor.fetchMenus()
-    }
-
     func showMenuDetails(forMenu menu: Menu) {
         router.showMenuDetails(forMenu: menu)
     }
@@ -42,6 +37,11 @@ extension MenusPresenter: MenusViewControllerOutput {
     func starClicked() {
         interactor.location.isFavorite = !interactor.location.isFavorite
         displayStar()
+    }
+
+    func viewInitialized() {
+        displayStar()
+        interactor.fetchMenus()
     }
 
 }

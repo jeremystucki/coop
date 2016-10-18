@@ -18,6 +18,7 @@ class MenusRouter: NetworkRouter {
 
     let viewController: UIViewController
     let presenter: NetworkRouterOutput    // TODO: figure out why MenusRouterOutput does not work here
+    var detailViewController: UIViewController?
 
     init(forLocation location: Location) {
         let viewController = MenusViewController()
@@ -39,7 +40,18 @@ class MenusRouter: NetworkRouter {
     }
 
     func showMenuDetails(forMenu menu: Menu) {
-        viewController.navigationController!.pushViewController(MenuDetailRouter(forMenu: menu).viewController, animated: true)
+
+        let menuDetailViewController = MenuDetailRouter(forMenu: menu).viewController
+
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            viewController.navigationController?.pushViewController(menuDetailViewController, animated: true)
+        }
+
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            viewController.splitViewController?.showDetailViewController(menuDetailViewController, sender: self)
+        }
+
+        self.detailViewController = menuDetailViewController
     }
 
 }

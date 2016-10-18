@@ -10,14 +10,28 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
+    var window: UIWindow?
     let locationsRouter = LocationsRouter()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        window!.rootViewController = UINavigationController(rootViewController: locationsRouter.viewController)
+        let rootViewController = UINavigationController(rootViewController: locationsRouter.viewController)
+        window = UIWindow(frame: UIScreen.main.bounds)
+
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            window!.rootViewController = rootViewController
+        }
+
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let splitViewController = UISplitViewController()
+            splitViewController.viewControllers.append(rootViewController)
+            splitViewController.preferredDisplayMode = .allVisible
+
+            window!.rootViewController = splitViewController
+        }
+
         window!.makeKeyAndVisible()
 
         return true
