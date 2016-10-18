@@ -12,7 +12,6 @@ import UIKit
 protocol LocationsViewControllerInput {
     func displayLocations(_ locations: [Location])
     func displayFavoriteLocations(_ favoriteLocations: [Location])
-    func displayNoLocationsError()
 }
 
 
@@ -27,8 +26,6 @@ class LocationsViewController: UITableViewController {
 
     var presenter: LocationsViewControllerOutput!
     private let searchController = UISearchController(searchResultsController: nil)
-
-    fileprivate let errorView = UIAlertController(title: "Could not load locations", message: nil, preferredStyle: .alert)
 
     private var hasFavorites: Bool {
         return !filteredFavoriteLocations.isEmpty
@@ -117,10 +114,6 @@ extension LocationsViewController: UISearchResultsUpdating {
 
 
 extension LocationsViewController: LocationsViewControllerInput {
-
-    func displayNoLocationsError() {
-        present(errorView, animated: true)
-    }
 
     func displayLocations(_ locations: [Location]) {
         self.locations = locations

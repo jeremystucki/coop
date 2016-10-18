@@ -50,10 +50,6 @@ extension MenusPresenter: MenusViewControllerOutput {
 extension MenusPresenter: MenusInteractorOutput {
 
     func menusFetched(_ menus: [Menu]) {
-        if menus.isEmpty {
-            return viewController.displayNoMenusError()
-        }
-
         let sortedMenus = menus.sorted(by: {
             if $0.title.lowercased() == $1.title.lowercased() {
                 return $0.price < $1.price
@@ -63,6 +59,19 @@ extension MenusPresenter: MenusInteractorOutput {
         })
 
         viewController.displayMenus(sortedMenus.categorise({ $0.date }).sorted(by: { $0.key < $1.key }))
+    }
+
+    func connectionErrorOccured() {
+        router.showConnectionError()
+    }
+
+}
+
+
+extension MenusPresenter: MenusRouterOutput {
+
+    func retryPressed() {
+        interactor.fetchMenus()
     }
 
 }

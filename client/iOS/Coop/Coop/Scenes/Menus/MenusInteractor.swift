@@ -17,6 +17,7 @@ protocol MenusInteractorInput {
 
 protocol MenusInteractorOutput {
     func menusFetched(_ menus: [Menu])
+    func connectionErrorOccured()
 }
 
 
@@ -37,7 +38,7 @@ class MenusInteractor: MenusInteractorInput {
             var menus = [Menu]()
 
             if response.result.isFailure {
-                return self.presenter.menusFetched([Menu]())
+                return self.presenter.connectionErrorOccured()
             }
 
             for menu in (response.result.value! as! NSDictionary)["results"] as! NSArray {

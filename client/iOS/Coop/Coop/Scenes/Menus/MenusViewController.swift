@@ -14,7 +14,6 @@ protocol MenusViewControllerInput {
     func showEmptyStar()
     func showFullStar()
     func displayMenus(_ menus: [(Date, [Menu])])
-    func displayNoMenusError()
 }
 
 
@@ -29,7 +28,6 @@ class MenusViewController: UITableViewController {
 
     var presenter: MenusViewControllerOutput!
 
-    fileprivate let errorView = UIAlertController(title: "Could not load menus", message: nil, preferredStyle: .alert)
     fileprivate var menus = [(Date, [Menu])]()
 
     init() {
@@ -100,10 +98,6 @@ extension MenusViewController: MenusViewControllerInput {
     func displayMenus(_ menus: [(Date, [Menu])]) {
         self.menus = menus
         tableView.reloadData()
-    }
-
-    func displayNoMenusError() {
-        present(errorView, animated: true)
     }
 
 }

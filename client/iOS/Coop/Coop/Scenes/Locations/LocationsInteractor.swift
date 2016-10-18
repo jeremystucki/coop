@@ -18,6 +18,7 @@ protocol LocationsInteractorInput {
 protocol LocationsInteractorOutput {
     func locationsFetched(_ locations: [Location])
     func favoriteLocationsFetched(_ favoriteLocations: [Location])
+    func connectionErrorOccured()
 }
 
 
@@ -33,7 +34,7 @@ class LocationsInteractor: LocationsInteractorInput {
             var locations = [Location]()
 
             if response.result.isFailure {
-                return self.presenter.locationsFetched(locations)
+                return self.presenter.connectionErrorOccured()
             }
 
             for locationName in (response.result.value! as! NSDictionary)["results"] as! NSArray {

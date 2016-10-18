@@ -41,15 +41,24 @@ extension LocationsPresenter: LocationsViewControllerOutput {
 extension LocationsPresenter: LocationsInteractorOutput {
 
     func locationsFetched(_ locations: [Location]) {
-        if locations.isEmpty {
-            return viewController.displayNoLocationsError()
-        }
-
         viewController.displayLocations(locations.sorted())
     }
 
     func favoriteLocationsFetched(_ favoriteLocations: [Location]) {
         viewController.displayFavoriteLocations(favoriteLocations.sorted())
+    }
+
+    func connectionErrorOccured() {
+        router.showConnectionError()
+    }
+
+}
+
+
+extension LocationsPresenter: LocationsRouterOutput {
+
+    func retryPressed() {
+        interactor.fetchLocations()
     }
 
 }

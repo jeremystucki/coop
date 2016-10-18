@@ -27,6 +27,8 @@
 		3FA833C41DB0036300F9231B /* GroupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA833C31DB0036300F9231B /* GroupBy.swift */; };
 		3FB04DAF1DB3D2ED00348CBA /* MenuDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB04DAE1DB3D2ED00348CBA /* MenuDetailRouter.swift */; };
 		3FB04DB11DB3D33600348CBA /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB04DB01DB3D33600348CBA /* MenuDetailViewController.swift */; };
+		3FB04DC01DB4173A00348CBA /* ConnectionErrorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB04DBF1DB4173A00348CBA /* ConnectionErrorRouter.swift */; };
+		3FE3DEBF1DB533080090EC18 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE3DEBE1DB533080090EC18 /* NetworkRouter.swift */; };
 		C1E8AB32E7DB7F8C38497B24 /* Pods_Coop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6654F4A60911C7149DAC1E0B /* Pods_Coop.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +74,9 @@
 		3FA833C31DB0036300F9231B /* GroupBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupBy.swift; path = Extensions/GroupBy.swift; sourceTree = "<group>"; };
 		3FB04DAE1DB3D2ED00348CBA /* MenuDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuDetailRouter.swift; path = Scenes/MenuDetail/MenuDetailRouter.swift; sourceTree = "<group>"; };
 		3FB04DB01DB3D33600348CBA /* MenuDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuDetailViewController.swift; path = Scenes/MenuDetail/MenuDetailViewController.swift; sourceTree = "<group>"; };
+		3FB04DBF1DB4173A00348CBA /* ConnectionErrorRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionErrorRouter.swift; path = Scenes/ConnectionError/ConnectionErrorRouter.swift; sourceTree = "<group>"; };
 		3FD003641DA56DEB00E61D94 /* InitialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		3FE3DEBE1DB533080090EC18 /* NetworkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkRouter.swift; path = Protocols/NetworkRouter.swift; sourceTree = "<group>"; };
 		6654F4A60911C7149DAC1E0B /* Pods_Coop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A921D3EC39B454CF7654B757 /* Pods-Coop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Coop/Pods-Coop.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +96,7 @@
 		3F00040B1DAE865A0072D529 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				3FB04DBE1DB4171100348CBA /* ConnectionError */,
 				3FB04DAD1DB3CF7700348CBA /* MenuDetail */,
 				3FA833B91DAFFA3E00F9231B /* Menus */,
 				3F00040C1DAE89A20072D529 /* Locations */,
@@ -142,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				3F9340BE1DB139AE00D21CF5 /* stars.xcassets */,
+				3FE3DEBD1DB532DE0090EC18 /* Protocols */,
 				3FA833C21DB0034000F9231B /* Extensions */,
 				3F0004161DAE97480072D529 /* Entities */,
 				3F00040B1DAE865A0072D529 /* Scenes */,
@@ -192,6 +198,22 @@
 				3FB04DB01DB3D33600348CBA /* MenuDetailViewController.swift */,
 			);
 			name = MenuDetail;
+			sourceTree = "<group>";
+		};
+		3FB04DBE1DB4171100348CBA /* ConnectionError */ = {
+			isa = PBXGroup;
+			children = (
+				3FB04DBF1DB4173A00348CBA /* ConnectionErrorRouter.swift */,
+			);
+			name = ConnectionError;
+			sourceTree = "<group>";
+		};
+		3FE3DEBD1DB532DE0090EC18 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3FE3DEBE1DB533080090EC18 /* NetworkRouter.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		489574382BAEF31EB7A6121D /* Pods */ = {
@@ -341,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F0004151DAE94880072D529 /* LocationsViewController.swift in Sources */,
+				3FB04DC01DB4173A00348CBA /* ConnectionErrorRouter.swift in Sources */,
 				3F00041A1DAE97600072D529 /* Menu.swift in Sources */,
 				3F00041C1DAE97EE0072D529 /* LocationsInteractor.swift in Sources */,
 				3FA833C41DB0036300F9231B /* GroupBy.swift in Sources */,
@@ -353,6 +376,7 @@
 				3FA833BB1DAFFA6B00F9231B /* MenusRouter.swift in Sources */,
 				3F8470251CE4FB2300B6D01E /* Configuration.swift in Sources */,
 				3F0004131DAE919A0072D529 /* LocationsPresenter.swift in Sources */,
+				3FE3DEBF1DB533080090EC18 /* NetworkRouter.swift in Sources */,
 				3F0004191DAE97600072D529 /* Location.swift in Sources */,
 				3FA833C11DAFFFC800F9231B /* MenusInteractor.swift in Sources */,
 			);

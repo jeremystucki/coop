@@ -15,6 +15,8 @@ class MenuDetailRouter {
 
     init(forMenu menu: Menu) {
         viewController = MenuDetailViewController(forMenu: menu)
+
+        viewController.title = menu.title
     }
 
 }

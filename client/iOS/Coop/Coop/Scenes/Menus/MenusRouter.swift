@@ -9,9 +9,15 @@
 import UIKit
 
 
-class MenusRouter {
+protocol MenusRouterOutput: NetworkRouterOutput {
+
+}
+
+
+class MenusRouter: NetworkRouter {
 
     let viewController: UIViewController
+    let presenter: NetworkRouterOutput    // TODO: figure out why MenusRouterOutput does not work here
 
     init(forLocation location: Location) {
         let viewController = MenusViewController()
@@ -26,6 +32,7 @@ class MenusRouter {
         presenter.viewController = viewController
         presenter.interactor = interactor
 
+        self.presenter = presenter
         self.viewController = viewController
 
         presenter.router = self

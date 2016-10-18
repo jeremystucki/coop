@@ -9,9 +9,15 @@
 import UIKit
 
 
-class LocationsRouter {
+protocol LocationsRouterOutput: NetworkRouterOutput {
+
+}
+
+
+class LocationsRouter: NetworkRouter {
 
     let viewController: UIViewController
+    let presenter: NetworkRouterOutput    // TODO: figure out why LocationsRouterOutput does not work here
 
     init() {
         let viewController = LocationsViewController()
@@ -26,6 +32,7 @@ class LocationsRouter {
         presenter.viewController = viewController
         presenter.interactor = interactor
 
+        self.presenter = presenter
         self.viewController = viewController
 
         presenter.router = self
