@@ -20,12 +20,16 @@ class ConnectionErrorRouter {
     let output: ConnectionErrorRouterOutput
 
     init(output: ConnectionErrorRouterOutput) {
-        let alert = UIAlertController(title: "Connection error", message: "Make sure you are connected to the internet.", preferredStyle: .alert)
+        let alert = UIAlertController(
+            title: NSLocalizedString("Connection error", comment: ""),
+            message: NSLocalizedString("Make sure you are connected to the internet.", comment: ""),
+            preferredStyle: .alert
+        )
 
         self.output = output
         self.viewController = alert
 
-        alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { (action) in self.output.retryPressed() } ))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: .default, handler: { (action) in self.output.retryPressed() } ))
     }
 
     func retryPressed() {

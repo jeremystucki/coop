@@ -74,10 +74,10 @@ class LocationsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 && hasFavorites {
-            return "Favorites"
+            return NSLocalizedString("Favorites", comment: "")
         }
 
-        return hasFavorites ? "All" : nil
+        return hasFavorites ? NSLocalizedString("All", comment: "") : nil
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

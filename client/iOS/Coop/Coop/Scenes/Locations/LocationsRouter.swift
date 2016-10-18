@@ -24,7 +24,7 @@ class LocationsRouter: NetworkRouter {
         let interactor = LocationsInteractor()
         let presenter = LocationsPresenter()
 
-        viewController.title = "Locations"
+        viewController.title = NSLocalizedString("Locations", comment: "")
 
         interactor.presenter = presenter
         viewController.presenter = presenter
