@@ -6,9 +6,9 @@
   Copyright © 2016 Jeremy Stucki. All rights reserved.
 */
 
-"Locations" = "Ortschaften";
-"Fetching locations" = "Lade Orte";
-"Could not load locations" = "Orte konnten nicht geladen werden";
-"Make sure that you are connected to the internet." = "Stellen Sie sicher, dass Sie mit dem Internet verbunden sind.";
+"Locations" = "Standorte";
+"Favorites" = "Favoriten";
+"All" = "Alle";
+"Connection error" = "Verbindungsfehler";
+"Make sure you are connected to the internet." = "Stellen Sie sicher, dass Sie mit dem Internet verbunden sind.";
 "Retry" = "Erneut versuchen";
-"Ok" = "Ok";

@@ -2,80 +2,102 @@
 //  MenusViewController.swift
 //  Coop
 //
-//  Created by Jeremy Stucki on 14/05/16.
+//  Created by Jeremy Stucki on 13.10.16.
 //  Copyright © 2016 Jeremy Stucki. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class MenusViewController: UIViewController, MenusViewPresenterOutput, MenusTableViewOutput {
 
-    private var output: MenusViewControllerOutput!
-    private let location: Location
-    private var menus: [(Date, [Menu])]?
-    
-    private var tableView: UITableView!
-    private var tableViewDelegate: UITableViewDelegate?
-    private var tableViewDataSource: UITableViewDataSource?
+protocol MenusViewControllerInput {
+    func showEmptyStar()
+    func showFullStar()
+    func displayMenus(_ menus: [(Date, [Menu])])
+}
 
-    func setOutput(_ output: MenusViewControllerOutput) {
-        navigationItem.title = location.name
-        self.output = output
+
+protocol MenusViewControllerOutput {
+    func starClicked()
+    func showMenuDetails(forMenu menu: Menu)
+    func viewInitialized()
+}
+
+
+class MenusViewController: UITableViewController {
+
+    var presenter: MenusViewControllerOutput!
+
+    fileprivate var menus = [(Date, [Menu])]()
+
+    init() {
+        super.init(style: .grouped)
     }
 
-    init(location: Location) {
-        self.location = location
-        super.init(nibName: nil, bundle: nil)
+    convenience required init?(coder aDecoder: NSCoder) {
+        self.init()
     }
 
-    override func loadView() {
-        super.loadView()
-
-        tableView = UITableView(frame: view.frame, style: .grouped)
-        view.addSubview(tableView)
-
-        if menus == nil {
-            output.fetchMenus(forLocation: location)
-        }
+    override func viewDidLoad() {
+        presenter.viewInitialized()
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        tableView.frame = view.frame
-        
-        var insets = tableView.contentInset
-        insets.top = navigationController!.navigationBar.bounds.size.height + UIApplication.shared.statusBarFrame.size.height
-        tableView.contentInset = insets
-        tableView.scrollIndicatorInsets = insets
-        
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return menus.count
     }
-    
-    func showMenus(_ menus: [(Date, [Menu])]) {
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let format = DateFormatter()
+        format.dateFormat = "EEEE"
+
+        return format.string(from: menus[section].0)
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menus[section].1.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let menu = menus[indexPath.section].1[indexPath.row]
+
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
+        cell.textLabel?.text = menu.title
+        cell.detailTextLabel?.text = "CHF " + String(format: "%.2f", menu.price)
+        cell.accessoryType = .disclosureIndicator
+
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.showMenuDetails(forMenu: menus[indexPath.section].1[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    func starClicked() {
+        presenter.starClicked()
+    }
+
+    fileprivate func showBarButtonImage(_ image: UIImage) {
+        let button = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(MenusViewController.starClicked))
+        navigationItem.setRightBarButton(button, animated: true)
+    }
+
+}
+
+
+extension MenusViewController: MenusViewControllerInput {
+
+    func showEmptyStar() {
+        showBarButtonImage(UIImage(named: "empty star")!.withRenderingMode(.alwaysOriginal))
+    }
+
+    func showFullStar() {
+        showBarButtonImage(UIImage(named: "full star")!.withRenderingMode(.alwaysOriginal))
+    }
+
+    func displayMenus(_ menus: [(Date, [Menu])]) {
         self.menus = menus
-        
-        tableViewDelegate = MenusTableViewDelegate(menus: menus, output: self)
-        tableViewDataSource = MenusTableViewDataSource(menus: menus)
-        
-        tableView.delegate = tableViewDelegate
-        tableView.dataSource = tableViewDataSource
-        
         tableView.reloadData()
     }
-    
-    func didSelectMenu(_ menu: Menu) {
-        let viewController = ViewControllerFactory.createMenuDetailViewController(menu)
-        
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            navigationController?.pushViewController(viewController, animated: true)
-        }
-        
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            splitViewController?.showDetailViewController(viewController, sender: self)
-        }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
 }
