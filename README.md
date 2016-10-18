@@ -1,22 +1,7 @@
 # Coop
 
 ## Supported locations
-- Aarau
-- Altdorf
-- Baden
-- Egerkingen
-- Emmenbrücke
-- Frick
-- Herzogenbuchsee
-- Langenthal
-- Lenzburg
-- Luzern
-- Möhlin
-- Olten
-- Sarnen
-- Stans
-- Wettingen
-- Zofingen
+- All
 
 
 ## Clients
@@ -24,6 +9,9 @@
 ### Installation on iOS
 The app is available from the [AppStore](https://appsto.re/ch/EAI0cb.i).
 
+
+### Installation on SailfishOS
+The app is now available on your Jolla App Store.
 
 
 ### Installation on OSX

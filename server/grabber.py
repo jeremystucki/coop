@@ -39,6 +39,7 @@ def get_data_for_restaurant(restaurant_id, name):
             price = price_tag[0]
 
             menus.append({
+                'location_id': int(restaurant_id),
                 'location': name,
                 'location_lower': name.lower(),
                 'menu': menu,
