@@ -6,9 +6,6 @@
 //  Copyright © 2016 Jeremy Stucki. All rights reserved.
 //
 
-import UIKit
-
-
 class LocationsPresenter {
 
     var viewController: LocationsViewControllerInput!
