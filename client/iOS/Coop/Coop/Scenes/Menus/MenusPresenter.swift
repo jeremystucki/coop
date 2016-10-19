@@ -47,13 +47,7 @@ extension MenusPresenter: MenusViewControllerOutput {
 extension MenusPresenter: MenusInteractorOutput {
 
     func menusFetched(_ menus: [Menu]) {
-        let sortedMenus = menus.sorted(by: {
-            if $0.title.lowercased() == $1.title.lowercased() {
-                return $0.price < $1.price
-            }
-
-            return $0.title.lowercased() < $1.title.lowercased()
-        })
+        let sortedMenus = menus.sorted()
 
         viewController.displayMenus(sortedMenus.categorise({ $0.date }).sorted(by: { $0.key < $1.key }))
     }
