@@ -1,0 +1,18 @@
+devices([
+  "iPhone 4s",
+  "iPhone 6",
+  "iPhone 6 Plus",
+  "iPhone 5",
+  "iPad Pro (9.7 inch)"
+])
+
+languages([
+  "en-US",
+  "de-CH",
+])
+
+launch_arguments([
+  "--erase_simulator",
+  "--localize_simulator"
+])
+
