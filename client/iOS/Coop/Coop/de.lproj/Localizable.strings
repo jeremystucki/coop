@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  Coop
+
+  Created by Jeremy Stucki on 14/05/16.
+  Copyright © 2016 Jeremy Stucki. All rights reserved.
+*/
+
+"Locations" = "Standorte";
+"Favorites" = "Favoriten";
+"All" = "Alle";
+"Connection error" = "Verbindungsfehler";
+"Make sure you are connected to the internet." = "Stellen Sie sicher, dass Sie mit dem Internet verbunden sind.";
+"Retry" = "Erneut versuchen";
