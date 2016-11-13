@@ -6,7 +6,7 @@ from flask import Flask, Response
 
 app = Flask(__name__)
 
-db = pymongo.MongoClient().get_database('coop')
+db = pymongo.MongoClient('mongodb').get_database('coop')
 
 
 @app.route('/api/v1/coop/menus')
@@ -141,4 +141,5 @@ def not_found(_):
 
 
 if __name__ == '__main__':
-    app.run('localhost', 8888)
+    app.run('0.0.0.0', '80')
+

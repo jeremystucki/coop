@@ -6,7 +6,7 @@ import requests
 import yaml
 from bs4 import BeautifulSoup
 
-db = pymongo.MongoClient().get_database('coop')
+db = pymongo.MongoClient('mongodb').get_database('coop')
 menus = []
 
 
@@ -68,3 +68,4 @@ if db.get_collection('menu_stats').find_one({'timestamp': most_recent_timestamp}
     db.get_collection('menu_stats').insert_many(stats)
 
 db.get_collection('menu_stats').create_index([('location_lower', pymongo.ASCENDING), ('timestamp', pymongo.ASCENDING)])
+

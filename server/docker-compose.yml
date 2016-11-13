@@ -1,0 +1,24 @@
+version: '2'
+services:
+  mongodb:
+    image: mongo
+    expose:
+      - 27017
+    networks:
+      coop-old:
+        aliases: [mongodb]
+  coop-api-old:
+    build: api
+    depends_on: [mongodb]
+    expose:
+      - 80
+    networks:
+      coop-old: {}
+      server_nginx:
+        aliases: [coop-api-old]
+networks:
+  coop-old:
+    driver: bridge
+  server_nginx:
+    external: true
+

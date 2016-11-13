@@ -1,0 +1,5 @@
+pymongo
+requests
+beautifulsoup4
+pyaml
+

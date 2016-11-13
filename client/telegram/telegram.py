@@ -1,19 +1,17 @@
 import datetime
-
+import requests
 import telepot
 import time
-import pymongo
 
 
 # TODO refactor
 
-bot = telepot.Bot('key')
-collection = pymongo.MongoClient().get_database('coop').get_collection('menus')
+bot = telepot.Bot('<key>')
 
 
 def unix_time(dt):
     epoch = datetime.datetime.utcfromtimestamp(0)
-    return int((dt - epoch).total_seconds()) - 7200
+    return int((dt - epoch).total_seconds())
 
 
 def handle(message):
@@ -28,9 +26,12 @@ def handle(message):
     location = message['text'][7:]
 
     current_day = unix_time(datetime.datetime.combine(datetime.datetime.now().date(), datetime.time()))
-    menus = collection.find({'location_lower': location.lower(), 'timestamp': current_day})
 
-    if menus.count() == 0:
+    print(current_day)
+
+    menus = requests.get('https://themachine.jeremystucki.com/api/v1/coop/menus/{}/{}'.format(location, current_day)).json()['results']
+
+    if not menus:
         return bot.sendMessage(sender, 'Sorry, I did not find any menus for {} today'.format(location))
 
     response = ''
