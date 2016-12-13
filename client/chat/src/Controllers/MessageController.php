@@ -40,8 +40,7 @@ namespace Coop\Chat\Controllers
             try {
                 $command = $this->bot->getCommand($this->getRequestString($request));
             } catch (\InvalidArgumentException $e) {
-                // @todo error
-                return;
+                return $this->bot->formatErrorMessage('Unknown Command or some shit');
             }
 
             try {
