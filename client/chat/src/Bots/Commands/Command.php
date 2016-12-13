@@ -1,9 +1,8 @@
 <?php
 
-
-namespace Coop\Chat\Bots\Message
+namespace Coop\Chat\Bots\Commands
 {
-    interface Message
+    interface Command
     {
         public function __toString(): string;
     }

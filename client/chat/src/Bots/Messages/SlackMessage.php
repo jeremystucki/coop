@@ -5,7 +5,7 @@ namespace Coop\Chat\Bots\Message
     class SlackMessage implements Message
     {
 
-        public function __toString()
+        public function __toString(): string
         {
             return '';
         }

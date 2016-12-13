@@ -5,22 +5,12 @@ namespace Coop\Chat\Controllers
 
     use Coop\Chat\Http\Request;
 
-    class TelegramController extends AbstractController
+    class TelegramController extends MessageController
     {
 
-        protected function isMenuRequest(Request $request): bool
+        protected function getRequestString(Request $request): string
         {
-            return true;
-        }
-
-        protected function doExecute(Request $request): string
-        {
-            // TODO: Implement doExecute() method.
-        }
-
-        protected function getLocation(Request $request): string
-        {
-            // TODO: Implement getLocation() method.
+            return $request->getParameter('text');
         }
     }
 }
