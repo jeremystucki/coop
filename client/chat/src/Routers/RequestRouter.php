@@ -17,6 +17,8 @@ namespace Coop\Chat\Routers
                 case '/slack':
                     return new SlackController();
             }
+
+            throw new \RuntimeException('Unknown Path');
         }
     }
 }

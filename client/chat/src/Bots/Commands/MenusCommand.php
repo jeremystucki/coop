@@ -14,11 +14,6 @@ namespace Coop\Chat\Bots\Commands
             $this->location = $location;
         }
 
-        public function __toString(): string
-        {
-            return 'menus';
-        }
-
         public function getLocation(): string
         {
             return $this->location;

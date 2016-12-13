@@ -40,16 +40,15 @@ namespace Coop\Chat\Controllers
             try {
                 $command = $this->bot->getCommand($this->getRequestString($request));
             } catch (\InvalidArgumentException $e) {
-                return $this->bot->formatErrorMessage('Unknown Command or some shit');
+                return $this->bot->formatErrorMessage('Sorry, I don\'t understand . Please use the "/menus LOCATION" syntax .');
             }
 
             try {
                 $message = $this->bot->formatMessage($this->getResponse($command));
             } catch (NoMenusException $e) {
-                // @todo error message for slack
-                return;
+                return $this->bot->formatErrorMessage('Sorry, I did not find any menus for ' . $command->getLocation() . ' today');
             } catch (\Throwable $e) {
-                return;
+                return $this->bot->formatErrorMessage('Shit has really hit the fan');
             }
 
             return $message;
@@ -59,10 +58,10 @@ namespace Coop\Chat\Controllers
 
         private function getResponse(Command $command): string
         {
-            switch ((string) $command) {
-                case 'start':
+            switch (get_class($command)) {
+                case \Coop\Chat\Bots\Commands\StartCommand::class:
                     return 'Hi, I can look up the menu plan of a coop restaurant for you. Just send me "/menus LOCATION" and I will look it up.';
-                case 'menus':
+                case \Coop\Chat\Bots\Commands\MenusCommand::class:
                     return $this->getMenu($command->getLocation());
             }
 
@@ -72,11 +71,12 @@ namespace Coop\Chat\Controllers
         private function getMenu(string $location): string
         {
             $result = $this->api->getMenus($location, new \DateTime);
-            if (empty($result)) {
-                throw new NoMenusException;
+
+            if (!empty($result)) {
+                return $this->formatter->format($result);
             }
 
-            return $this->formatter->format($result);
+            throw new NoMenusException;
         }
     }
 }
