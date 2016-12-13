@@ -2,8 +2,11 @@
 
 namespace Coop\Chat\Bots
 {
+
+    use Coop\Chat\Bots\Message\Message;
+
     interface Bot
     {
-        public function reply(string $message);
+        public function formatMessage(string $message): Message;
     }
 }

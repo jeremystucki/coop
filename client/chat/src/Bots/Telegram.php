@@ -2,12 +2,15 @@
 
 namespace Coop\Chat\Bots
 {
+
+    use Coop\Chat\Bots\Message\Message;
+    use Coop\Chat\Bots\Message\TelegramMessage;
+
     class Telegram implements Bot
     {
-
-        public function reply(string $message)
+        public function formatMessage(string $message): Message
         {
-            // TODO: Implement reply() method.
+            return new TelegramMessage;
         }
     }
 }
