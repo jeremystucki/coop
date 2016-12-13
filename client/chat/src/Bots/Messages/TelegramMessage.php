@@ -5,9 +5,9 @@ namespace Coop\Chat\Bots\Message
     class TelegramMessage implements Message
     {
 
-        public function __toString(): string
+        public function jsonSerialize(): array
         {
-            return '';
+            return [];
         }
     }
 }

@@ -7,6 +7,7 @@ namespace Coop\Chat\Controllers
     use Coop\Chat\Bots\Bot;
     use Coop\Chat\Bots\Commands\Command;
     use Coop\Chat\Bots\Message\Message;
+    use Coop\Chat\Exceptions\NoMenusException;
     use Coop\Chat\Formatters\MenusFormatter;
     use Coop\Chat\Http\Request;
 
@@ -36,14 +37,21 @@ namespace Coop\Chat\Controllers
 
         public function execute(Request $request): Message
         {
-            $command = $this->bot->getCommand($this->getRequestString($request));
             try {
-
-            } catch (\Throwable $e) {
-                // @todo catch getResponse incase a location doesn't exist, then we can return a new message that can be of error type for slack
+                $command = $this->bot->getCommand($this->getRequestString($request));
+            } catch (\InvalidArgumentException $e) {
+                // @todo error
+                return;
             }
 
-            $message = $this->bot->formatMessage($this->getResponse($command));
+            try {
+                $message = $this->bot->formatMessage($this->getResponse($command));
+            } catch (NoMenusException $e) {
+                // @todo error message for slack
+                return;
+            } catch (\Throwable $e) {
+                return;
+            }
 
             return $message;
         }
@@ -54,12 +62,22 @@ namespace Coop\Chat\Controllers
         {
             switch ((string) $command) {
                 case 'start':
-                    return '';
+                    return 'Hi, I can look up the menu plan of a coop restaurant for you. Just send me "/menus LOCATION" and I will look it up.';
                 case 'menus':
-                    return $this->formatter->format($this->api->getMenus($command->getLocation(), new \DateTime));
+                    return $this->getMenu($command->getLocation());
             }
 
             throw new \InvalidArgumentException('Unknown Command "' . $command . '" ');
+        }
+
+        private function getMenu(string $location): string
+        {
+            $result = $this->api->getMenus($location, new \DateTime);
+            if (empty($result)) {
+                throw new NoMenusException;
+            }
+
+            return $this->formatter->format($result);
         }
     }
 }

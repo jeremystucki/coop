@@ -3,8 +3,8 @@
 
 namespace Coop\Chat\Bots\Message
 {
-    interface Message
+    interface Message extends \JsonSerializable
     {
-        public function __toString(): string;
+
     }
 }
