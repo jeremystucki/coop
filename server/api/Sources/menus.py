@@ -17,7 +17,7 @@ class MenusDAO:
         }
 
         if timestamp is not None:
-            query['timestamp'] = datetime.date.fromtimestamp(timestamp)
+            query['timestamp'] = timestamp
         else:
             projection['timestamp'] = 1
 

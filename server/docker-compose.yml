@@ -22,4 +22,3 @@ networks:
     driver: bridge
   server_nginx:
     external: true
-

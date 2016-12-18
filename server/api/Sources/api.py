@@ -1,7 +1,9 @@
 import json
+from datetime import datetime, time, date
 
 import flask
 import pymongo
+import pytz
 from flask import Flask
 
 from locations import LocationsDAO
@@ -73,6 +75,10 @@ def get_menus(id: str, timestamp: str = None):
 
     if timestamp is None and 'timestamp' in args:
         timestamp = args['timestamp']
+
+    if timestamp == 'today':
+        date = datetime.now(tz=pytz.utc).replace(hour=0, minute=0, microsecond=0)
+        timestamp = date.timestamp()
 
     if timestamp is not None:
         try:

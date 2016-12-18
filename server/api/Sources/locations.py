@@ -12,8 +12,7 @@ class LocationsDAO:
         }, {
             'address': 1,
             'coordinates': 1,
-            'name': 1,
-            'open': 1
+            'name': 1
         })
 
     def get_locations(self, search_text: str = '', limit: int = None) -> list:
@@ -22,12 +21,11 @@ class LocationsDAO:
             '_id': 1,
             'address': 1,
             'coordinates': 1,
-            'name': 1,
-            'open': 1
+            'name': 1
         }
 
         if search_text != '':
-            query['$text'] = {'$search': search_text},
+            query['$text'] = {'$search': search_text}
 
         cursor = self.collection.find(query, projection)
 
