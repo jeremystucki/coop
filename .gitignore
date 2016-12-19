@@ -346,4 +346,4 @@ fastlane/screenshots
 fastlane/test_output
 
 screenshots/
-
+.idea
