@@ -16,23 +16,24 @@ locationsDAO = LocationsDAO(db.get_collection('locations'))
 menusDAO = MenusDAO(db.get_collection('menus'))
 
 
-@app.route('/coop/api/v2/locations')
 @app.route('/coop/api/v2/locations/<id>')
-def get_locations(id: str = None):
+def get_locations_by_id(id: str = None):
+    try:
+        location_id = int(id)
+        location = locationsDAO.get_location(location_id)
+
+        if location is None:
+            return flask.Response(json.dumps({'error': 'no location found'}), status=404, mimetype='application/json')
+
+        return flask.jsonify(location)
+    except Exception:
+        return flask.Response(json.dumps({'error': 'id must be an integer'}), status=400, mimetype='application/json')
+
+
+@app.route('/coop/api/v2/locations')
+def get_locations():
     args = flask.request.args
-    location_id, longitude, latitude, query, limit = (None,)*5
-
-    if 'id' in args:
-        try:
-            location_id = int(args['id'])
-        except Exception:
-            return flask.Response(json.dumps({'error': 'id must be an integer'}), status=400, mimetype='application/json')
-
-    if id is not None:
-        try:
-            location_id = int(id)
-        except Exception:
-            return flask.Response(json.dumps({'error': 'id must be an integer'}), status=400, mimetype='application/json')
+    longitude, latitude, query, limit = (None,)*4
 
     if 'limit' in args:
         try:
@@ -52,10 +53,7 @@ def get_locations(id: str = None):
 
     query = args['query'] if 'query' in args else ''
 
-    if location_id:
-        location = locationsDAO.get_location(location_id)
-        data = [location] if location is not None else []
-    elif longitude and latitude:
+    if longitude and latitude:
         data = locationsDAO.get_locations_with_coordinates(longitude=longitude, latitude=latitude, limit=limit)
     else:
         data = locationsDAO.get_locations(search_text=query, limit=limit)

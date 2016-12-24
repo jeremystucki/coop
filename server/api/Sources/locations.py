@@ -30,9 +30,14 @@ class LocationsDAO:
         cursor = self.collection.find(query, projection)
 
         if limit is None:
-            return list(cursor)
+            data = list(cursor)
+        else:
+            data = list(cursor.limit(limit))
 
-        return list(cursor.limit(limit))
+        for result in data:
+            result['id'] = result.pop('_id')
+
+        return data
 
     def get_locations_with_coordinates(self, longitude: float, latitude: float, limit: int = None) -> list:
         pipeline = [
@@ -47,7 +52,8 @@ class LocationsDAO:
                 }
             }, {
                 '$project': {
-                    '_id': 1,
+                    '_id': 0,
+                    'id': '$_id',
                     'address': 1,
                     'name': 1,
                     'open': 1,
