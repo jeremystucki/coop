@@ -7,13 +7,18 @@ class LocationsDAO:
 
     # noinspection PyShadowingBuiltins
     def get_location(self, id: int):
-        return self.collection.find_one({
+        location = self.collection.find_one({
             '_id': id
         }, {
+            '_id': 1,
             'address': 1,
             'coordinates': 1,
             'name': 1
         })
+
+        if location is not None:
+            location['id'] = location.pop('_id')
+            return location
 
     def get_locations(self, search_text: str = '', limit: int = None) -> list:
         query = {}
