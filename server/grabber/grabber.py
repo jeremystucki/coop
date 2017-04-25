@@ -2,6 +2,7 @@ import datetime
 import json
 import re
 import threading
+from time import sleep
 
 import pymongo
 import requests
@@ -43,7 +44,7 @@ db.get_collection('locations').ensure_index([('last_updated', 1)], expireAfterSe
 
 
 # noinspection PyShadowingNames
-def getMenusForData(response: requests.Response, location_id: int, next_week: bool):
+def get_menus_for_data(response: requests.Response, location_id: int, next_week: bool):
     dom = BeautifulSoup(response.text, 'html.parser')
 
     menus = []
@@ -88,32 +89,35 @@ def get_menus_for_location(location_id):
 
     response = requests.get('http://www.coop.ch/pb/site/restaurant/node/73195219/Lde/index.html', headers=headers)
     if response.status_code == 200:
-        getMenusForData(response, location_id, next_week=False)
+        get_menus_for_data(response, location_id, next_week=False)
 
-    response = requests.get('http://www.coop.ch/pb/site/restaurant/node/73195219/Lde/index.html?nextWeek=true', headers=headers)
-    if response.status_code == 200:
-        getMenusForData(response, location_id, next_week=True)
+    # response = requests.get('http://www.coop.ch/pb/site/restaurant/node/73195219/Lde/index.html?nextWeek=true', headers=headers)
+    # if response.status_code == 200:
+    #     getMenusForData(response, location_id, next_week=True)
 
 
-tasks = []
+# tasks = []
 
 for location in list(db.get_collection('locations').find()):
     print('Fetching ' + location['name'])
 
-    tasks.append(threading.Thread(target=get_menus_for_location, args=(location['_id'],)))
+    get_menus_for_location(location['_id'])
+    sleep(5)
 
-    if len(tasks) > 15:
-        for thread in tasks:
-            thread.start()
-        for thread in tasks:
-            thread.join()
-
-        tasks = []
-
-for thread in tasks:
-    thread.start()
-for thread in tasks:
-    thread.join()
+#     tasks.append(threading.Thread(target=get_menus_for_location, args=(location['_id'],)))
+#
+#     if len(tasks) > 15:
+#         for thread in tasks:
+#             thread.start()
+#         for thread in tasks:
+#             thread.join()
+#
+#         tasks = []
+#
+# for thread in tasks:
+#     thread.start()
+# for thread in tasks:
+#     thread.join()
 
 db.get_collection('menus_temp').create_index([('location_id', pymongo.ASCENDING), ('timestamp', pymongo.ASCENDING)])
 db.get_collection('menus_temp').rename('menus', dropTarget=True)
