@@ -25,7 +25,7 @@ class MenusInteractor: MenusInteractorInput {
 
     var presenter: MenusInteractorOutput!
     var location: Location
-    private let url = Configuration.baseUrl.appendingPathComponent("menus")
+    private let url = Configuration.baseUrl.appendingPathComponent("locations")
 
     init(forLocation location: Location) {
         self.location = location
@@ -33,7 +33,7 @@ class MenusInteractor: MenusInteractorInput {
 
     func fetchMenus() {
 
-        Alamofire.request(url.appendingPathComponent(location.name)).responseJSON { response in
+        Alamofire.request(url.appendingPathComponent(String(location.id)).appendingPathComponent("menus")).responseJSON { response in
 
             var menus = [Menu]()
 

@@ -11,7 +11,7 @@ import Alamofire
 
 protocol LocationsInteractorInput {
     func fetchLocations()
-    func fetchFavoriteLocations()
+    func fetchFavoriteLocations(allLocations locations: [Location])
 }
 
 
@@ -28,7 +28,6 @@ class LocationsInteractor: LocationsInteractorInput {
     private let url = Configuration.baseUrl.appendingPathComponent("locations")
 
     func fetchLocations() {
-
         Alamofire.request(url).responseJSON { response in
 
             var locations = [Location]()
@@ -37,18 +36,22 @@ class LocationsInteractor: LocationsInteractorInput {
                 return self.presenter.connectionErrorOccured()
             }
 
-            for locationName in (response.result.value! as! NSDictionary)["results"] as! NSArray {
-                locations.append(Location(name: locationName as! String))
+            for location in (response.result.value! as! NSDictionary)["results"] as! [NSDictionary] {
+                let name = location["name"] as! String
+                let id = location["id"] as! Int
+                locations.append(Location(name: name, id: id))
             }
 
             self.presenter.locationsFetched(locations)
         }
     }
 
-    func fetchFavoriteLocations() {
+    func fetchFavoriteLocations(allLocations locations: [Location]) {
         var favoriteLocations = [Location]()
         for locationName in Configuration.favoriteLocations {
-            favoriteLocations.append(Location(name: locationName))
+            if let location = locations.first(where: { $0.name == locationName }) {
+                favoriteLocations.append(location)
+            }
         }
 
         presenter.favoriteLocationsFetched(favoriteLocations)

@@ -14,18 +14,19 @@ class LocationsPresenter {
 
     var router: LocationsRouter!
 
+    var locations = [Location]()
+
 }
 
 
 extension LocationsPresenter: LocationsViewControllerOutput {
 
     func viewInitialized() {
-        interactor.fetchFavoriteLocations()
         interactor.fetchLocations()
     }
 
     func viewWillBecomeVisible() {
-        interactor.fetchFavoriteLocations()
+        interactor.fetchFavoriteLocations(allLocations: locations)
     }
 
     func showMenus(forLocation location: Location) {
@@ -38,6 +39,9 @@ extension LocationsPresenter: LocationsViewControllerOutput {
 extension LocationsPresenter: LocationsInteractorOutput {
 
     func locationsFetched(_ locations: [Location]) {
+        self.locations = locations
+
+        interactor.fetchFavoriteLocations(allLocations: locations)
         viewController.displayLocations(locations.sorted())
     }
 
