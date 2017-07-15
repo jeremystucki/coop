@@ -128,7 +128,7 @@ for location in list(db.get_collection('locations').find()):
 
 old_menus = db.get_collection('menus').find({'timestamp': {'$lt': timestamp}})
 
-if len(old_menus) > 0:
+if len(list(old_menus)) > 0:
     db.get_collection('menus_history').insert(old_menus)
 
 db.get_collection('menus_history').ensure_index([('location_id', pymongo.ASCENDING)])
