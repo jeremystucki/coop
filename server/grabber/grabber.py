@@ -1,7 +1,6 @@
 import datetime
 import json
 import re
-import threading
 from time import sleep
 
 import pymongo
@@ -10,7 +9,7 @@ import requests
 from bs4 import BeautifulSoup
 
 url = 'http://www.coop.ch/de/services/standorte-und-oeffnungszeiten.getvstlist.json?lat=47.0547336&lng=8.2122653&start=1&end=1000&filterFormat=restaurant&filterAttribute=&gasIndex=0'
-db = pymongo.MongoClient('mongodb').get_database('coop')
+db = pymongo.MongoClient().get_database('coop')
 
 response = requests.get(url)
 data = json.loads(response.text)
@@ -35,12 +34,20 @@ for restaurant in data['vstList']:
     }
 
     db.get_collection('locations').update({'_id': db_objc['_id']}, {'$set': db_objc}, upsert=True)
+    db.get_collection('locations_history').update({'_id': db_objc['_id']}, {'$set': db_objc}, upsert=True)
 
 db.get_collection('locations').update({'last_updated': {'$ne': timestamp}}, {'$set': {'open': False}})
-db.get_collection('locations').ensure_index([('coordinates', '2dsphere'), ('open', pymongo.ASCENDING)])
-db.get_collection('locations').ensure_index([('name', pymongo.TEXT)], default_language='german')
 db.get_collection('locations').ensure_index([('open', pymongo.ASCENDING)])
 db.get_collection('locations').ensure_index([('last_updated', 1)], expireAfterSeconds=1209600)  # two weeks
+
+db.get_collection('locations').ensure_index([('coordinates', '2dsphere'), ('open', pymongo.ASCENDING)])
+db.get_collection('locations_history').ensure_index([('coordinates', '2dsphere'), ('open', pymongo.ASCENDING)])
+
+db.get_collection('locations').ensure_index([('name', pymongo.TEXT)], default_language='german')
+db.get_collection('locations_history').ensure_index([('name', pymongo.TEXT)], default_language='german')
+
+
+db.get_collection('menus_temp').drop()
 
 
 # noinspection PyShadowingNames
@@ -118,6 +125,10 @@ for location in list(db.get_collection('locations').find()):
 #     thread.start()
 # for thread in tasks:
 #     thread.join()
+
+old_menus = db.get_collection('menus').find({'timestamp': {'$lt': timestamp}})
+db.get_collection('menus_history').insert(old_menus)
+db.get_collection('menus_history').ensure_index([('location_id', pymongo.ASCENDING)])
 
 db.get_collection('menus_temp').create_index([('location_id', pymongo.ASCENDING), ('timestamp', pymongo.ASCENDING)])
 db.get_collection('menus_temp').rename('menus', dropTarget=True)
