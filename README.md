@@ -48,9 +48,9 @@ X | - | _optional_ | Get all locations, sorted by distance
 `GET /coop/api/v2/locations/<id>`
 ```json
 {
+  "id": 2524,
+  "name": "Baden",
   "location": {
-    "id": 2524,
-    "name": "Baden",
     "coordinates": [
       <long>,
       <lat>
