@@ -50,8 +50,13 @@ db.get_collection('locations_history').ensure_index([('name', pymongo.TEXT)], de
 db.get_collection('menus_temp').drop()
 
 
+all_weekdays = []
+
+
 # noinspection PyShadowingNames
 def get_menus_for_data(response: requests.Response, location_id: int, next_week: bool):
+    global all_weekdays
+
     dom = BeautifulSoup(response.text, 'html.parser')
 
     menus = []
@@ -64,6 +69,8 @@ def get_menus_for_data(response: requests.Response, location_id: int, next_week:
             weekdays.append((date + datetime.timedelta(weeks=1)).timestamp())
         else:
             weekdays.append(date.timestamp())
+
+    all_weekdays += weekdays
 
     for index, table in enumerate(dom.find_all('table', {'class': 'outer'})):
         for row in table.find_all('tr', recursive=False):
@@ -126,7 +133,7 @@ for location in list(db.get_collection('locations').find()):
 # for thread in tasks:
 #     thread.join()
 
-old_menus = db.get_collection('menus').find({'timestamp': {'$lt': timestamp}})
+old_menus = db.get_collection('menus').find({'timestamp': {'$lt': min(all_weekdays)}})
 
 if len(list(old_menus)) > 0:
     db.get_collection('menus_history').insert(old_menus)
