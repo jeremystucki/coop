@@ -1,5 +1,5 @@
 import json
-from datetime import datetime, time, date
+from datetime import datetime
 
 import flask
 import pymongo
@@ -11,12 +11,13 @@ from menus import MenusDAO
 
 app = Flask(__name__)
 
-db = pymongo.MongoClient('mongodb').get_database('coop')
+db = pymongo.MongoClient().get_database('coop')
 locationsDAO = LocationsDAO(db.get_collection('locations'))
 menusDAO = MenusDAO(db.get_collection('menus'))
 
 
 @app.route('/coop/api/v2/locations/<id>')
+@app.route('/coop/api/v2/restaurants/<id>')
 def get_locations_by_id(id: str = None):
     try:
         location_id = int(id)
@@ -31,6 +32,7 @@ def get_locations_by_id(id: str = None):
 
 
 @app.route('/coop/api/v2/locations')
+@app.route('/coop/api/v2/restaurants')
 def get_locations():
     args = flask.request.args
     longitude, latitude, query, limit = (None,)*4
@@ -63,6 +65,8 @@ def get_locations():
 
 @app.route('/coop/api/v2/locations/<id>/menus')
 @app.route('/coop/api/v2/locations/<id>/menus/<timestamp>')
+@app.route('/coop/api/v2/restaurants/<id>/menus')
+@app.route('/coop/api/v2/restaurants/<id>/menus/<timestamp>')
 def get_menus(id: str, timestamp: str = None):
     args = flask.request.args
 
