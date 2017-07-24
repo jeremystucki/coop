@@ -79,7 +79,7 @@ def get_menus(id: str, timestamp: str = None):
         timestamp = args['timestamp']
 
     if timestamp == 'today':
-        date = datetime.now(tz=pytz.utc).replace(hour=0, minute=0, microsecond=0)
+        date = datetime.now(tz=pytz.utc).replace(hour=0, minute=0, second=0, microsecond=0)
         timestamp = date.timestamp()
 
     if timestamp is not None:
