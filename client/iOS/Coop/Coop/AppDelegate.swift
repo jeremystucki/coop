@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         let rootViewController = UINavigationController(rootViewController: locationsRouter.viewController)
+        if #available(iOS 11.0, *) {
+            rootViewController.navigationBar.prefersLargeTitles = true
+        }
+
         window = UIWindow(frame: UIScreen.main.bounds)
 
         if UIDevice.current.userInterfaceIdiom == .phone {

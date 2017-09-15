@@ -80,7 +80,7 @@ class MenusViewController: UITableViewController {
 
     fileprivate func showBarButtonImage(_ image: UIImage) {
         let button = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(MenusViewController.starClicked))
-        navigationItem.setRightBarButton(button, animated: true)
+        navigationItem.rightBarButtonItem = button
     }
 
 }

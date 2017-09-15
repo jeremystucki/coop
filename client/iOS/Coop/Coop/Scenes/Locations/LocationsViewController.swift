@@ -63,7 +63,12 @@ class LocationsViewController: UITableViewController {
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
 
-        tableView.tableHeaderView = searchController.searchBar
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+            navigationItem.hidesSearchBarWhenScrolling = false
+        } else {
+            tableView.tableHeaderView = searchController.searchBar
+        }
 
         presenter.viewInitialized()
     }
