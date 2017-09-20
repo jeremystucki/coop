@@ -1,8 +1,9 @@
 import requests
 import telepot
 import time
+import os
 
-bot = telepot.Bot('<key>')
+bot = telepot.Bot(os.environ['TELEGRAM_API_KEY'])
 base_url = 'https://themachine.jeremystucki.com/coop/api/v2'
 
 
@@ -11,7 +12,7 @@ def format_locations(locations: [dict]) -> str:
 
 
 def format_menu(menu: dict) -> str:
-    return '*{}* - _{}_'.format(menu['title'], menu['price']) + '\n'.join(['{}'.format(dish) for dish in menu['menu']])
+    return '*{}* - _{}_\n'.format(menu['title'], menu['price']) + '\n'.join(['{}'.format(dish) for dish in menu['menu']])
 
 
 def format_menus(menus: [dict]) -> str:
@@ -89,6 +90,7 @@ def handle(message: dict):
 
             message = '*Menüs für {}*\n'.format(locations[0]['name'])
             message += format_menus(menus)
+            return bot.sendMessage(sender, message, parse_mode='Markdown')
 
         if len(locations) > 1:
             message = '*Ich habe mehrere Standorte unter diesem Namen gefunden*\n' + format_locations(locations[:4])
