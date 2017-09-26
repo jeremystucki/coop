@@ -126,6 +126,12 @@
       "scale" : "2x"
     },
     {
+      "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "Artboard.png",
+      "scale" : "1x"
+    },
+    {
       "idiom" : "mac",
       "size" : "16x16",
       "scale" : "1x"
@@ -161,9 +167,8 @@
       "scale" : "1x"
     },
     {
-      "size" : "256x256",
       "idiom" : "mac",
-      "filename" : "iTunesArtwork.png",
+      "size" : "256x256",
       "scale" : "2x"
     },
     {
@@ -172,9 +177,8 @@
       "scale" : "1x"
     },
     {
-      "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "iTunesArtwork@2x.png",
+      "size" : "512x512",
       "scale" : "2x"
     }
   ],

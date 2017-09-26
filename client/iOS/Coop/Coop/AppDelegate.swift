@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         let rootViewController = UINavigationController(rootViewController: locationsRouter.viewController)
+        if #available(iOS 11.0, *) {
+            rootViewController.navigationBar.prefersLargeTitles = true
+        }
+
         window = UIWindow(frame: UIScreen.main.bounds)
 
         if UIDevice.current.userInterfaceIdiom == .phone {
@@ -36,9 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        locationsRouter.showMenus(forLocation: Location(name: shortcutItem.localizedTitle))
-    }
+//    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+//        locationsRouter.showMenus(forLocation: Location(name: shortcutItem.localizedTitle))
+//    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         var shortcutItems = [UIApplicationShortcutItem]()
@@ -53,15 +57,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        switch url.host {
-        case "settings"?:
-            showSettings()
-        default:
-            return false
-        }
-
-        return true
-    }
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+//        switch url.host {
+//        case "settings"?:
+//            showSettings()
+//        default:
+//            return false
+//        }
+//
+//        return true
+//    }
 
 }

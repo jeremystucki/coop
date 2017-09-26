@@ -5,12 +5,12 @@
 	<key>Release</key>
 	<dict>
 		<key>API-Endpoint</key>
-		<string>https://themachine.jeremystucki.com/api/v1/coop</string>
+		<string>https://themachine.jeremystucki.com/coop/api/v2</string>
 	</dict>
 	<key>Debug</key>
 	<dict>
 		<key>API-Endpoint</key>
-		<string>https://themachine.jeremystucki.com/api/v1/coop</string>
+		<string>https://themachine.jeremystucki.com/coop/api/v2</string>
 	</dict>
 </dict>
 </plist>

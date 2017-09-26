@@ -9,6 +9,7 @@
 struct Location {
 
     let name: String
+    let id: Int
 
     // TODO: refactor
     var isFavorite: Bool {
