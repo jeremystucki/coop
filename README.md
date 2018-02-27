@@ -1,3 +1,5 @@
+<h1 style='color:red'>Important: API suspended indefinitely</h1>
+
 # Coop
 
 ## Clients
