@@ -21,7 +21,7 @@ for restaurant in data['vstList']:
         '_id': restaurant['betriebsNummerId']['id'],
         'coordinates': {
             'type': 'Point',
-            'coordinates': [restaurant['longitude'], restaurant['latitude']]
+            'coordinates': [restaurant['geoKoordinaten']['longitude'], restaurant['geoKoordinaten']['latitude']]
         },
         'address': {
             'street': restaurant['strasse'],
@@ -46,9 +46,7 @@ db.get_collection('locations_history').ensure_index([('coordinates', '2dsphere')
 db.get_collection('locations').ensure_index([('name', pymongo.TEXT)], default_language='german')
 db.get_collection('locations_history').ensure_index([('name', pymongo.TEXT)], default_language='german')
 
-
 db.get_collection('menus_temp').drop()
-
 
 all_weekdays = []
 
@@ -62,48 +60,42 @@ def get_menus_for_data(response: requests.Response, location_id: int, next_week:
     menus = []
     weekdays = []
 
-    for element in dom.find_all('span', {'id': re.compile('^tab-restaurant-\d$')}):
+    for element in dom.find('select', {'id': 'wochentag'}).find_all('option'):
         year = datetime.datetime.now().year
-        date = datetime.datetime.strptime(element.contents[0][3:] + str(year) + " +0000", '%d.%m%Y %z')
-        if next_week:
-            weekdays.append((date + datetime.timedelta(weeks=1)).timestamp())
-        else:
-            weekdays.append(date.timestamp())
+        date = datetime.datetime.strptime(element.text.split(' ')[1] + str(year) + " +0000", '%d.%m%Y %z')
+        weekdays.append(date.timestamp())
 
     all_weekdays += weekdays
 
-    for index, table in enumerate(dom.find_all('table', {'class': 'outer'})):
-        for row in table.find_all('tr', recursive=False):
-            menu_tag = row.find('td', {'class': 'inner col1'}).contents
-            menu = [item for item in menu_tag if isinstance(item, str)]
+    for (index, timestamp) in enumerate(weekdays):
+        for row in dom.find('div', {'id': 'weekday_' + str(index)}).find_all('div', {'class': 'RES-APP-001_menu-item'}):
+            try:
+                title = row.find('div', {'class': 'row RES-APP-001_menu-item--title'}).find_all('img')[0].attrs['alt']
+                price = row.find('div', {'class': 'RES-APP-001_menu-item--price'}).text.strip()
+                ingredients = [ingredient.strip() for ingredient in row.find('div', {'class': 'RES-APP-001_menu-item--ingredients'}).get_text('\n').split('\n')]
+                ingredients = list(filter(None, ingredients))
 
-            title_tag = row.find('td', {'class': 'outer col1'}).contents
-            title = title_tag[0]
-
-            price_tag = row.find('td', {'class': 'outer col3'}).contents
-            price = price_tag[0]
-
-            menus.append({
-                'location_id': int(location_id),
-                'menu': menu,
-                'price': float(price),
-                'timestamp': weekdays[index],
-                'title': title
-            })
+                menus.append({
+                    'location_id': int(location_id),
+                    'menu': ingredients,
+                    'price': float(price),
+                    'timestamp': weekdays[index],
+                    'title': title
+                })
+            except:
+                pass
 
     if len(menus) > 0:
         db.get_collection('menus_temp').insert(menus)
 
 
 def get_menus_for_location(location_id):
-    headers = {
-        'Cookie': 'mapstart-restaurant=' + str(location_id),
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
-    }
-
-    response = requests.get('http://www.coop.ch/pb/site/restaurant/node/73195219/Lde/index.html', headers=headers)
+    response = requests.get('https://www.coop-restaurant.ch/de/menueseite.vst' + location_id + '.restaurant.html')
     if response.status_code == 200:
-        get_menus_for_data(response, location_id, next_week=False)
+        try:
+            get_menus_for_data(response, location_id, next_week=False)
+        except:
+            pass
 
     # response = requests.get('http://www.coop.ch/pb/site/restaurant/node/73195219/Lde/index.html?nextWeek=true', headers=headers)
     # if response.status_code == 200:
