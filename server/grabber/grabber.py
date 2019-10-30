@@ -105,7 +105,7 @@ def get_menus_for_location(location_id):
 # tasks = []
 
 for location in list(db.get_collection('locations').find()):
-    print('Fetching ' + location['name'])
+    print('Fetching ' + location['name'].encode('utf-8'))
 
     get_menus_for_location(location['_id'])
     sleep(5)
